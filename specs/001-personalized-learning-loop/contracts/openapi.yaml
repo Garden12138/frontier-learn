@@ -1,0 +1,491 @@
+openapi: 3.1.0
+info:
+  title: FrontierLearn Learning API (MVP Draft)
+  version: 0.1.0
+  description: >-
+    Contract sketch for SDD planning. Authentication, authorization, validation,
+    pagination and observability details need final implementation decisions.
+servers:
+  - url: http://localhost:8000/api/v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Sources
+  - name: Profile
+  - name: Planning
+  - name: Tutor
+  - name: Assessments
+  - name: Artifacts
+paths:
+  /health:
+    get:
+      security: []
+      summary: Check service health
+      responses:
+        '200':
+          description: Healthy
+  /sources:
+    get:
+      tags: [Sources]
+      summary: List connected sources
+      responses:
+        '200':
+          description: Sources
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/KnowledgeSource' }
+    post:
+      tags: [Sources]
+      summary: Connect a scoped source (read only by default)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateSourceRequest' }
+      responses:
+        '201':
+          description: Source created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/KnowledgeSource' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /sources/{source_id}/sync:
+    post:
+      tags: [Sources]
+      summary: Start bounded incremental synchronization
+      parameters:
+        - { name: source_id, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      responses:
+        '202':
+          description: Async job accepted
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/JobResponse' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /sources/{source_id}:
+    delete:
+      tags: [Sources]
+      summary: Disconnect source and optionally remove derived records
+      parameters:
+        - { name: source_id, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: delete_derived, in: query, required: false, schema: { type: boolean, default: false } }
+      responses:
+        '204': { description: Disconnected }
+        '403': { $ref: '#/components/responses/Forbidden' }
+  /jobs/{job_id}:
+    get:
+      tags: [Sources]
+      summary: Get sync / import / writeback job status
+      parameters:
+        - { name: job_id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: Job status
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/JobResponse' }
+  /knowledge:
+    get:
+      tags: [Profile]
+      summary: List user's inferred knowledge states
+      parameters:
+        - { name: q, in: query, required: false, schema: { type: string } }
+      responses:
+        '200':
+          description: Knowledge states
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/KnowledgeState' }
+  /knowledge/{concept_id}/evidence:
+    get:
+      tags: [Profile]
+      summary: List verifiable supporting evidence
+      parameters:
+        - { name: concept_id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Evidence
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/KnowledgeEvidence' }
+  /goals:
+    post:
+      tags: [Planning]
+      summary: Create learning goal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/GoalRequest' }
+      responses:
+        '201':
+          description: Goal created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Goal' }
+    get:
+      tags: [Planning]
+      summary: List learning goals
+      responses:
+        '200':
+          description: Goals
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Goal' }
+  /plans:generate:
+    post:
+      tags: [Planning]
+      summary: Generate a plan revision from learner evidence
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [goal_id]
+              properties:
+                goal_id: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Plan candidate
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Plan' }
+  /pages:analyze:
+    post:
+      tags: [Tutor]
+      summary: User-triggered supported webpage analysis
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PageAnalyzeRequest' }
+      responses:
+        '200':
+          description: Personalized reading guide
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ReadingGuide' }
+  /conversations:import:
+    post:
+      tags: [Tutor]
+      summary: Explicitly import public share link or pasted dialog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url: { type: string, format: uri }
+                pasted_text: { type: string }
+              anyOf:
+                - required: [url]
+                - required: [pasted_text]
+      responses:
+        '202':
+          description: Import queued
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/JobResponse' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /sessions/{session_id}/assessments:
+    post:
+      tags: [Assessments]
+      summary: Submit user assessment answer
+      parameters:
+        - { name: session_id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AssessmentSubmission' }
+      responses:
+        '201':
+          description: Assessment stored
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AssessmentResult' }
+  /artifacts:
+    post:
+      tags: [Artifacts]
+      summary: Create reviewed Markdown draft from learning session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [session_id]
+              properties:
+                session_id: { type: string, format: uuid }
+                target_source_id: { type: string, format: uuid }
+      responses:
+        '201':
+          description: Draft created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Artifact' }
+  /artifacts/{artifact_id}/approve-pr:
+    post:
+      tags: [Artifacts]
+      summary: After explicit review create Github branch and PR
+      parameters:
+        - { name: artifact_id, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [target_path, base_revision, approved]
+              properties:
+                target_path: { type: string }
+                base_revision: { type: string }
+                approved: { type: boolean, const: true }
+      responses:
+        '202':
+          description: PR operation accepted
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/JobResponse' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /sessions/{session_id}/messages:
+    post:
+      tags: [Tutor]
+      summary: Ask a question within an active personalized learning session
+      parameters:
+        - { name: session_id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [question, mode]
+              properties:
+                question: { type: string, minLength: 1 }
+                mode: { type: string, enum: [INTUITIVE, DEEP, PRACTICE] }
+      responses:
+        '200':
+          description: Tutor answer with source provenance
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [answer, evidence_links]
+                properties:
+                  answer: { type: string }
+                  evidence_links: { type: array, items: { type: string } }
+                  unverified: { type: boolean }
+  /plans/{plan_id}/actions:
+    post:
+      tags: [Planning]
+      summary: Accept, pause, skip or reorder user-owned plan tasks
+      parameters:
+        - { name: plan_id, in: path, required: true, schema: { type: string, format: uuid } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [revision_no, action]
+              properties:
+                revision_no: { type: integer, minimum: 1 }
+                action: { type: string, enum: [ACCEPT, PAUSE, SKIP, REORDER] }
+                task_id: { type: string, format: uuid }
+      responses:
+        '200': { description: Updated plan revision }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /artifacts/{artifact_id}:
+    get:
+      tags: [Artifacts]
+      summary: Preview user-owned Markdown draft and base revision before approval
+      parameters:
+        - { name: artifact_id, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        '200':
+          description: Draft details for human review
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Artifact' }
+  /data/export:
+    get:
+      tags: [Profile]
+      summary: Export user learning state as portable JSON and Markdown manifest
+      responses:
+        '200': { description: Portable exported data }
+  /data/delete:
+    post:
+      tags: [Profile]
+      summary: Request deletion of application-held personal learning data (not external repository content)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [confirm]
+              properties:
+                confirm: { type: boolean, const: true }
+      responses:
+        '202': { description: Deletion scheduled and auditable }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Forbidden:
+      description: Access denied
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+    Conflict:
+      description: Resource revision conflict
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  schemas:
+    Error:
+      type: object
+      required: [code, message, request_id]
+      properties:
+        code: { type: string }
+        message: { type: string }
+        request_id: { type: string }
+    CreateSourceRequest:
+      type: object
+      required: [provider, external_ref]
+      properties:
+        provider: { type: string, enum: [github] }
+        external_ref: { type: string, example: 'owner/repository' }
+        read_only: { type: boolean, default: true }
+    KnowledgeSource:
+      type: object
+      required: [id, provider, external_ref, status]
+      properties:
+        id: { type: string, format: uuid }
+        provider: { type: string }
+        external_ref: { type: string }
+        status: { type: string }
+    JobResponse:
+      type: object
+      required: [id, status]
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [PENDING, RUNNING, PARTIAL, SUCCEEDED, FAILED, CANCELLED] }
+        error_code: { type: [string, 'null'] }
+        progress: { type: number, minimum: 0, maximum: 1 }
+    KnowledgeEvidence:
+      type: object
+      required: [id, concept_id, kind, source_locator, observed_at]
+      properties:
+        id: { type: string, format: uuid }
+        concept_id: { type: string }
+        kind: { type: string }
+        source_locator: { type: object, additionalProperties: true }
+        excerpt: { type: string }
+        observed_at: { type: string, format: date-time }
+    KnowledgeState:
+      type: object
+      required: [concept_id, level, evidence_count]
+      properties:
+        concept_id: { type: string }
+        name: { type: string }
+        level: { type: string, enum: [UNKNOWN, EXPOSED, UNDERSTANDING, APPLIED, PROFICIENT] }
+        review_due: { type: boolean }
+        evidence_count: { type: integer, minimum: 0 }
+    GoalRequest:
+      type: object
+      required: [title, minutes_per_day]
+      properties:
+        title: { type: string, minLength: 1 }
+        minutes_per_day: { type: integer, minimum: 5, maximum: 240 }
+        priorities: { type: array, items: { type: string } }
+    Goal:
+      allOf:
+        - { $ref: '#/components/schemas/GoalRequest' }
+        - type: object
+          required: [id, status]
+          properties:
+            id: { type: string, format: uuid }
+            status: { type: string }
+    Plan:
+      type: object
+      required: [id, revision_no, goal_id, tasks]
+      properties:
+        id: { type: string, format: uuid }
+        revision_no: { type: integer, minimum: 1 }
+        goal_id: { type: string, format: uuid }
+        rationale: { type: string }
+        tasks:
+          type: array
+          items:
+            type: object
+            required: [title, why, estimated_minutes]
+            properties:
+              title: { type: string }
+              why: { type: string }
+              estimated_minutes: { type: integer }
+              prerequisites: { type: array, items: { type: string } }
+    PageAnalyzeRequest:
+      type: object
+      required: [canonical_url, title, text, anchors]
+      properties:
+        canonical_url: { type: string, format: uri }
+        title: { type: string }
+        text: { type: string, minLength: 1 }
+        anchors:
+          type: array
+          items:
+            type: object
+            properties:
+              selector: { type: string }
+              text_quote: { type: string }
+    ReadingGuide:
+      type: object
+      required: [summary, steps, citations_verified]
+      properties:
+        summary: { type: string }
+        personalized_reason: { type: string }
+        steps: { type: array, items: { type: string } }
+        citations_verified: { type: boolean }
+    AssessmentSubmission:
+      type: object
+      required: [concept_id, question_id, user_answer]
+      properties:
+        concept_id: { type: string }
+        question_id: { type: string }
+        user_answer: { type: string }
+    AssessmentResult:
+      type: object
+      required: [id, outcome, explanation]
+      properties:
+        id: { type: string, format: uuid }
+        outcome: { type: string, enum: [PASSED, PARTIAL, NOT_YET, UNVERIFIED] }
+        explanation: { type: string }
+    Artifact:
+      type: object
+      required: [id, status, content_md]
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [DRAFT, REVIEWED, APPROVED, PR_OPENED, MERGED, CLOSED, DISCARDED] }
+        content_md: { type: string }
+        target_path: { type: [string, 'null'] }
