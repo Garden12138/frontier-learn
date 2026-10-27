@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-10-26T13:24:36.359850+00:00",
+  "result": "PASSED",
+  "schema_head": "0009_real_connections",
+  "restored_tables": 27,
+  "dump_bytes": 84160,
+  "dump_sha256": "0112abd756d6d7168347c633574aebaba3c9efe6cc1a3f018755d46bad9680c2",
+  "export_bytes_compared": 23132,
+  "dump_restore_verify_seconds": 0.642,
+  "learning_export_equal": true,
+  "original_password_login": true,
+  "encrypted_connection_recovered_with_original_key": true,
+  "cloud_requests": 0,
+  "external_writes": 0,
+  "scope": "SYNTHETIC_LOCAL_NEW_DATABASES_ONLY_NOT_PRODUCTION_DRILL"
+}

@@ -1,0 +1,57 @@
+.workspace { min-height: 100vh; display: grid; grid-template-columns: 250px minmax(0, 1fr); }
+.rail { padding: 2.5rem 1.8rem; background: #e9ede3; border-right: 1px solid #d5dece; display: flex; flex-direction: column; gap: 4rem; }
+.brand { font-size: 1.35rem; letter-spacing: -.04em; }
+.brand span { display: block; font-size: .75rem; font-weight: 400; letter-spacing: 0; margin-top: .6rem; }
+.rail-note { font-size: .8rem; color: #657068; }
+.rail-note p { font-size: 1.25rem; line-height: 1.8; color: #315b48; }
+.rail > .eyebrow { margin-top: auto; }
+main { padding: 2.5rem clamp(1.5rem, 6vw, 6rem); max-width: 1200px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #dce1d8; padding-bottom: 1.6rem; font-size: .8rem; }
+.welcome { margin: 4.5rem 0 2.8rem; }
+h1 { font-size: clamp(2.4rem, 4vw, 3.9rem); font-weight: 550; line-height: 1.25; letter-spacing: -.055em; margin: 1rem 0 1.4rem; }
+h2 { font-size: 1.3rem; font-weight: 600; }
+.footnote { font-size: .75rem; margin-top: 1.5rem; }
+.page { padding-top: 2.5rem; }
+.page h1 { font-size: clamp(2rem, 3vw, 3rem); margin: .6rem 0 1rem; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+.conversation-text { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.7; max-width: 100%; }
+.stack h2, .stack p { margin: 0; }
+label { display: flex; flex-direction: column; gap: .5rem; font-size: .9rem; }
+input:not([type=checkbox]):not([type=radio]), textarea, select { width: 100%; border: 1px solid #aebfb1; border-radius: 7px; padding: .75rem; background: #fff; color: #20342b; }
+textarea { min-height: 100px; resize: vertical; }
+.check { flex-direction: row; align-items: flex-start; line-height: 1.6; }
+.check input { margin-top: .3rem; }
+.stack > button, .stack > form > button { align-self: flex-start; }
+.compact { font-size: .8rem; }
+.row, .actions { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem; }
+.row { justify-content: space-between; }
+.grow { flex: 1; min-width: 180px; }
+.secondary { background: transparent; color: #315b48; border-color: #b1c1b3; }
+.badge { display: inline-block; font-size: .75rem; padding: .3rem .6rem; border-radius: 20px; background: #edf2e8; color: #315b48; }
+.job { border-top: 1px solid #dce1d8; padding-top: 1rem; display: grid; gap: .6rem; }
+progress { width: 100%; accent-color: #315b48; height: 8px; }
+.file-list { border-top: 1px solid #dce1d8; }
+.file-row { display: flex; gap: 1rem; flex-wrap: wrap; padding: .75rem 0; border-bottom: 1px solid #edf2e8; font-size: .8rem; overflow-wrap: anywhere; }
+.knowledge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.knowledge-card { padding: 1.25rem; display: flex; flex-direction: column; gap: .8rem; text-align: left; background: #fff; color: #20342b; border: 1px solid #dce1d8; }
+.knowledge-card.selected { border-color: #315b48; box-shadow: 0 0 0 2px #dbe9da; }
+.knowledge-card > strong { font-size: 1.15rem; overflow-wrap: anywhere; }
+.knowledge-card > span:last-child { font-size: .8rem; color: #657068; }
+.evidence { border-top: 1px solid #dce1d8; padding: 1rem 0; font-size: .85rem; }
+blockquote { margin: 1rem 0; border-left: 3px solid #afc5b0; padding-left: 1rem; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.7; }
+time { font-size: .75rem; color: #657068; }
+summary { cursor: pointer; padding: .8rem 0; }
+nav { display: flex; flex-direction: column; gap: .6rem; }
+nav button { background: transparent; color: #315b48; border-color: transparent; text-align: left; }
+nav button.nav-active { background: #315b48; color: #fff; }
+.confirmation { border: 2px solid #315b48; }
+.login-form { border-top: 1px solid #dce1d8; padding-top: 1.5rem; margin-top: 1.5rem; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.learning-task h3 { margin: 0; font-size: 1.2rem; }
+.learning-task p { line-height: 1.8; }
+.provenance { border-top: 1px solid #e0e6dc; padding-top: .75rem; }
+.provenance strong { font-size: .8rem; }
+.route-theme { padding: .8rem 0; border-bottom: 1px solid #e0e6dc; }
+.route-theme h3 { margin: 0 0 .6rem; }
+.revision-preview { border-top: 1px solid #e0e6dc; padding-top: 1rem; font-size: .85rem; }
+@media(max-width: 760px) { .workspace { grid-template-columns: 1fr; } .rail { padding: 1.5rem; gap: .5rem; } .rail-note, .rail > .eyebrow { display: none; } main { padding: 1.5rem; } header { flex-wrap: wrap; } .welcome { margin-top: 2.5rem; } .desktop-break { display: none; } }

@@ -1,0 +1,34 @@
+{
+  "name": "frontier-learn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "engines": { "node": ">=22 <23", "pnpm": ">=10 <11" },
+  "scripts": {
+    "dev": "pnpm --filter @frontier/web dev",
+    "dev:extension": "pnpm --filter @frontier/extension dev",
+    "lint": "eslint apps packages tests playwright.*.config.ts --max-warnings 0",
+    "typecheck": "tsc -p tsconfig.json && pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "test:setup": "playwright test -c playwright.setup.config.ts",
+    "test:live-pages": "playwright test -c playwright.live.config.ts",
+    "test:performance": "pnpm --filter @frontier/web build && playwright test -c playwright.performance.config.ts",
+    "test:sources": "playwright test -c playwright.sources.config.ts",
+    "test:extension": "playwright test -c playwright.extension.config.ts",
+    "types:api": "openapi-typescript specs/001-personalized-learning-loop/contracts/openapi.runtime.json -o packages/shared/src/api/schema.d.ts",
+    "types:check": "pnpm types:api --check"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.8.0",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^22.0.0",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^3.2.4"
+  }
+}

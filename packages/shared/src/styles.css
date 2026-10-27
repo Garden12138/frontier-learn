@@ -1,0 +1,39 @@
+:root {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #20342b;
+  background: #f6f5ef;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .65; }
+button, a:focus-visible { outline-offset: 4px; }
+button { border: 1px solid #416857; border-radius: 8px; padding: .7rem 1rem; color: #fff; background: #315b48; }
+a { color: #315b48; }
+.eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #627b6a; }
+.muted { color: #657068; line-height: 1.8; }
+.card { background: #fff; border: 1px solid #dce1d8; padding: 1.5rem; border-radius: 16px; }
+.stack { display: flex; flex-direction: column; gap: .85rem; }
+.stack > :first-child { margin-top: 0; }
+.stack > :last-child { margin-bottom: 0; }
+main > .card, main > details { margin-block: 1rem; }
+label { display: flex; flex-direction: column; gap: .4rem; }
+input, textarea, select { min-width: 0; max-width: 100%; border: 1px solid #ccd6cd; border-radius: 7px; padding: .6rem; color: inherit; background: #fff; }
+textarea { resize: vertical; }
+.checkbox-label { flex-direction: row; align-items: flex-start; }
+.secondary { color: #315b48; background: #f6f8f3; }
+.danger { color: #933d31; border-color: #d3a89e; background: #fff3f0; }
+.compact { font-size: .85rem; }
+.source-preview { border-top: 1px solid #e1e5dc; padding-block: 1rem; overflow-wrap: anywhere; }
+blockquote { margin: .5rem 0; border-left: 3px solid #8fae97; padding-left: 1rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+summary { cursor: pointer; padding-block: .6rem; }
+[role=alert] { color: #9b352a; background: #fff1ec; padding: .8rem; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+.draft-preview { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 28rem; overflow: auto; padding: 1rem; background: #f5f6f7; border-radius: 8px; font-size: 0.85rem; }
+.check-line { display: flex; flex-direction: row; gap: 0.65rem; align-items: baseline; }
+.check-line input { width: auto; }

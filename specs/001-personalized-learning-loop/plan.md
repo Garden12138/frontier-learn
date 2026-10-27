@@ -2,8 +2,14 @@
 
 **Branch/Feature:** `001-personalized-learning-loop`  
 **Specification:** [spec.md](spec.md)  
-**Technical status:** proposed, not implemented  
-**Last updated:** 2026-10-24
+**Technical status:** Phases 1–8 and production adapter code verified locally; live-service release gates pending
+**Last updated:** 2026-10-26
+
+开发态实现已包含 US1–US6 的本地闭环，最终验证记录见 `docs/evidence/mvp-acceptance.md`。
+OpenAPI YAML 与 JSON 现从同一运行时契约生成，TS 类型从 JSON 生成，不再保留旧路由草案。
+来源边界短测、分支/PR 幂等及所有权默认值见 ADR-0008。独立密码/恢复、OpenAI Responses、
+GitHub App/OAuth 与预算边界见 ADR-0009，配置见 `docs/production-integrations.md`。
+正式账号和外部协议已在隔离环境验证；真实模型/仓库授权联调和人工效果仍是发布门槛。
 
 ## 1. Summary
 交付统一 Learner Model、主动学习规划引擎、Web 工作台、Chrome Side Panel、GitHub 只读知识导入与 PR 回写、AI 对话导学，形成闭环。先完成后端业务与 Web 端纵切，再增加 Chrome 插件；避免“先做漂亮侧边栏，再补用户模型”。
@@ -81,7 +87,7 @@ docs/
 2. Worker 拉取允许范围内的树与文件，记录提交 SHA、path、content hash。
 3. Markdown 解析为章节/段落块，保留行号；对过大文档逐块处理，跳过不支持文件并记录原因。
 4. 经来源链接约束的提取器识别概念、知识断言、代码示例，生成 `KnowledgeEvidence`（`OBSERVED_NOTE`、`EXPLAINED`、`PRACTICED` 等）。
-5. 通过 `KnowledgeStatePolicy` 综合证据与测验结果；允许输出 `UNKNOWN/EXPOSED/UNDERSTANDING/APPLIED/PROFICIENT/REVIEW_DUE`，并保留证据引用、置信与版本。
+5. 通过 `KnowledgeStatePolicy` 综合证据与测验结果；允许输出 `UNKNOWN/EXPOSED/UNDERSTANDING/APPLIED/PROFICIENT`，复习需求单独使用 `review_due` 布尔标记，并保留证据引用、置信与版本。
 6. 用户在 Web 端查看并纠正，不是自动标“精通”。
 
 ### 5.2 Goals → Plan
@@ -96,6 +102,17 @@ docs/
 3. 以 URL、文档摘要/哈希关联当前 `LearningSession`；查询个人目标/证据/计划，输出 1–3 个可行动问题与阅读步骤。
 4. 选区解释必须同时持有选区原文、锚点和模型解释来源标签。
 5. 后续追问传入最小化上下文和相关证据，不把整个历史浏览记录装进 Prompt。
+
+Phase 5 实际边界见 ADR-0006：普通工具栏 action 授予 activeTab 后打开侧栏；点击分析
+才抽取，仅在预览确认后保存 LearningSession。`pages:analyze`/`sessions/.../questions`
+返回有界任务状态，沿用取消/重试而非无限请求。默认本地规则建议，Provider 接口通过 Fake
+验收；后续 T063–066 已补齐独立身份和云 Provider。真实模型内容质量与真实网页人工抽检
+仍保留发布门槛。
+
+Phase 6 实际边界见 ADR-0007：分享链接通过固定公开主机、同资源重定向限制和 IP 固定读取；
+正文用结构化消息标签解析，不执行 hydration 脚本。无法获取/解析时保留失败记录并提供粘贴。
+确认后仅保存到本人学习库；本地规则提出 1–3 个待验证问题，经用户选择才追加计划。
+计划只保存通用验证步骤和材料引用，删除后旧版本不复制敏感原文；真实分享兼容性待发布验收。
 
 ### 5.4 Assessment → Note → Write-back → Replan
 1. 导学结束或任意时点可请求短测；`Assessment` 保存用户答案、评分规则、评价与不确定性。

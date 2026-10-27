@@ -1,0 +1,18 @@
+name: frontier-learn-test
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: frontier
+      POSTGRES_PASSWORD: test_only
+      POSTGRES_DB: frontier_test
+    ports:
+      - "127.0.0.1:55432:5432"
+    # This database holds only disposable test data, never user data.
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U frontier -d frontier_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 20

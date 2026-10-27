@@ -1,0 +1,181 @@
+{
+  "observed_at": "2026-10-26T13:27:23.016Z",
+  "scope": "LOCAL_SERIAL_LOOPBACK_NOT_PRODUCTION_OR_STANDARD_NETWORK",
+  "environment": {
+    "os": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "browser": "156.0.8078.4",
+    "build": "vite-production-preview",
+    "cpu_throttling": false,
+    "network_throttling": false,
+    "concurrent_users": 1
+  },
+  "metric": "navigation_start_to_first_visible_enabled_learning_task_action_ms",
+  "warmups": 5,
+  "sample_count": 30,
+  "p50_ms": 44,
+  "p95_ms": 48.6,
+  "max_ms": 50.6,
+  "cache_evidence": "CDP requestServedFromCache/fromDiskCache or responseReceivedExtraInfo status 304",
+  "cached_condition_met": true,
+  "local_target_ms": 3000,
+  "local_target_met": true,
+  "failed_http_requests": 0,
+  "failed_transports": 0,
+  "page_errors": 0,
+  "samples": [
+    {
+      "ready_ms": 46.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.5,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.1,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 45.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.4,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 46.2,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 50.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 48.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 42.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 41.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 41.6,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43.1,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 41.9,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.9,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.9,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 42,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 42.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.7,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 41.5,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 44.2,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43.5,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43.5,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    },
+    {
+      "ready_ms": 43.9,
+      "cached_assets": 0,
+      "revalidated_assets": 2
+    }
+  ],
+  "external_model_calls": 0,
+  "external_writes": 0
+}

@@ -1,0 +1,1 @@
+"""User story integration acceptance."""

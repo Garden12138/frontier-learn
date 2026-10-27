@@ -1,0 +1,52 @@
+import { expect, test } from '@playwright/test';
+
+test('connects notes, shows citations, preserves login and disconnects only local evidence', async ({ page, context }, testInfo) => {
+  await page.goto('/');
+  await page.getByLabel('开发体验账号').fill('source-browser-user');
+  await page.getByRole('button', { name: '进入学习空间' }).click();
+  await page.getByRole('button', { name: '知识来源', exact: true }).click();
+  await expect(page.getByText('还没有知识来源。', { exact: false })).toBeVisible();
+  await page.getByLabel('仓库网址或 owner/repository').fill('sample/notes');
+  await page.getByRole('checkbox', { name: /我同意只读导入/ }).check();
+  await page.getByRole('button', { name: '添加只读来源' }).click();
+  const source = page.getByRole('article', { name: '来源 sample/notes' });
+  await source.getByRole('button', { name: '同步笔记' }).click();
+  await expect(source.getByText('同步完成', { exact: true })).toBeVisible();
+  await source.getByRole('button', { name: '查看文件范围' }).click();
+  await expect(source.getByText('BPE.md', { exact: true })).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('sources.png'), fullPage: true });
+  await page.getByRole('button', { name: '知识画像', exact: true }).click();
+  await page.getByRole('button', { name: /BPE 有学习证据/ }).click();
+  await expect(page.getByRole('link', { name: /BPE.md · 第/ })).toHaveAttribute('href', /github.com\/sample\/notes\/blob\/a{40}\/BPE.md#L/);
+  await expect(page.getByText('笔记提及（待验证）')).toBeVisible();
+  await page.screenshot({ path: testInfo.outputPath('profile.png'), fullPage: true });
+  const cookies = await context.cookies();
+  expect(cookies.find(cookie => cookie.name === 'frontier_session')?.httpOnly).toBe(true);
+  await page.reload();
+  await expect(page.getByText('source-browser-user', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '知识来源', exact: true }).click();
+  await page.getByRole('button', { name: '断开来源' }).click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByRole('checkbox', { name: /同时删除/ }).check();
+  await dialog.getByRole('button', { name: '确认断开' }).click();
+  await expect(source.getByText('已断开', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '知识画像', exact: true }).click();
+  await expect(page.getByText('还没有对应的知识证据。', { exact: false })).toBeVisible();
+  await page.getByRole('button', { name: '退出登录' }).click();
+  await expect(page.getByRole('heading', { name: '先连接你的学习空间' })).toBeVisible();
+  expect((await context.cookies()).some(cookie => cookie.name === 'frontier_session')).toBe(false);
+});
+
+test('permission failures remain visible and retryable', async ({ page }) => {
+  await page.goto('/');
+  await page.getByLabel('开发体验账号').fill('denied-browser-user');
+  await page.getByRole('button', { name: '进入学习空间' }).click();
+  await page.getByRole('button', { name: '知识来源', exact: true }).click();
+  await page.getByLabel('仓库网址或 owner/repository').fill('sample/denied');
+  await page.getByRole('checkbox', { name: /我同意只读导入/ }).check();
+  await page.getByRole('button', { name: '添加只读来源' }).click();
+  const source = page.getByRole('article', { name: '来源 sample/denied' });
+  await source.getByRole('button', { name: '同步笔记' }).click();
+  await expect(source.getByRole('alert')).toContainText('授权失效');
+  await expect(source.getByRole('button', { name: '重试失败文件' })).toBeVisible();
+});

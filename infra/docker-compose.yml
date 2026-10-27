@@ -1,0 +1,68 @@
+name: frontier-learn
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: frontier
+      POSTGRES_PASSWORD: frontier_local
+      POSTGRES_DB: frontier
+    ports:
+      - "127.0.0.1:${FRONTIER_DB_PORT:-5432}:5432"
+    volumes:
+      - frontier_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U frontier -d frontier"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+  migrate:
+    build: ../services/api
+    command: [".venv/bin/alembic", "upgrade", "head"]
+    environment: &api_environment
+      FRONTIER_ENV: development
+      FRONTIER_DATABASE_URL: postgresql+asyncpg://frontier:frontier_local@db:5432/frontier
+      FRONTIER_FAKE_PROVIDER: "true"
+      FRONTIER_PASSWORD_AUTH: ${FRONTIER_PASSWORD_AUTH:-true}
+      FRONTIER_LLM_PROVIDER: ${FRONTIER_LLM_PROVIDER:-local_rules}
+      FRONTIER_OPENAI_API_KEY: ${FRONTIER_OPENAI_API_KEY:-}
+      FRONTIER_OPENAI_MODEL: ${FRONTIER_OPENAI_MODEL:-}
+      FRONTIER_MODEL_USER_CALLS_PER_DAY: ${FRONTIER_MODEL_USER_CALLS_PER_DAY:-10}
+      FRONTIER_MODEL_USER_TOKENS_PER_DAY: ${FRONTIER_MODEL_USER_TOKENS_PER_DAY:-50000}
+      FRONTIER_MODEL_GLOBAL_CALLS_PER_DAY: ${FRONTIER_MODEL_GLOBAL_CALLS_PER_DAY:-100}
+      FRONTIER_MODEL_GLOBAL_TOKENS_PER_DAY: ${FRONTIER_MODEL_GLOBAL_TOKENS_PER_DAY:-200000}
+      FRONTIER_GITHUB_APP_ID: ${FRONTIER_GITHUB_APP_ID:-}
+      FRONTIER_GITHUB_CLIENT_ID: ${FRONTIER_GITHUB_CLIENT_ID:-}
+      FRONTIER_GITHUB_CLIENT_SECRET: ${FRONTIER_GITHUB_CLIENT_SECRET:-}
+      FRONTIER_GITHUB_PRIVATE_KEY: ${FRONTIER_GITHUB_PRIVATE_KEY:-}
+      FRONTIER_GITHUB_APP_SLUG: ${FRONTIER_GITHUB_APP_SLUG:-}
+      FRONTIER_PUBLIC_API_URL: ${FRONTIER_PUBLIC_API_URL:-http://localhost:8000}
+      FRONTIER_PUBLIC_WEB_URL: ${FRONTIER_PUBLIC_WEB_URL:-http://localhost:5173}
+      FRONTIER_MOCK_AUTH: ${FRONTIER_MOCK_AUTH:-false}
+      FRONTIER_ENCRYPTION_KEY: ${FRONTIER_ENCRYPTION_KEY:-}
+      FRONTIER_ALLOWED_ORIGINS: '${FRONTIER_ALLOWED_ORIGINS:-["http://localhost:5173","http://127.0.0.1:5173"]}'
+      FRONTIER_WRITEBACK_ENABLED: ${FRONTIER_WRITEBACK_ENABLED:-false}
+    depends_on:
+      db:
+        condition: service_healthy
+  api:
+    build: ../services/api
+    environment: *api_environment
+    ports:
+      - "127.0.0.1:${FRONTIER_API_PORT:-8000}:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", ".venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/ready', timeout=8)"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+  worker:
+    build: ../services/api
+    command: [".venv/bin/python", "-m", "app.jobs.worker"]
+    environment: *api_environment
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+volumes:
+  frontier_pg:

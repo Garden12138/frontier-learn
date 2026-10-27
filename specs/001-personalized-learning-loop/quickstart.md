@@ -1,6 +1,51 @@
 # Quickstart: E2E Validation & Acceptance Fixtures
 
-**注意**：这是未来代码仓库的验收操作手册，当前文档包尚未实现应用或测试环境。路径与命令将在实现后校准。
+**注意**：初始化工程与健康检查已建立，启动及检查命令见 [README](../../README.md)。
+`pnpm test:setup` 只检查初始化 Web、断线恢复及 MV3 界面，不代表下表 E2E-001～022 已通过。
+学习业务测试已独立提供，具体通过项与真实服务缺口见下文及验收矩阵。
+
+US1 的只读导入/画像阶段现可通过 `pnpm test:sources` 实测（启动步骤见 README），
+后端 `tests/integration/test_github_ingest.py` 与 `test_ingest_boundaries.py` 覆盖
+E2E-002～005 的模拟 GitHub/真实 PG 路径、范围变更、坏文件、取消和 200 文件/10MB。
+`docs/evidence/knowledge-import/` 保留不含真实私人数据的浏览器截图。
+独立密码/恢复和 GitHub App 代码已离线验证；真实授权与完整发布验收仍未完成。
+不得将模拟网络结果当真实网络性能。
+
+US2 的目标/规划由 `tests/test_planner.py`（真实隔离 PG）及
+`apps/web/tests/e2e/planning.spec.ts` 覆盖。`pnpm test:sources` 同时运行该浏览器场景：
+无来源/拒绝自评 → 分层计划 → 接受/跳过/暂停 → 历史恢复 → 兴趣任务 → 完成不增知识证据
+→ 刷新保留 → 目标变更后重规划。截图见 `docs/evidence/planning/`。
+规划标明本地规则建议；合成通过/失败验证用于路径测试，不代表真人学习效果已验证。
+
+US3 的 E2E-007～010 可通过 `pnpm test:extension` 运行，需提供与 `test:sources` 相同的
+专用 `FRONTIER_TEST_DATABASE_URL`，且这些命令与 pytest 须顺序执行。该命令自动构建
+测试扩展并启动隔离 API/Worker/Web；实际 MV3 临时授权 + 十份合成网页覆盖抽取、选区、
+摘要范围、定位及原文变化降级；跨端场景覆盖目标/任务关联、追问、刷新恢复、注销和服务端撤销。
+后端 `tests/test_citations.py` 覆盖引用防伪、幂等、乐观锁、失败重试、取消、删除、
+私有证据隔离和云模型未授权拒绝。截图副本见 `docs/evidence/guided-reading/`。
+默认输出 LOCAL_RULES 阅读方法；OpenAI Responses 适配器经离线协议验证，真实模型质量待验收。
+合成样本的自动定位通过不能作为 SC-003 人工准确率或真实站点兼容性结论。
+
+US4 的 E2E-011～012 纳入 `pnpm test:sources` 中的 `conversation.spec.ts`：
+提交前本地预览/隐私确认 → 分享/粘贴解析 → 角色、代码与未核实结论 → 知识线索链接
+→ 明确加入/拒绝候选 → 计划修订 → 内部删除与旧计划失去原材料；另测 403、无法解析、
+有限重试、粘贴回退、刷新保留。网络使用合成分享页，不能冒充真实在线分享解析成功。
+后端 `tests/test_share_import.py` 覆盖 URL/DNS/重定向/IP 固定、限额、幂等、取消/删除、
+跨用户、计划并发及有数据的 0006 回滚。真实分享页兼容性仍需发布验收。
+
+US5/US6 已提供开发态验收：`learning-loop.spec.ts` 与 MV3 `current-page.spec.ts` 包含短测、
+确认、共享证据、笔记编辑/下载、Diff 和模拟 PR；`test_learning_loop.py`、`test_writeback_safety.py`、
+`test_portability.py` 与 `security/test_prompt_injection.py` 覆盖两次学习、合并再索引、冲突/
+重试/取消/撤销、数据导出/清理、越权和提示注入。默认短测仅来源边界，不冒充主题掌握。
+逐项结果、合成与真实服务的边界见 [验收矩阵](../../docs/evidence/mvp-acceptance.md)。
+真实模型解释、真实站点/仓库和真人效果仍未验收，完整 T059 保持未完成。
+
+接入补齐由 `real-connections.spec.ts` 验证：独立账号注册/恢复码下载 → OAuth/PKCE →
+安装位置/仓库选择 → 同步及独立写目录授权 → 全局/逐轮云处理 → 恢复与密码再登录。
+MV3 新增独立密码账号登录和临时存储检查；后端补单仓库令牌、refresh、预算、撤销迟到回调、
+恢复取消任务及有数据的 0009 回滚。均使用虚构账号/合成外部响应，无收费调用。
+配置及需真实凭据的验收步骤见 [接入说明](../../docs/production-integrations.md)，
+截图见 [接入证据](../../docs/evidence/integrations/README.md)。
 
 ## 1. Test Prerequisites
 

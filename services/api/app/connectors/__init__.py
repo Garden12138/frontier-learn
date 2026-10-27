@@ -1,0 +1,1 @@
+"""Explicitly scoped source adapters."""
