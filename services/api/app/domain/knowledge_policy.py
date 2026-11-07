@@ -40,7 +40,7 @@ async def refresh_states(db: AsyncSession, user_id: UUID) -> None:
             if e.kind == "ASSESSED"
             and e.polarity == "POSITIVE"
             and e.assessment_id is not None
-            and e.method != "SOURCE_COMPREHENSION"
+            and e.method not in {"SOURCE_COMPREHENSION", "MODEL_CONCEPT_CHECK"}
         ]
         # Neither note text, repository code nor an AI answer demonstrates applied skill.
         level = (

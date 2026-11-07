@@ -72,6 +72,11 @@ async def delete_session(
             .where(
                 Job.user_id == user.id,
                 or_(
+                    Job.id.in_(
+                        select(Assessment.question_job_id).where(
+                            Assessment.session_id == session_id, Assessment.user_id == user.id
+                        )
+                    ),
                     Job.id.in_(select(TutorTurn.job_id).where(TutorTurn.session_id == session_id)),
                     Job.id.in_(
                         select(LearningArtifact.job_id)

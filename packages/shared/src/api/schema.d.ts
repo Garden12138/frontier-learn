@@ -1114,6 +1114,17 @@ export interface components {
         /** AssessmentCreate */
         AssessmentCreate: {
             /**
+             * Cloud Processing Allowed
+             * @default false
+             */
+            cloud_processing_allowed: boolean;
+            /**
+             * Kind
+             * @default SOURCE_COMPREHENSION
+             * @enum {string}
+             */
+            kind: "SOURCE_COMPREHENSION" | "CONCEPT_CHECK";
+            /**
              * Session Id
              * Format: uuid
              */
@@ -1128,9 +1139,9 @@ export interface components {
             /**
              * Method
              * @default LOCAL_RULES
-             * @constant
+             * @enum {string}
              */
-            method: "LOCAL_RULES";
+            method: "LOCAL_RULES" | "MODEL_QUESTION_KEY";
             /**
              * Result
              * @enum {string}
@@ -1156,9 +1167,9 @@ export interface components {
             /**
              * Scope
              * @default SOURCE_COMPREHENSION
-             * @constant
+             * @enum {string}
              */
-            scope: "SOURCE_COMPREHENSION";
+            scope: "SOURCE_COMPREHENSION" | "CONCEPT_CHECK";
         };
         /** AssessmentResponse */
         AssessmentResponse: {
@@ -1181,6 +1192,7 @@ export interface components {
              * Format: uuid
              */
             id: string;
+            job?: components["schemas"]["JobResponse"] | null;
             /** Plan Revision */
             plan_revision: number | null;
             question: components["schemas"]["AssessmentQuestion"];
@@ -3356,7 +3368,9 @@ export interface operations {
     };
     assessments_api_v1_assessments_get: {
         parameters: {
-            query?: never;
+            query?: {
+                session_id?: string | null;
+            };
             header?: never;
             path?: never;
             cookie?: never;

@@ -112,6 +112,11 @@ def entry_kind(facts: TopicFacts, self_report: str) -> tuple[TaskKind, str]:
         if recent.polarity == "NEGATIVE":
             return "REVIEW", "最近的验证记录提示仍有缺口，建议先复查解释与反例。"
         if recent.polarity == "POSITIVE":
+            if recent.method == "MODEL_CONCEPT_CHECK":
+                return (
+                    "CHECK",
+                    "上次概念选择题有正向结果，但模型答案依据尚未独立核验；请用自己的例子进一步验证。",
+                )
             if recent.method == "SOURCE_COMPREHENSION":
                 return "CHECK", "上次仅确认了原文与推断的边界；下一步用自己的例子验证概念理解。"
             if recent.observed_at >= datetime.now(UTC) - timedelta(days=30):

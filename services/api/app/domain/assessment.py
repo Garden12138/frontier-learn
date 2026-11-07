@@ -1,5 +1,5 @@
 from datetime import UTC, datetime
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
@@ -7,7 +7,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.dependencies import get_owned
 from app.core.errors import Problem
-from app.domain.assessment_types import AssessmentAnswer, AssessmentFeedback, AssessmentQuestion
+from app.domain.assessment_types import (
+    AssessmentAnswer,
+    AssessmentCreate,
+    AssessmentFeedback,
+    AssessmentQuestion,
+)
+from app.domain.concept_assessment import enqueue_question
 from app.domain.knowledge_policy import lock_knowledge
 from app.domain.replanning import replan_after_evidence
 from app.domain.tutoring_types import PageSnapshot
@@ -15,22 +21,36 @@ from app.ingestion.evidence import canonical_concept
 from app.persistence.models import (
     Assessment,
     AuditEvent,
+    Job,
     KnowledgeConcept,
     KnowledgeEvidence,
     KnowledgeState,
     LearningGoal,
     LearningSession,
     TutorTurn,
+    User,
 )
 
 
-async def create_assessment(db: AsyncSession, user_id: UUID, session_id: UUID) -> Assessment:
+async def create_assessment(
+    db: AsyncSession,
+    user_id: UUID,
+    session_id: UUID,
+    body: AssessmentCreate | None = None,
+    *,
+    cloud_available: bool = False,
+) -> Assessment:
+    body = body or AssessmentCreate(session_id=session_id)
     session = await get_owned(db, LearningSession, user_id, session_id)
     await db.refresh(session, with_for_update=True)
     existing = await db.scalar(
         select(Assessment).where(Assessment.user_id == user_id, Assessment.session_id == session_id)
     )
     if existing:
+        if existing.question.get("scope", "SOURCE_COMPREHENSION") != body.kind:
+            raise Problem(
+                409, "ASSESSMENT_EXISTS", "本会话已有其他类型短测；请保留原题，在新会话选择概念题。"
+            )
         return existing
     turn = await db.scalar(
         select(TutorTurn)
@@ -59,14 +79,32 @@ async def create_assessment(db: AsyncSession, user_id: UUID, session_id: UUID) -
         },
         rubric=["区分原文摘录与额外推断。", "阅读或答对本题不能证明概念迁移、实践或熟练度。"],
     )
+    if body.kind == "CONCEPT_CHECK":
+        user = await db.get(User, user_id)
+        if not body.cloud_processing_allowed or not user or not user.cloud_processing_allowed:
+            raise Problem(403, "MODEL_CONSENT_REQUIRED", "概念拟题需要本次与全局模型处理授权。")
+        if not cloud_available:
+            raise Problem(503, "MODEL_UNAVAILABLE", "概念拟题模型未配置；可以选择来源边界题。")
+        question = AssessmentQuestion(
+            prompt="正在生成原文支持的概念题…",
+            excerpt="",
+            block_id=block.id,
+            options={},
+            rubric=[],
+            scope="CONCEPT_CHECK",
+        )
     row = Assessment(
+        id=uuid4(),
         user_id=user_id,
         session_id=session_id,
         concept_name=topic[:160],
         question=question.model_dump(mode="json"),
+        cloud_processing_allowed=body.kind == "CONCEPT_CHECK" and body.cloud_processing_allowed,
     )
     db.add(row)
     await db.flush()
+    if body.kind == "CONCEPT_CHECK":
+        await enqueue_question(db, row)
     return row
 
 
@@ -76,12 +114,26 @@ async def answer_assessment(db: AsyncSession, row: Assessment, body: AssessmentA
         return
     if row.version != body.version or row.answer is not None:
         raise Problem(409, "ASSESSMENT_CONFLICT", "作答已保存，请复查结果或从新会话开始。")
-    correct = body.choice == "B"
+    concept = row.question.get("scope") == "CONCEPT_CHECK"
+    if concept:
+        job = (
+            await get_owned(db, Job, row.user_id, row.question_job_id)
+            if row.question_job_id
+            else None
+        )
+        if not row.grading or not job or job.status != "SUCCEEDED":
+            raise Problem(409, "QUESTION_NOT_READY", "题目尚未完成，请检查任务状态。")
+    correct = body.choice == (row.grading["correct_choice"] if concept and row.grading else "B")
     feedback = AssessmentFeedback(
         answered_at=datetime.now(UTC),
         result="SUPPORTED" if correct else "NEEDS_REVIEW",
-        basis="B 只承认摘录存在，并保留外推限制；A、C 把阅读过度推断为掌握。",
-        uncertainty="本题仅检查来源与推断的边界，证据强度低；尚未验证该主题的概念解释或应用能力。",
+        basis=str(row.grading["basis"])
+        if concept and row.grading
+        else "B 只承认摘录存在，并保留外推限制；A、C 把阅读过度推断为掌握。",
+        uncertainty="模型拟题和答案依据尚未独立核验；单题结果仅为低强度概念检查，不能证明主题掌握或应用能力。"
+        if concept
+        else "本题仅检查来源与推断的边界，证据强度低；尚未验证该主题的概念解释或应用能力。",
+        method="MODEL_QUESTION_KEY" if concept else "LOCAL_RULES",
     )
     row.answer, row.feedback, row.version = (
         body.choice,
@@ -115,21 +167,24 @@ async def confirm_assessment(db: AsyncSession, row: Assessment, version: int) ->
         .on_conflict_do_nothing(index_elements=[KnowledgeState.user_id, KnowledgeState.concept_id])
     )
     feedback = AssessmentFeedback.model_validate(row.feedback)
+    concept_check = row.question.get("scope") == "CONCEPT_CHECK"
+    method = "MODEL_CONCEPT_CHECK" if concept_check else "SOURCE_COMPREHENSION"
+    label = "概念选择题" if concept_check else "来源边界短测"
     evidence = KnowledgeEvidence(
         user_id=row.user_id,
         concept_id=concept.id,
         assessment_id=row.id,
         kind="ASSESSED",
-        method="SOURCE_COMPREHENSION",
+        method=method,
         reliability="LOW",
         polarity="POSITIVE" if feedback.result == "SUPPORTED" else "NEGATIVE",
         source_locator={
             "session_id": str(row.session_id),
             "assessment_id": str(row.id),
             "block_id": row.question["block_id"],
-            "scope": "SOURCE_COMPREHENSION",
+            "scope": method,
         },
-        excerpt=f"来源边界短测：{feedback.result}。{feedback.uncertainty}",
+        excerpt=f"{label}：{feedback.result}。{feedback.uncertainty}",
     )
     db.add(evidence)
     await db.flush()
@@ -138,7 +193,7 @@ async def confirm_assessment(db: AsyncSession, row: Assessment, version: int) ->
         db,
         row.user_id,
         session.goal_id,
-        f"已确认短测 {row.id}（{feedback.result}，低强度来源边界证据），"
+        f"已确认短测 {row.id}（{feedback.result}，低强度{label}证据），"
         "下一轮先检查解释或复查；未据此判定掌握。",
     )
     db.add(

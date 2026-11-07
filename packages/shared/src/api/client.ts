@@ -165,9 +165,10 @@ export class ApiClient {
   deleteConversation(id: string): Promise<void> {
     return this.request(`/conversations/${encodeURIComponent(id)}?confirm=true`, { method: 'DELETE' });
   }
-  assessments(): Promise<AssessmentResponse[]> { return this.request('/assessments'); }
-  createAssessment(sessionId: string): Promise<AssessmentResponse> {
-    return this.request('/assessments', { method: 'POST', body: JSON.stringify({ session_id: sessionId }) });
+  assessments(sessionId?: string): Promise<AssessmentResponse[]> { return this.request(`/assessments${sessionId ? `?session_id=${encodeURIComponent(sessionId)}` : ''}`); }
+  assessment(id: string): Promise<AssessmentResponse> { return this.request(`/assessments/${encodeURIComponent(id)}`); }
+  createAssessment(sessionId: string, kind: 'SOURCE_COMPREHENSION' | 'CONCEPT_CHECK' = 'SOURCE_COMPREHENSION', cloudProcessingAllowed = false): Promise<AssessmentResponse> {
+    return this.request('/assessments', { method: 'POST', body: JSON.stringify({ session_id: sessionId, kind, cloud_processing_allowed: cloudProcessingAllowed }) });
   }
   answerAssessment(item: AssessmentResponse, choice: 'A' | 'B' | 'C'): Promise<AssessmentResponse> {
     return this.request(`/assessments/${encodeURIComponent(item.id)}/answer`, { method: 'POST', body: JSON.stringify({ version: item.version, choice }) });

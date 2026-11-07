@@ -8,6 +8,7 @@ from app.ai.openai_provider import OpenAIProvider
 from app.ai.provider import LLMProvider
 from app.core.config import get_settings
 from app.core.logging import configure_logging
+from app.domain.concept_assessment import concept_handler
 from app.domain.conversation_learning import conversation_handler
 from app.domain.knowledge_sync import sync_handler
 from app.domain.tutor import tutor_handler
@@ -35,6 +36,7 @@ async def main() -> None:
             factory, provider, settings=config, fallback_without_consent=True
         ),
         "CONVERSATION_IMPORT": conversation_handler(factory),
+        "ASSESSMENT_QUESTION": concept_handler(factory, provider, config),
         "GITHUB_WRITEBACK": writeback_handler(factory, get_settings()),
     }
     logger.info('{"event":"worker_started"}')

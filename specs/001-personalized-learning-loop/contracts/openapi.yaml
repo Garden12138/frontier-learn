@@ -217,6 +217,17 @@ components:
     AssessmentCreate:
       additionalProperties: false
       properties:
+        cloud_processing_allowed:
+          default: false
+          title: Cloud Processing Allowed
+          type: boolean
+        kind:
+          default: SOURCE_COMPREHENSION
+          enum:
+          - SOURCE_COMPREHENSION
+          - CONCEPT_CHECK
+          title: Kind
+          type: string
         session_id:
           format: uuid
           title: Session Id
@@ -238,8 +249,10 @@ components:
           title: Basis
           type: string
         method:
-          const: LOCAL_RULES
           default: LOCAL_RULES
+          enum:
+          - LOCAL_RULES
+          - MODEL_QUESTION_KEY
           title: Method
           type: string
         result:
@@ -280,8 +293,10 @@ components:
           title: Rubric
           type: array
         scope:
-          const: SOURCE_COMPREHENSION
           default: SOURCE_COMPREHENSION
+          enum:
+          - SOURCE_COMPREHENSION
+          - CONCEPT_CHECK
           title: Scope
           type: string
       required:
@@ -326,6 +341,10 @@ components:
           format: uuid
           title: Id
           type: string
+        job:
+          anyOf:
+          - $ref: '#/components/schemas/JobResponse'
+          - type: 'null'
         plan_revision:
           anyOf:
           - type: integer
@@ -3337,6 +3356,16 @@ paths:
   /api/v1/assessments:
     get:
       operationId: assessments_api_v1_assessments_get
+      parameters:
+      - in: query
+        name: session_id
+        required: false
+        schema:
+          anyOf:
+          - format: uuid
+            type: string
+          - type: 'null'
+          title: Session Id
       responses:
         '200':
           content:

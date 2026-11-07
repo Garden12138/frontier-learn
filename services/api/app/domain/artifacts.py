@@ -50,7 +50,12 @@ async def create_artifact(db: AsyncSession, user_id: UUID, assessment_id: UUID) 
                     f"范围：{page.scope}；快照块：{question.block_id}"
                 ),
                 "## 原文摘录\n" + fenced(question.excerpt),
-                "## 当前理解（待验证）\n本次仅检查原文与推断的边界，尚未验证主题概念理解或应用。",
+                "## 当前理解（待验证）\n"
+                + (
+                    "本次完成原文支持的概念选择题；模型拟题和答案依据尚未独立核验，不能据此判定掌握或应用。"
+                    if question.scope == "CONCEPT_CHECK"
+                    else "本次仅检查原文与推断的边界，尚未验证主题概念理解或应用。"
+                ),
                 "## 验证记录\n"
                 + fenced(
                     f"题目：{question.prompt}\n作答：{assessment.answer}\n"

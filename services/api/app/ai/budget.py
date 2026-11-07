@@ -6,7 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
-from app.ai.openai_provider import SYSTEM, encode_context
+from app.ai.openai_provider import CONCEPT_SYSTEM, SYSTEM, encode_context
 from app.ai.provider import ModelContext
 from app.core.config import Settings
 from app.core.errors import Problem
@@ -18,7 +18,7 @@ def reserve_upper_bound(context: ModelContext, schema: dict[str, object]) -> int
     return (
         len(encode_context(context).encode())
         + len(json.dumps(schema).encode())
-        + len(SYSTEM.encode())
+        + max(len(SYSTEM.encode()), len(CONCEPT_SYSTEM.encode()))
         + 4096
     )
 

@@ -81,7 +81,7 @@ async def update(
                 select(Job)
                 .where(
                     Job.user_id == user.id,
-                    Job.kind == "TUTOR_GUIDE",
+                    Job.kind.in_(["TUTOR_GUIDE", "ASSESSMENT_QUESTION"]),
                     Job.status.in_(["PENDING", "RUNNING"]),
                 )
                 .order_by(Job.id)
@@ -100,7 +100,7 @@ async def update(
             sql_update(Job)
             .where(
                 Job.user_id == user.id,
-                Job.kind == "TUTOR_GUIDE",
+                Job.kind.in_(["TUTOR_GUIDE", "ASSESSMENT_QUESTION"]),
                 Job.status.in_(["PENDING", "RUNNING"]),
             )
             .values(status="CANCELLED", lease_id=None, finished_at=datetime.now(UTC))
