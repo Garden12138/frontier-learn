@@ -190,3 +190,24 @@ strict/lint/format、OpenAPI/TS 漂移和 Web/MV3 构建通过。试用插件已
 3 项及迁移升级/回滚/元数据一致性；客户端 26 项、Python/TS strict、lint/format、
 OpenAPI/TS 契约漂移与 Web/MV3 构建通过，详见 `docs/development-progress.md`。
 真实模型题目质量、浏览器人工复查及真人连续学习仍属 T059/CHK020 发布验收。
+
+## V0.1.1 质量修复与真实试用
+
+- [x] T072 先复现并修复 rubric 泄露、取消/失败恢复、选材与题目结构问题，完成异常路径集成回归。
+- [ ] T073 隔离库验证真实公开 notes 导入、可追溯证据和两轮学习行为；分别记录在线与离线结果。
+- [x] T074 补齐真实 Chromium/MV3 概念题端到端，执行完整工程回归与 0009→0010 回滚。
+- [x] T075 交付 V0.1.1 试用步骤、证据矩阵、阻塞与后续独立建议；不替代真人/真实付费模型验收。
+
+
+V0.1.1 阶段证据（2026-11-07）：T072 的服务端/API/导出/并发恢复/选材/迁移修复，
+最终隔离 PostgreSQL 全量 213 passed / 0 skipped（113.88s），Ruff/format/mypy/OpenAPI、
+客户端 26 项、lint/strict/type drift/build 通过。T073 中固定公开 SHA 的正文/代码离线两轮
+已通过；真实目录应用同步仍 GITHUB_RATE_LIMIT，不能勾选完整真实试用。T074/T075 收尾结果见
+`docs/evidence/v0.1.1-acceptance.md`。T059/CHK020 不因此通过。
+
+
+11-08 最终交付：T072/T074/T075 完成，后端最终 215 passed / 0 skipped（105.97s）、
+客户端 26、初始化 3、Web 8（30.0s）、MV3 4（18.6s），真实公开网页 11 项通过。
+T073 的固定公开原始快照、可追溯证据与离线 Fake 两轮通过；真实 31 文件目录同步在 11-07
+和 11-08 两次均 FAILED/GITHUB_RATE_LIMIT，所以 T073 保持未完成。T059/CHK020 保持未完成。
+试用命令、失败证据、真人/真实模型边界和下一阶段独立建议已交付，没有启动 V0.6+ 开发。

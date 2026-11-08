@@ -74,6 +74,7 @@ SECRET_FIELDS = {
     "request_hash",
     "idempotency_key",
     "lease_id",
+    "grading",
 }
 MAX_EXPORT_ROWS = 20000
 MAX_EXPORT_BYTES = 20_000_000
@@ -116,6 +117,8 @@ async def _collect_export(db: AsyncSession, user: User) -> dict[str, object]:
                     if column.name not in SECRET_FIELDS
                 }
             )
+            if isinstance(row, Assessment) and row.answer is None:
+                entry["question"] = {**entry["question"], "rubric": []}
             encoded_bytes += len(json.dumps(entry, ensure_ascii=False).encode())
             if count > MAX_EXPORT_ROWS or encoded_bytes > MAX_EXPORT_BYTES:
                 await rows.close()

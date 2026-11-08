@@ -160,6 +160,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/assessments/{assessment_id}/regenerate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Regenerate */
+        post: operations["regenerate_api_v1_assessments__assessment_id__regenerate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/auth/login": {
         parameters: {
             query?: never;
@@ -1113,6 +1130,8 @@ export interface components {
         };
         /** AssessmentCreate */
         AssessmentCreate: {
+            /** Block Id */
+            block_id?: string | null;
             /**
              * Cloud Processing Allowed
              * @default false
@@ -1124,6 +1143,7 @@ export interface components {
              * @enum {string}
              */
             kind: "SOURCE_COMPREHENSION" | "CONCEPT_CHECK";
+            selection?: components["schemas"]["Selection"] | null;
             /**
              * Session Id
              * Format: uuid
@@ -1162,6 +1182,11 @@ export interface components {
             };
             /** Prompt */
             prompt: string;
+            /**
+             * Quality Notice
+             * @default 结构筛查与引文匹配不能证明选项语义正确；请人工复查题目、各选项与原文。
+             */
+            quality_notice: string;
             /** Rubric */
             rubric: string[];
             /**
@@ -1170,6 +1195,26 @@ export interface components {
              * @enum {string}
              */
             scope: "SOURCE_COMPREHENSION" | "CONCEPT_CHECK";
+            /**
+             * Source Excerpt
+             * @default
+             */
+            source_excerpt: string;
+            /**
+             * Source Reason
+             * @default 旧版材料范围
+             */
+            source_reason: string;
+        };
+        /** AssessmentRegenerate */
+        AssessmentRegenerate: {
+            /**
+             * Cloud Processing Allowed
+             * @constant
+             */
+            cloud_processing_allowed: true;
+            /** Version */
+            version: number;
         };
         /** AssessmentResponse */
         AssessmentResponse: {
@@ -3904,6 +3949,140 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": components["schemas"]["ConfirmEvidence"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AssessmentResponse"];
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Request Timeout */
+            408: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Conflict */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Request Entity Too Large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Unprocessable Entity */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Too Many Requests */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Internal Server Error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Bad Gateway */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Service Unavailable */
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    regenerate_api_v1_assessments__assessment_id__regenerate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                assessment_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AssessmentRegenerate"];
             };
         };
         responses: {

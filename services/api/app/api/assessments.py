@@ -8,10 +8,11 @@ from app.domain.assessment import answer_assessment, confirm_assessment, create_
 from app.domain.assessment_types import (
     AssessmentAnswer,
     AssessmentCreate,
+    AssessmentRegenerate,
     AssessmentResponse,
     ConfirmEvidence,
 )
-from app.domain.concept_assessment import assessment_response
+from app.domain.concept_assessment import assessment_response, regenerate_question
 from app.persistence.models import Assessment
 
 router = APIRouter(prefix="/assessments", tags=["Assessments"])
@@ -53,6 +54,20 @@ async def create(
 @router.get("/{assessment_id}", response_model=AssessmentResponse)
 async def get(assessment_id: UUID, user: CurrentUser, db: Db) -> AssessmentResponse:
     return await assessment_response(db, await get_owned(db, Assessment, user.id, assessment_id))
+
+
+@router.post("/{assessment_id}/regenerate", response_model=AssessmentResponse)
+async def regenerate(
+    assessment_id: UUID, body: AssessmentRegenerate, user: CurrentUser, db: Db, request: Request
+) -> AssessmentResponse:
+    from app.core.errors import Problem
+
+    if request.app.state.settings.llm_provider != "openai_responses":
+        raise Problem(503, "MODEL_UNAVAILABLE", "概念拟题模型未配置。")
+    row = await get_owned(db, Assessment, user.id, assessment_id)
+    await regenerate_question(db, row, body)
+    await db.commit()
+    return await assessment_response(db, row)
 
 
 @router.post("/{assessment_id}/answer", response_model=AssessmentResponse)

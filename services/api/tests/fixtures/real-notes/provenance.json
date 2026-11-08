@@ -1,0 +1,10 @@
+{
+  "repository": "Garden12138/notes",
+  "revision": "5c7fa8f4153cd27b9aeb62dad10315578558c5da",
+  "path": "ai/book_note/Build-A-Large-Language-Mode notebook/Implement self-attention.md",
+  "blob_sha": "f881082b024087ebf1b7038158bd480ec4683a33",
+  "retrieval": "Read-only GitHub connector tool GET git/blobs; app direct network independently rate-limited",
+  "retrieved_at": "2026-11-07",
+  "all_supported_files": 1145,
+  "directory_supported_files": 31
+}

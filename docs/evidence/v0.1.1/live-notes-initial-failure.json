@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-11-07T07:16:44.442142+00:00",
+  "mode": "REAL_APPLICATION_CONNECTOR_NO_CREDENTIALS",
+  "source": {
+    "id": "04cd54fe-9bed-4272-9c4f-232533fe1ab2",
+    "provider": "github",
+    "github_connection_id": null,
+    "external_ref": "garden12138/notes",
+    "status": "CONNECTED",
+    "version": 1,
+    "read_scope": [
+      "garden12138/notes"
+    ],
+    "path_prefixes": [
+      "ai/book_note/Build-A-Large-Language-Mode notebook/"
+    ],
+    "write_scope": [],
+    "last_sync_at": null,
+    "last_revision": null,
+    "active_job_id": null
+  },
+  "job": {
+    "id": "139d8f8f-5bed-420b-85e4-cbee50818665",
+    "source_id": "04cd54fe-9bed-4272-9c4f-232533fe1ab2",
+    "kind": "GITHUB_SYNC",
+    "status": "FAILED",
+    "attempt_count": 1,
+    "max_attempts": 3,
+    "budget_units": 3,
+    "spent_units": 1,
+    "progress": 0.0,
+    "error_code": "GITHUB_RATE_LIMIT",
+    "deadline_at": "2026-11-07T07:21:44.182069Z",
+    "next_attempt_at": "2026-11-07T07:16:44.182069Z"
+  },
+  "documents": [],
+  "live_sync_passed": false
+}

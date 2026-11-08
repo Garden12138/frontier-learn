@@ -167,8 +167,11 @@ export class ApiClient {
   }
   assessments(sessionId?: string): Promise<AssessmentResponse[]> { return this.request(`/assessments${sessionId ? `?session_id=${encodeURIComponent(sessionId)}` : ''}`); }
   assessment(id: string): Promise<AssessmentResponse> { return this.request(`/assessments/${encodeURIComponent(id)}`); }
-  createAssessment(sessionId: string, kind: 'SOURCE_COMPREHENSION' | 'CONCEPT_CHECK' = 'SOURCE_COMPREHENSION', cloudProcessingAllowed = false): Promise<AssessmentResponse> {
-    return this.request('/assessments', { method: 'POST', body: JSON.stringify({ session_id: sessionId, kind, cloud_processing_allowed: cloudProcessingAllowed }) });
+  createAssessment(sessionId: string, kind: 'SOURCE_COMPREHENSION' | 'CONCEPT_CHECK' = 'SOURCE_COMPREHENSION', cloudProcessingAllowed = false, blockId?: string): Promise<AssessmentResponse> {
+    return this.request('/assessments', { method: 'POST', body: JSON.stringify({ session_id: sessionId, kind, cloud_processing_allowed: cloudProcessingAllowed, block_id: blockId }) });
+  }
+  regenerateAssessment(item: AssessmentResponse, consent: boolean): Promise<AssessmentResponse> {
+    return this.request(`/assessments/${encodeURIComponent(item.id)}/regenerate`, { method: 'POST', body: JSON.stringify({ version: item.version, cloud_processing_allowed: consent }) });
   }
   answerAssessment(item: AssessmentResponse, choice: 'A' | 'B' | 'C'): Promise<AssessmentResponse> {
     return this.request(`/assessments/${encodeURIComponent(item.id)}/answer`, { method: 'POST', body: JSON.stringify({ version: item.version, choice }) });

@@ -168,3 +168,11 @@ UNKNOWN -> EXPOSED -> UNDERSTANDING -> APPLIED -> PROFICIENT
   不存到 DOM、日志、提示词或导出。连接撤销后来源/作业失效，已确认独立学习证据可保留。
 - 回滚 0009 撤销正式会话、断开 App 来源，删除凭据、OAuth 状态及计量；原用户与学习材料保留。
   回滚后无法用密码登录，再升级不能恢复凭据，必须从备份恢复；严禁用 Mock 开放真实私密数据。
+
+
+## 9. V0.1.1 概念题映射（沿用 0010）
+
+Assessment.question 保存 source_excerpt/source_reason/quality_notice；rubric 仅在作答后公开。
+每次恢复在同一 Assessment 下追加新 Job，payload 保存 assessment_id/recovery_version，
+累计最多三次，单 Job 一次。版本与 Job lease 拒绝旧结果；作答后不再恢复。历史任务在删除会话
+时一并清理。通用 Jobs retry 不允许绕过短测恢复授权。详见 ADR-0012，公开 DTO 以运行时契约为准。

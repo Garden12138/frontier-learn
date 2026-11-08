@@ -66,7 +66,7 @@ export function GuideSession({ api, session, onChange, onLocate }: {
         </div>)}
       </>}
     </article>)}
-    {session.turns.some(turn => turn.guide) && <AssessmentPanel key={session.id} api={api} sessionId={session.id} />}
+    {session.turns.some(turn => turn.guide) && <AssessmentPanel key={session.id} api={api} sessionId={session.id} page={session.page} />}
     <form className="stack" onSubmit={event => {
       event.preventDefault();
       const block = session.page.blocks.find(item => item.id === selection);

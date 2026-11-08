@@ -1,0 +1,351 @@
+{
+  "mode": "OFFLINE_PINNED_PUBLIC_SNAPSHOT_FAKE_MODEL_NOT_HUMAN",
+  "provenance": {
+    "repository": "Garden12138/notes",
+    "revision": "5c7fa8f4153cd27b9aeb62dad10315578558c5da",
+    "path": "ai/book_note/Build-A-Large-Language-Mode notebook/Implement self-attention.md",
+    "blob_sha": "f881082b024087ebf1b7038158bd480ec4683a33",
+    "retrieval": "Read-only GitHub connector tool GET git/blobs; app direct network independently rate-limited",
+    "retrieved_at": "2026-11-07",
+    "all_supported_files": 1145,
+    "directory_supported_files": 31
+  },
+  "profile": [
+    {
+      "concept_id": "05a87453-ba8b-4ba2-b3f5-1799d4a85e60",
+      "name": "GPT",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "1e1842d1-7794-4ec7-bfd2-f2e634989258",
+      "name": "QKV",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "48ed5161-cc20-45e1-beba-874b236fb75b",
+      "name": "RNN",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "175edede-8602-4a76-b1d5-0a918f2754c0",
+      "name": "chapter03attention",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "ed4505ec-16c2-45d5-bb04-19512c7aee4f",
+      "name": "从单头注意力扩展到多头注意力",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "0cc40a8f-e0b2-4d72-80d1-17e68190afec",
+      "name": "使用因果注意力机制来屏蔽后续词",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "824a179f-837d-43a1-9b94-3c73ae81f5ef",
+      "name": "实现带有可训练权重的自注意力机制",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "148b488f-fdd8-4d93-8202-b9d47afba42b",
+      "name": "实现自注意力",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "451221c9-807e-4854-943f-b175315c4c49",
+      "name": "本节实践代码(整合版)",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "a5f52159-846c-454b-8b2a-3ab4c96d6418",
+      "name": "通过注意力机制捕捉数据依赖关系",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "4d940b1d-e8d5-4017-93c2-fda4be41f8f5",
+      "name": "通过自注意力机制关注输入的不同部分",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    },
+    {
+      "concept_id": "b1103a2e-4df2-4b03-b5bd-b3ec9408a0be",
+      "name": "长序列建模的问题",
+      "level": "EXPOSED",
+      "confidence": "LOW",
+      "evidence_count": 1,
+      "review_due": false,
+      "verified_at": null,
+      "version": 2,
+      "override_reason": null,
+      "override_level": null
+    }
+  ],
+  "evidence_count": 12,
+  "before_import": [
+    {
+      "topic": "自注意力",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    },
+    {
+      "topic": "MHA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    },
+    {
+      "topic": "MQA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    },
+    {
+      "topic": "GQA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    }
+  ],
+  "after_import": [
+    {
+      "topic": "自注意力",
+      "kind": "CHECK",
+      "why": "规则建议：已有笔记或自报线索，尚不能证明掌握；先用自己的例子确认理解。",
+      "evidence_ids": [
+        "c7274442-c33d-45cc-89af-91d61404f35a",
+        "f5c321a7-007e-4ad0-8572-3dc2003331c2",
+        "8eca64af-d4a5-48c5-9a80-5510600a919e",
+        "874f6916-97aa-4e97-a720-b42fa42045b1"
+      ]
+    },
+    {
+      "topic": "MHA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    },
+    {
+      "topic": "MQA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    },
+    {
+      "topic": "GQA",
+      "kind": "EXPLORE",
+      "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+      "evidence_ids": []
+    }
+  ],
+  "rounds": [
+    {
+      "assessment_id": "aa6611b1-b2ef-493e-ba5b-e8b2ac63f4dc",
+      "result": {
+        "result": "SUPPORTED",
+        "basis": "Fake 模型答案依据：C 使用材料给出的注意力权重组合；A、B 没有对应依据。",
+        "uncertainty": "模型拟题和答案依据尚未独立核验；单题结果仅为低强度概念检查，不能证明主题掌握或应用能力。",
+        "method": "MODEL_QUESTION_KEY",
+        "answered_at": "2026-11-07T07:28:14.925324Z"
+      },
+      "next_task": {
+        "id": "0b7615cd-f163-4f76-84af-0845a97596c2",
+        "topic": "自注意力",
+        "title": "解释：自注意力",
+        "instruction": "围绕「自注意力」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：上次概念选择题有正向结果，但模型答案依据尚未独立核验；请用自己的例子进一步验证。",
+        "kind": "CHECK",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [
+          "88e5f501-7172-4aba-8b39-77919b2d8ebd",
+          "f5c321a7-007e-4ad0-8572-3dc2003331c2",
+          "8eca64af-d4a5-48c5-9a80-5510600a919e",
+          "874f6916-97aa-4e97-a720-b42fa42045b1"
+        ],
+        "concept_ids": [
+          "2bace025-c816-4f95-96f5-16cc6cc5a9ba",
+          "824a179f-837d-43a1-9b94-3c73ae81f5ef",
+          "148b488f-fdd8-4d93-8202-b9d47afba42b",
+          "4d940b1d-e8d5-4017-93c2-fda4be41f8f5"
+        ],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      "history": [
+        {
+          "revision_no": 4,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:14.979095Z"
+        },
+        {
+          "revision_no": 3,
+          "rationale": "已确认短测 aa6611b1-b2ef-493e-ba5b-e8b2ac63f4dc（SUPPORTED，低强度概念选择题证据），下一轮先检查解释或复查；未据此判定掌握。",
+          "created_at": "2026-11-07T07:28:14.938487Z"
+        },
+        {
+          "revision_no": 2,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:13.995730Z"
+        },
+        {
+          "revision_no": 1,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:13.754342Z"
+        }
+      ]
+    },
+    {
+      "assessment_id": "3524a019-6b94-4345-80c4-9ec2bcef7537",
+      "result": {
+        "result": "NEEDS_REVIEW",
+        "basis": "Fake 模型答案依据：C 使用材料给出的注意力权重组合；A、B 没有对应依据。",
+        "uncertainty": "模型拟题和答案依据尚未独立核验；单题结果仅为低强度概念检查，不能证明主题掌握或应用能力。",
+        "method": "MODEL_QUESTION_KEY",
+        "answered_at": "2026-11-07T07:28:15.874794Z"
+      },
+      "next_task": {
+        "id": "e821ec60-f3c1-4f65-8110-d7959399f874",
+        "topic": "自注意力",
+        "title": "复查：自注意力",
+        "instruction": "围绕「自注意力」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：最近的验证记录提示仍有缺口，建议先复查解释与反例。",
+        "kind": "REVIEW",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [
+          "9dcc3b73-3c33-4978-8c9d-7043b02fe39b",
+          "88e5f501-7172-4aba-8b39-77919b2d8ebd",
+          "f5c321a7-007e-4ad0-8572-3dc2003331c2",
+          "8eca64af-d4a5-48c5-9a80-5510600a919e"
+        ],
+        "concept_ids": [
+          "2bace025-c816-4f95-96f5-16cc6cc5a9ba",
+          "824a179f-837d-43a1-9b94-3c73ae81f5ef",
+          "148b488f-fdd8-4d93-8202-b9d47afba42b",
+          "4d940b1d-e8d5-4017-93c2-fda4be41f8f5"
+        ],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      "history": [
+        {
+          "revision_no": 6,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:15.946571Z"
+        },
+        {
+          "revision_no": 5,
+          "rationale": "已确认短测 3524a019-6b94-4345-80c4-9ec2bcef7537（NEEDS_REVIEW，低强度概念选择题证据），下一轮先检查解释或复查；未据此判定掌握。",
+          "created_at": "2026-11-07T07:28:15.889917Z"
+        },
+        {
+          "revision_no": 4,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:14.979095Z"
+        },
+        {
+          "revision_no": 3,
+          "rationale": "已确认短测 aa6611b1-b2ef-493e-ba5b-e8b2ac63f4dc（SUPPORTED，低强度概念选择题证据），下一轮先检查解释或复查；未据此判定掌握。",
+          "created_at": "2026-11-07T07:28:14.938487Z"
+        },
+        {
+          "revision_no": 2,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:13.995730Z"
+        },
+        {
+          "revision_no": 1,
+          "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+          "created_at": "2026-11-07T07:28:13.754342Z"
+        }
+      ]
+    }
+  ]
+}

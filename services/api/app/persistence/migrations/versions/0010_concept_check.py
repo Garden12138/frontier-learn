@@ -61,6 +61,11 @@ def downgrade() -> None:
         "(SELECT 1 FROM knowledge_evidence e WHERE e.user_id=s.user_id "
         "AND e.concept_id=s.concept_id AND e.status='ACTIVE' AND e.kind<>'AI_CLAIM')"
     )
+    # Restore the 0009 strict question DTO for surviving source-boundary assessments.
+    op.execute(
+        "UPDATE assessments SET question=(question::jsonb - 'source_excerpt' "
+        "- 'source_reason' - 'quality_notice')::json"
+    )
     op.drop_constraint("fk_assessment_question_job", "assessments", type_="foreignkey")
     op.drop_column("assessments", "cloud_processing_allowed")
     op.drop_column("assessments", "question_job_id")

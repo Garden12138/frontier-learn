@@ -1,0 +1,211 @@
+{
+  "environment": {
+    "node": "22.23.2",
+    "pnpm": "10.28.2",
+    "python": "3.12.11",
+    "postgres": "16-alpine",
+    "platform": "macOS"
+  },
+  "checks": {
+    "lint": {
+      "status": "passed",
+      "tail": "\n> frontier-learn@0.1.0 lint /Users/cengjiada/Documents/github/frontier-learn\n> eslint apps packages tests playwright.*.config.ts --max-warnings 0\n"
+    },
+    "typecheck": {
+      "status": "passed",
+      "tail": "apps/extension typecheck: ℹ Generating types...\napps/extension typecheck: ✔ Finished in 207 ms\napps/web typecheck: Done\napps/extension typecheck: Done"
+    },
+    "types-check": {
+      "status": "passed",
+      "tail": "> frontier-learn@0.1.0 types:api /Users/cengjiada/Documents/github/frontier-learn\n> openapi-typescript specs/001-personalized-learning-loop/contracts/openapi.runtime.json -o packages/shared/src/api/schema.d.ts --check\n\n✨ openapi-typescript 7.13.0"
+    },
+    "test": {
+      "status": "passed",
+      "tail": "apps/web test:       Tests  1 passed (1)\napps/web test:    Start at  15:23:12\napps/web test:    Duration  1.34s (transform 157ms, setup 0ms, collect 362ms, tests 83ms, environment 489ms, prepare 45ms)\napps/web test: Done"
+    },
+    "build": {
+      "status": "passed",
+      "tail": "apps/web build: dist/assets/index-CSQldkh6.css    5.89 kB │ gzip:   1.95 kB\napps/web build: dist/assets/index-BFzxLXtp.js   354.37 kB │ gzip: 107.04 kB\napps/web build: ✓ built in 532ms\napps/web build: Done"
+    },
+    "setup": {
+      "status": "passed",
+      "tail": "  ✓  2 tests/setup/smoke.spec.ts:16:1 › workspace can recover when the API becomes available (218ms)\n  ✓  3 tests/setup/smoke.spec.ts:25:1 › built MV3 extension runs its service worker and side panel (2.5s)\n\n  3 passed (5.8s)"
+    },
+    "sources": {
+      "status": "passed",
+      "tail": "[WebServer] INFO:     Application shutdown complete.\n[WebServer] INFO:     Finished server process [75726]\n\n  8 passed (30.0s)"
+    },
+    "extension": {
+      "status": "passed",
+      "tail": "[WebServer] INFO:     Application shutdown complete.\n[WebServer] INFO:     Finished server process [78334]\n\n  4 passed (18.6s)"
+    },
+    "pytest": {
+      "status": "passed",
+      "tail": "........................................................................ [ 33%]\n........................................................................ [ 66%]\n.......................................................................  [100%]\n215 passed in 105.97s (0:01:45)"
+    },
+    "backend_static": {
+      "status": "passed",
+      "commands": [
+        "uv run --no-sync ruff check .",
+        "uv run --no-sync ruff format --check .",
+        "uv run --no-sync mypy",
+        "uv run --no-sync python -m app.export_openapi --check"
+      ],
+      "mypy_files": 118,
+      "cache": "temporary UV_CACHE_DIR"
+    }
+  },
+  "daily_extension_origin": "http://127.0.0.1:18000",
+  "precommit": {
+    "date": "2026-11-08",
+    "branch": "codex/local-trial",
+    "base_head": "ce64ece908d0a950b85a07065db6be8244fc473c",
+    "backend_key_regression": {
+      "status": "passed",
+      "passed": 25,
+      "skipped": 0,
+      "duration_seconds": 26.0,
+      "includes": [
+        "concept quality",
+        "concept API recovery and isolation",
+        "pinned Attention two rounds",
+        "portability",
+        "0010 populated rollback",
+        "full migration round trip"
+      ]
+    },
+    "clients": [
+      {
+        "command": "pnpm lint",
+        "exit_code": 0
+      },
+      {
+        "command": "pnpm typecheck",
+        "exit_code": 0
+      },
+      {
+        "command": "pnpm types:check",
+        "exit_code": 0
+      },
+      {
+        "command": "pnpm test",
+        "exit_code": 0
+      },
+      {
+        "command": "pnpm build",
+        "exit_code": 0
+      }
+    ],
+    "client_unit_tests": 26,
+    "backend_static": {
+      "ruff": "passed",
+      "ruff_format": "passed",
+      "mypy": "passed",
+      "mypy_files": 118,
+      "openapi_check": "passed"
+    },
+    "migration_database": "disposable frontier_test only",
+    "source_and_test_input_sha256": {
+      "apps/extension/tests/e2e/concept-check.spec.ts": "e0593624e854255146e6c96360dc87fbc53ca9f3670ba89398e0dc55006b1f2a",
+      "apps/extension/tests/live/mv3-real.spec.ts": "663420653b8a0f08671486f6a9682f6acb2cdd69acb5e63ed1d49acf8565dcad",
+      "packages/shared/src/api/client.ts": "fcb617326f6fe852767d66eba4ccf35acc076c61a94094928e257aabca9b09fa",
+      "packages/shared/src/api/schema.d.ts": "306046ba4574e389516bea9e959b0b3506588ed942425386de73f070b643c5f1",
+      "packages/shared/src/ui/AssessmentPanel.tsx": "e6a5d65072351b318cd1413b5456fed764b448595884f0689cba1cc9cfa92c27",
+      "packages/shared/src/ui/GuideSession.tsx": "5ec5c05a591d63e6fdcb6fc6700c7a7e5fa8329a32368362fa8d4e1288b9411f",
+      "services/api/app/api/assessments.py": "e3e26cf3e0cfaf34cd2a00613dd5891f0a54ec80448637aad08fb27047a278de",
+      "services/api/app/api/jobs.py": "96e5d044abd945893841b61c9dfb05b671a7504f91cb1048069fa36e8114d6ad",
+      "services/api/app/api/sessions.py": "0d253854fa3ec0623f9197a5b945c5f984f53fcfd9c4aa83ab97ca77d23715e6",
+      "services/api/app/domain/assessment.py": "a235be577318636211739eaf955014f87243289d8b6355459a37a3723fbc6c69",
+      "services/api/app/domain/assessment_types.py": "806dedcc5c609065e7546742cd76cfae7d96f28436544fbbe6c8c14b602db1c4",
+      "services/api/app/domain/concept_assessment.py": "277ed94be77e80220c710770fc19c889e1a88607d0d1399324ed9874ee619ba4",
+      "services/api/app/domain/data_portability.py": "328bbdabf9229fc1d1a38a5a33f6c830d58264b07fd4d5e7893965b27bf8180f",
+      "services/api/app/persistence/migrations/README.md": "101cf1108090a12e47442b421d5326c8cea7f40defbf85157a99e4fb35b907cc",
+      "services/api/app/persistence/migrations/versions/0010_concept_check.py": "b49144cc5a39b70d54e689efb188f8dabc9bee8cfece8b5e103ec1f51f66249a",
+      "services/api/tests/acceptance/v011_live.py": "deb1091367ec840bc88adfa7e7b8731389b63293c5d1f1bdee3ee317eafa71f9",
+      "services/api/tests/browser_server.py": "3a68ea5356a2b9b7acd30b360ec3de57d486717e9b5fc6ac6be456e51c380b89",
+      "services/api/tests/concept_fixture.py": "cf83da6d6cee38941375532cd8460e40dbdf8b5161c025eb487779cf72e833d8",
+      "services/api/tests/fixtures/real-notes/chapter03_attention.txt": "90b0fdfe41e1b644adc13b96a2821204a354c626ac23ef8e4b98ed319f0ca648",
+      "services/api/tests/fixtures/real-notes/provenance.json": "20b815ce5bef428ea9587dae2747b0f02478c08310dbb401581962adc85c1b4b",
+      "services/api/tests/fixtures/real-notes/self-attention.txt": "6dad523580b27ee37b026a7cf04c298ed245c6a90d6ee9d76d5f1d75c9b413d5",
+      "services/api/tests/integration/test_attention_trial.py": "2fecc8aa52c012e6180e794d028f2ea66f8fe4312d7d67107b9380ef0f3949c2",
+      "services/api/tests/integration/test_concept_check.py": "36ba19cb220dc7a0431ce85691f5e2c9f40b99815fd55cf74abf1b80dab26d6c",
+      "services/api/tests/test_concept_quality.py": "b20599943ceebd1bf4143dab61b6ab04927df3b2a1fd3a39b6d53bb7a4bf9c7f",
+      "specs/001-personalized-learning-loop/contracts/openapi.runtime.json": "68c3b5c411fe880e9f6e26295973407358d6f03a2f0ed3bdaa06b49d83c79f8b",
+      "specs/001-personalized-learning-loop/contracts/openapi.yaml": "fcdb3d38bf1cdcd7f57a078654745beed9fcbcd06b9dc76726723b9e91ff993c",
+      "specs/001-personalized-learning-loop/data-model.md": "d6a8dd480419c6e47098d747a03f1a23d19b6c3545d30e501be71e4de733724b",
+      "specs/001-personalized-learning-loop/plan.md": "436362cacad59209cc73bda471744eb0c66f92ee6ab358e68ebf82b42bd8deff",
+      "specs/001-personalized-learning-loop/spec.md": "0d196cac0b1ce0e74d38b43d7272cd5c4ce86b55e39bd727dcbe9108caafe5d1",
+      "specs/001-personalized-learning-loop/tasks.md": "5b0b7ef0e136f3c6b59cb7e98b92ac58893dc5fe0e10554420c51b641cf2067e"
+    },
+    "source_and_test_input_manifest_sha256": "427cec38fada12cb670ea21a67eef55bb7fbb639c97f912bb22ed79e2c4272d6",
+    "audit": {
+      "candidate_files": 46,
+      "real_secret_pattern_hits": 0,
+      "private_evidence_keys": 0,
+      "deleted_files": 0,
+      "runtime_ignore_paths_verified": 13,
+      "external_acceptance_status_unchanged": true
+    },
+    "reused_evidence": {
+      "backend_full": 215,
+      "setup": 3,
+      "web": 8,
+      "mv3": 4,
+      "public_pages": 11
+    },
+    "external_limits": {
+      "notes_live_sync": "FAILED_GITHUB_RATE_LIMIT",
+      "paid_model": "NOT_AUTHORIZED_NOT_RUN",
+      "human_learning": "NOT_RUN_ZERO_PARTICIPANTS"
+    },
+    "git_scope": "local checkpoint only; no push/merge/release",
+    "git_diff": {
+      "worktree": "passed",
+      "staged": "passed",
+      "historical_failure": {
+        "worktree": "passed",
+        "staged": "failed",
+        "file": "services/api/tests/fixtures/real-notes/self-attention.txt",
+        "trailing_whitespace_lines": 13,
+        "reason": "Immutable public-source bytes are pinned by Git blob SHA; unchanged source preserved",
+        "commit_created": false
+      },
+      "resolution": {
+        "file": ".gitattributes",
+        "rule": "services/api/tests/fixtures/real-notes/self-attention.txt whitespace=-blank-at-eol",
+        "target_only": true,
+        "other_code_whitespace_probe": "rejected trailing whitespace without applying any patch"
+      },
+      "snapshot_blob_sha": "f881082b024087ebf1b7038158bd480ec4683a33",
+      "snapshot_sha256": "6dad523580b27ee37b026a7cf04c298ed245c6a90d6ee9d76d5f1d75c9b413d5",
+      "snapshot_bytes_changed": false,
+      "fixed_sha_changed": false,
+      "status": "all checks passed; ready for local checkpoint commit"
+    },
+    "attribute_followup": {
+      "new_backend_tests": {
+        "passed": 6,
+        "skipped": 0,
+        "duration_seconds": 3.69,
+        "files": [
+          "tests/test_concept_quality.py",
+          "tests/integration/test_attention_trial.py"
+        ]
+      },
+      "new_client_tests": 26,
+      "new_checks": [
+        "pnpm lint",
+        "pnpm typecheck",
+        "pnpm types:check",
+        "ruff check",
+        "ruff format --check",
+        "mypy",
+        "OpenAPI --check"
+      ],
+      "builds": "reused previous passing Web/MV3 builds; all source/test SHA-256 values still match",
+      "test_inputs_changed": false,
+      "global_whitespace_disabled": false,
+      "no_verify_used": false
+    }
+  }
+}

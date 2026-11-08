@@ -182,3 +182,10 @@ Phase 6 实际边界见 ADR-0007：分享链接通过固定公开主机、同资
 - `research.md`：站点和同步方案、实验性决策。
 - `tasks.md`：按 story 的可实施任务与路径。
 - `quickstart.md`：测试、验收和人工操作步骤。
+
+
+## 13. V0.1.1 质量修复
+
+沿用现有 Provider、任务和 0010 schema，以失败复现约束 rubric 公开时机、选材、恢复与结构
+筛查。恢复追加有界任务，取消/撤销阻止旧 lease 结果，保留单份短测与不可变作答。真实网络、
+固定快照、Fake、浏览器与真人验收分开记账；见 ADR-0012 和 docs/evidence/v0.1.1-acceptance.md。

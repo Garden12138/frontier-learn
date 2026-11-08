@@ -17,6 +17,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from app.ai.openai_provider import OpenAIProvider
 from app.connectors.github import GitHubConnector
 from app.connectors.github_app import GitHubAppClient
+from app.domain.concept_assessment import concept_handler
 from app.domain.conversation_learning import conversation_handler
 from app.domain.knowledge_sync import sync_handler
 from app.domain.tutor import tutor_handler
@@ -24,6 +25,7 @@ from app.domain.writeback import writeback_handler
 from app.ingestion.safe_fetch import ShareFetcher
 from app.jobs.service import run_one
 from app.main import create_app
+from tests.concept_fixture import BrowserConceptProvider
 from tests.conversation_fixture import ShareFixtureReader
 from tests.github_app_fixture import AppFixture, app_settings
 from tests.github_fixture import GitHubFixture
@@ -44,6 +46,7 @@ settings = settings.model_copy(
 )
 app_remote = AppFixture(settings)
 model_remote = ResponsesFixture()
+concept_remote = BrowserConceptProvider()
 app = create_app(settings)
 write_remote = WriteFixture()
 app.state.write_transport = write_remote
@@ -95,6 +98,9 @@ async def lifespan(application: FastAPI) -> AsyncIterator[None]:
 
             async def worker() -> None:
                 handlers = {
+                    "ASSESSMENT_QUESTION": concept_handler(
+                        application.state.sessions, concept_remote, settings
+                    ),
                     "GITHUB_SYNC": sync_handler(
                         application.state.sessions,
                         settings,

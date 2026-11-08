@@ -42,7 +42,7 @@ upgrade/downgrade 后提交；不将自动生成脚本视为已经验证。
 downgrade，必须使用单独的可丢弃数据库，禁止指定开发/生产数据库。
 
 
-当前 head：`0009_real_connections`。`0007_assessment_artifacts` 新增短测、Markdown 草稿、
+当前 head：`0010_concept_check`。`0007_assessment_artifacts` 新增短测、Markdown 草稿、
 审核 Diff/PR 状态与独立加密写凭据。回退到 `0006_conversation` 会删除本阶段短测、草稿、
 GITHUB_WRITEBACK 任务和 SOURCE_COMPREHENSION 证据，并撤销写目录；对已失去全部证据的
 状态恢复 UNKNOWN（保留用户自报覆盖，标 LOW）。外部 GitHub 分支/PR 无法由回滚撤回。
@@ -67,3 +67,12 @@ UTC 每日模型预算/调用记录和逐轮云处理授权。已有会话方法
 仅允许根 README 所列本机 Compose 测试连接，创建两个新库执行 pg_dump/pg_restore，验证
 学习导出/原密码/加密凭据后清理新库；不覆盖现有库。它不作为生产恢复命令。
 实测证据与正式恢复边界见 `docs/evidence/release-verification/README.md`。
+
+
+`0010_concept_check` 在 0009 上新增概念题评分键、任务引用与逐次授权；旧短测保持来源边界题。
+V0.1.1 沿用该 schema，仅扩充 question JSON；无新增列。回退至 0009 会取消并删除所有概念
+拟题任务、概念短测、派生证据及其草稿；独立来源、会话、边界题和计划历史保留。无独立证据
+的知识状态恢复 UNKNOWN/LOW。保留的边界题移除新选材/提示 JSON 字段，以兼容 0009 strict DTO。
+必须先备份并停止 API/Worker、切换匹配应用版本；再次升级不能恢复被删数据。不可对真实库
+运行本验收的降级命令。`test_populated_0010_rollback_preserves_0009_boundary_question` 在隔离库
+实际验证带数据回退、0009 有边界题时再升 0010、metadata check 和当前 API 读取。

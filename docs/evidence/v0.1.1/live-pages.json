@@ -1,0 +1,246 @@
+{
+  "mode": "REAL_CHROMIUM_PUBLIC_GET_NOT_HUMAN_REVIEW",
+  "observations": [
+    {
+      "title": "live public arXiv abstract, HTML and HF through actual MV3",
+      "status": "passed",
+      "duration_ms": 3551,
+      "attachments": [
+        [
+          {
+            "url": "https://arxiv.org/abs/1706.03762",
+            "actual_mv3": true,
+            "toolbar_permission": true,
+            "source_b0_located": true,
+            "remote_upload": false,
+            "review": "AUTOMATED_NOT_HUMAN"
+          },
+          {
+            "url": "https://arxiv.org/html/2401.04088v1",
+            "actual_mv3": true,
+            "toolbar_permission": true,
+            "source_b0_located": true,
+            "remote_upload": false,
+            "review": "AUTOMATED_NOT_HUMAN"
+          },
+          {
+            "url": "https://huggingface.co/openai-community/gpt2",
+            "actual_mv3": true,
+            "toolbar_permission": true,
+            "source_b0_located": true,
+            "remote_upload": false,
+            "review": "AUTOMATED_NOT_HUMAN"
+          }
+        ]
+      ]
+    },
+    {
+      "title": "https://arxiv.org/abs/1706.03762",
+      "status": "passed",
+      "duration_ms": 470,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:10.713Z",
+          "requested_url": "https://arxiv.org/abs/1706.03762",
+          "final_url": "https://arxiv.org/abs/1706.03762",
+          "scope": "ABSTRACT",
+          "block_count": 1,
+          "truncated": false,
+          "source_sha256": "062c384a940b00416e76c513973d595aeb1fbc6e0e09a433c18fddc5bdf529eb",
+          "anchor_probes": 1,
+          "matched": 1,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://arxiv.org/abs/1810.04805",
+      "status": "passed",
+      "duration_ms": 426,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:11.145Z",
+          "requested_url": "https://arxiv.org/abs/1810.04805",
+          "final_url": "https://arxiv.org/abs/1810.04805",
+          "scope": "ABSTRACT",
+          "block_count": 1,
+          "truncated": false,
+          "source_sha256": "fea4dc857ec30fd8b2745acffd87789b1e45a94f868b559d025883eea462fcb1",
+          "anchor_probes": 1,
+          "matched": 1,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://arxiv.org/abs/2005.11401",
+      "status": "passed",
+      "duration_ms": 354,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:11.504Z",
+          "requested_url": "https://arxiv.org/abs/2005.11401",
+          "final_url": "https://arxiv.org/abs/2005.11401",
+          "scope": "ABSTRACT",
+          "block_count": 1,
+          "truncated": false,
+          "source_sha256": "766b22c091b5e3c8cdd736cd8c8d1529a5abe2f4895f6bd8f01df31f93851d55",
+          "anchor_probes": 1,
+          "matched": 1,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://arxiv.org/abs/2307.09288",
+      "status": "passed",
+      "duration_ms": 352,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:11.860Z",
+          "requested_url": "https://arxiv.org/abs/2307.09288",
+          "final_url": "https://arxiv.org/abs/2307.09288",
+          "scope": "ABSTRACT",
+          "block_count": 1,
+          "truncated": false,
+          "source_sha256": "65939421678834a4fc6c819884bcae45a9b62f0b5fe9e243d130d3f8293812a6",
+          "anchor_probes": 1,
+          "matched": 1,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://arxiv.org/abs/2401.04088",
+      "status": "passed",
+      "duration_ms": 356,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:12.221Z",
+          "requested_url": "https://arxiv.org/abs/2401.04088",
+          "final_url": "https://arxiv.org/abs/2401.04088",
+          "scope": "ABSTRACT",
+          "block_count": 1,
+          "truncated": false,
+          "source_sha256": "f9764f863a09d605ea6031edff4d777ed8c68170c585b78d3921b1f67d13a414",
+          "anchor_probes": 1,
+          "matched": 1,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://arxiv.org/html/2401.04088v1",
+      "status": "passed",
+      "duration_ms": 286,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:12.509Z",
+          "requested_url": "https://arxiv.org/html/2401.04088v1",
+          "final_url": "https://arxiv.org/html/2401.04088v1",
+          "scope": "BODY",
+          "block_count": 40,
+          "truncated": true,
+          "source_sha256": "6ad30c0ecf183114e17d7d547d675531b0083c8a8c8c2f42bd1909b4da5cb8f6",
+          "anchor_probes": 3,
+          "matched": 3,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://huggingface.co/google-bert/bert-base-uncased",
+      "status": "passed",
+      "duration_ms": 643,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:13.158Z",
+          "requested_url": "https://huggingface.co/google-bert/bert-base-uncased",
+          "final_url": "https://huggingface.co/google-bert/bert-base-uncased",
+          "scope": "BODY",
+          "block_count": 32,
+          "truncated": false,
+          "source_sha256": "fc84204704fc9ccf39ca53a8380804c0a1e425019c4992ab28488924fd3d4871",
+          "anchor_probes": 3,
+          "matched": 3,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://huggingface.co/openai-community/gpt2",
+      "status": "passed",
+      "duration_ms": 606,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:13.767Z",
+          "requested_url": "https://huggingface.co/openai-community/gpt2",
+          "final_url": "https://huggingface.co/openai-community/gpt2",
+          "scope": "BODY",
+          "block_count": 25,
+          "truncated": false,
+          "source_sha256": "6316e238ea8d5db21157d0c5a08b8bd17cc5762e95ea7bbf808469517b39c2f6",
+          "anchor_probes": 3,
+          "matched": 3,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "status": "passed",
+      "duration_ms": 631,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:14.403Z",
+          "requested_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+          "final_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+          "scope": "BODY",
+          "block_count": 15,
+          "truncated": false,
+          "source_sha256": "31061f40ad639612692a52cb6a438e72b432a452e17c0bd9301604d89c5bf053",
+          "anchor_probes": 3,
+          "matched": 3,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    },
+    {
+      "title": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+      "status": "passed",
+      "duration_ms": 823,
+      "attachments": [
+        {
+          "observed_at": "2026-11-07T07:20:15.230Z",
+          "requested_url": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+          "final_url": "https://huggingface.co/mistralai/Mistral-7B-v0.1",
+          "scope": "BODY",
+          "block_count": 13,
+          "truncated": false,
+          "source_sha256": "15aff93c912fad745769f2f4b3790c2553b321ce236c1678563ae6047ee8979a",
+          "anchor_probes": 3,
+          "matched": 3,
+          "review": "AUTOMATED_DOM_CHECK_NOT_HUMAN_REVIEW",
+          "page_scripts_enabled": false
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "startTime": "2026-11-07T07:20:06.211Z",
+    "duration": 9049.326000000001,
+    "expected": 11,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

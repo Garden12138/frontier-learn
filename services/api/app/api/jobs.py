@@ -47,6 +47,8 @@ async def job_status(job_id: UUID, user: CurrentUser, db: Db) -> JobResponse:
 @router.post("/{job_id}/retry", response_model=JobResponse)
 async def retry(job_id: UUID, user: CurrentUser, db: Db) -> JobResponse:
     job = await get_owned(db, Job, user.id, job_id)
+    if job.kind == "ASSESSMENT_QUESTION":
+        raise Problem(409, "ASSESSMENT_RECOVERY_REQUIRED", "请从短测中重新授权并恢复拟题。")
     if job.kind == "TUTOR_GUIDE":
         turn = await db.scalar(
             select(TutorTurn).where(

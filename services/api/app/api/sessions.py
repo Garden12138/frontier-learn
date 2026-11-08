@@ -2,7 +2,7 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import APIRouter, Header, Query
-from sqlalchemy import delete, or_, select
+from sqlalchemy import String, cast, delete, or_, select
 
 from app.auth.dependencies import CurrentUser, Db, get_owned
 from app.core.errors import Problem
@@ -72,8 +72,11 @@ async def delete_session(
             .where(
                 Job.user_id == user.id,
                 or_(
-                    Job.id.in_(
-                        select(Assessment.question_job_id).where(
+                    (Job.kind == "ASSESSMENT_QUESTION")
+                    & Job.payload["assessment_id"]
+                    .as_string()
+                    .in_(
+                        select(cast(Assessment.id, String)).where(
                             Assessment.session_id == session_id, Assessment.user_id == user.id
                         )
                     ),

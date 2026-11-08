@@ -1,0 +1,473 @@
+{
+  "observed_at": "2026-11-08T02:19:41.805628+00:00",
+  "mode": "REAL_APPLICATION_CONNECTOR_NO_CREDENTIALS_FAKE_QUESTIONS",
+  "source": {
+    "id": "950771a9-f1d1-49b8-9469-d853824d3f28",
+    "provider": "github",
+    "github_connection_id": null,
+    "external_ref": "garden12138/notes",
+    "status": "CONNECTED",
+    "version": 1,
+    "read_scope": [
+      "garden12138/notes"
+    ],
+    "path_prefixes": [
+      "ai/book_note/Build-A-Large-Language-Mode notebook/"
+    ],
+    "write_scope": [],
+    "last_sync_at": null,
+    "last_revision": null,
+    "active_job_id": null
+  },
+  "job": {
+    "id": "8ab76d3d-a0d4-4fa7-91b0-a0521d75115a",
+    "source_id": "950771a9-f1d1-49b8-9469-d853824d3f28",
+    "kind": "GITHUB_SYNC",
+    "status": "FAILED",
+    "attempt_count": 1,
+    "max_attempts": 3,
+    "budget_units": 3,
+    "spent_units": 1,
+    "progress": 0.0,
+    "error_code": "GITHUB_RATE_LIMIT",
+    "deadline_at": "2026-11-08T02:24:41.498393Z",
+    "next_attempt_at": "2026-11-08T02:19:41.498393Z"
+  },
+  "documents": [],
+  "live_sync_passed": false,
+  "before_import": {
+    "goal_snapshot": {
+      "title": "理解 Self-Attention，进一步学习 MHA/MQA/GQA",
+      "minutes_per_day": 30,
+      "priorities": [
+        "自注意力",
+        "MHA",
+        "MQA",
+        "GQA"
+      ],
+      "prerequisite_edges": [],
+      "self_report": "UNKNOWN",
+      "self_report_reason": "",
+      "timezone": "Asia/Shanghai",
+      "status": "ACTIVE",
+      "id": "40bb2d1e-b5b4-4905-99c4-79318211953c",
+      "version": 1,
+      "created_at": "2026-11-08T02:19:41.436638Z",
+      "updated_at": "2026-11-08T02:19:41.443086Z"
+    },
+    "status": "PROPOSED",
+    "engine": "LOCAL_RULES",
+    "uncertainty": "规则建议；先修关系来自用户指定，未经独立核验。阅读和任务完成不代表掌握；建议投入不是实际阅读时长承诺。",
+    "roadmap": [
+      {
+        "topic": "自注意力",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "prerequisite_topics": [],
+        "estimated_minutes": 40,
+        "evidence_ids": []
+      },
+      {
+        "topic": "MHA",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "prerequisite_topics": [],
+        "estimated_minutes": 40,
+        "evidence_ids": []
+      },
+      {
+        "topic": "MQA",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "prerequisite_topics": [],
+        "estimated_minutes": 40,
+        "evidence_ids": []
+      },
+      {
+        "topic": "GQA",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "prerequisite_topics": [],
+        "estimated_minutes": 40,
+        "evidence_ids": []
+      }
+    ],
+    "stages": [
+      {
+        "title": "确认起点",
+        "why": "规则建议：先分清已有证据与尚未确认的问题。",
+        "task_ids": [
+          "52efc596-40a8-4f7f-9480-a319df9953a8",
+          "5569ce34-b93d-4756-9b4c-f456089a5ce6",
+          "45075d4b-7b42-4220-bb6a-752641ad384b",
+          "7aa58941-7b3c-46b8-b148-c3a45650eff6"
+        ],
+        "estimated_minutes": 40
+      },
+      {
+        "title": "对照材料",
+        "why": "规则建议：围绕问题查找原文，不用阅读次数判断掌握。",
+        "task_ids": [
+          "57e52382-60bb-4de6-b374-9552283d0c78",
+          "ffc2b0a3-98f7-4b19-b15f-33e54317a3cd",
+          "4d176346-27fb-4d7c-93ec-6da6829833ae",
+          "1d77ff97-5d89-444a-889e-22d5e8564eb5"
+        ],
+        "estimated_minutes": 60
+      },
+      {
+        "title": "验证与复盘",
+        "why": "规则建议：通过回答和边界例子检验理解，记录未解问题。",
+        "task_ids": [
+          "164e1974-7284-4602-ae74-c5bbe9af58e0",
+          "c19c34ad-9d4e-43bd-8c22-dc297d7ea009",
+          "d5b4cd8b-e26b-4165-8512-b5e2d999721e",
+          "fc3d796a-b7da-4854-810f-35e0823d675a",
+          "eaf5880c-35f6-4217-95b5-9814f98c5c9d",
+          "acf67cb4-1c6b-4d61-87db-55efae4360c2",
+          "804c0214-ada3-471c-aa2f-7b68e5f09c30",
+          "95615115-d4fc-42df-be48-cfdb2e6c3f6a"
+        ],
+        "estimated_minutes": 60
+      }
+    ],
+    "tasks": [
+      {
+        "id": "52efc596-40a8-4f7f-9480-a319df9953a8",
+        "topic": "自注意力",
+        "title": "明确：自注意力",
+        "instruction": "围绕「自注意力」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "kind": "EXPLORE",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "57e52382-60bb-4de6-b374-9552283d0c78",
+        "topic": "自注意力",
+        "title": "对照材料：自注意力",
+        "instruction": "选择与「自注意力」相关的一段原文，标出支持结论的位置，区分来源主张和自己的推测。没有已有来源时，可先选一份自己能访问的材料。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "READ",
+        "stage": "READ",
+        "estimated_minutes": 15,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "52efc596-40a8-4f7f-9480-a319df9953a8"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "164e1974-7284-4602-ae74-c5bbe9af58e0",
+        "topic": "自注意力",
+        "title": "检查理解：自注意力",
+        "instruction": "合上材料，用自己的话解释「自注意力」，给出适用条件和一个反例。把仍需验证的地方记下来；任务完成不等于通过理解验证。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "VERIFY",
+        "stage": "VERIFY",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "57e52382-60bb-4de6-b374-9552283d0c78"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "c19c34ad-9d4e-43bd-8c22-dc297d7ea009",
+        "topic": "自注意力",
+        "title": "复盘：自注意力",
+        "instruction": "写下本次学到什么、依据在哪里、还有什么不确定。后续导学中的正式验证会单独保存，不因标记完成自动提升画像。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "REFLECT",
+        "stage": "VERIFY",
+        "estimated_minutes": 5,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "164e1974-7284-4602-ae74-c5bbe9af58e0"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "5569ce34-b93d-4756-9b4c-f456089a5ce6",
+        "topic": "MHA",
+        "title": "明确：MHA",
+        "instruction": "围绕「MHA」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "kind": "EXPLORE",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "ffc2b0a3-98f7-4b19-b15f-33e54317a3cd",
+        "topic": "MHA",
+        "title": "对照材料：MHA",
+        "instruction": "选择与「MHA」相关的一段原文，标出支持结论的位置，区分来源主张和自己的推测。没有已有来源时，可先选一份自己能访问的材料。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "READ",
+        "stage": "READ",
+        "estimated_minutes": 15,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "5569ce34-b93d-4756-9b4c-f456089a5ce6"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "d5b4cd8b-e26b-4165-8512-b5e2d999721e",
+        "topic": "MHA",
+        "title": "检查理解：MHA",
+        "instruction": "合上材料，用自己的话解释「MHA」，给出适用条件和一个反例。把仍需验证的地方记下来；任务完成不等于通过理解验证。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "VERIFY",
+        "stage": "VERIFY",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "ffc2b0a3-98f7-4b19-b15f-33e54317a3cd"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "fc3d796a-b7da-4854-810f-35e0823d675a",
+        "topic": "MHA",
+        "title": "复盘：MHA",
+        "instruction": "写下本次学到什么、依据在哪里、还有什么不确定。后续导学中的正式验证会单独保存，不因标记完成自动提升画像。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "REFLECT",
+        "stage": "VERIFY",
+        "estimated_minutes": 5,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "d5b4cd8b-e26b-4165-8512-b5e2d999721e"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "45075d4b-7b42-4220-bb6a-752641ad384b",
+        "topic": "MQA",
+        "title": "明确：MQA",
+        "instruction": "围绕「MQA」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "kind": "EXPLORE",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "4d176346-27fb-4d7c-93ec-6da6829833ae",
+        "topic": "MQA",
+        "title": "对照材料：MQA",
+        "instruction": "选择与「MQA」相关的一段原文，标出支持结论的位置，区分来源主张和自己的推测。没有已有来源时，可先选一份自己能访问的材料。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "READ",
+        "stage": "READ",
+        "estimated_minutes": 15,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "45075d4b-7b42-4220-bb6a-752641ad384b"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "eaf5880c-35f6-4217-95b5-9814f98c5c9d",
+        "topic": "MQA",
+        "title": "检查理解：MQA",
+        "instruction": "合上材料，用自己的话解释「MQA」，给出适用条件和一个反例。把仍需验证的地方记下来；任务完成不等于通过理解验证。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "VERIFY",
+        "stage": "VERIFY",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "4d176346-27fb-4d7c-93ec-6da6829833ae"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "acf67cb4-1c6b-4d61-87db-55efae4360c2",
+        "topic": "MQA",
+        "title": "复盘：MQA",
+        "instruction": "写下本次学到什么、依据在哪里、还有什么不确定。后续导学中的正式验证会单独保存，不因标记完成自动提升画像。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "REFLECT",
+        "stage": "VERIFY",
+        "estimated_minutes": 5,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "eaf5880c-35f6-4217-95b5-9814f98c5c9d"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "7aa58941-7b3c-46b8-b148-c3a45650eff6",
+        "topic": "GQA",
+        "title": "明确：GQA",
+        "instruction": "围绕「GQA」写一个具体问题和自己的解释，再举一个例子与一个限制。不了解的词明确标记未知；可以跳过并保留不确定性。",
+        "why": "规则建议：当前缺少可靠知识证据，保留未知；先明确问题和最小材料范围。",
+        "kind": "EXPLORE",
+        "stage": "ORIENT",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "1d77ff97-5d89-444a-889e-22d5e8564eb5",
+        "topic": "GQA",
+        "title": "对照材料：GQA",
+        "instruction": "选择与「GQA」相关的一段原文，标出支持结论的位置，区分来源主张和自己的推测。没有已有来源时，可先选一份自己能访问的材料。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "READ",
+        "stage": "READ",
+        "estimated_minutes": 15,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "7aa58941-7b3c-46b8-b148-c3a45650eff6"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "804c0214-ada3-471c-aa2f-7b68e5f09c30",
+        "topic": "GQA",
+        "title": "检查理解：GQA",
+        "instruction": "合上材料，用自己的话解释「GQA」，给出适用条件和一个反例。把仍需验证的地方记下来；任务完成不等于通过理解验证。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "VERIFY",
+        "stage": "VERIFY",
+        "estimated_minutes": 10,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "1d77ff97-5d89-444a-889e-22d5e8564eb5"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      },
+      {
+        "id": "95615115-d4fc-42df-be48-cfdb2e6c3f6a",
+        "topic": "GQA",
+        "title": "复盘：GQA",
+        "instruction": "写下本次学到什么、依据在哪里、还有什么不确定。后续导学中的正式验证会单独保存，不因标记完成自动提升画像。",
+        "why": "规则建议：服务于目标「理解 Self-Attention，进一步学习 MHA/MQA/GQA」；先修关系仅按用户指定的方向顺序安排，未经独立验证。",
+        "kind": "REFLECT",
+        "stage": "VERIFY",
+        "estimated_minutes": 5,
+        "status": "PROPOSED",
+        "prerequisite_ids": [
+          "804c0214-ada3-471c-aa2f-7b68e5f09c30"
+        ],
+        "prerequisite_topics": [],
+        "evidence_ids": [],
+        "concept_ids": [],
+        "material_url": null,
+        "origin": "RULE",
+        "completed_at": null,
+        "conversation_ref": null
+      }
+    ],
+    "id": "58d06632-47c9-451b-98dd-0ec5e2072b69",
+    "revision_no": 1,
+    "rationale": "根据当前目标、证据与最近验证结果生成规则建议。",
+    "created_at": "2026-11-08T02:19:41.456681Z",
+    "goal_changed": false,
+    "today_task_ids": [
+      "52efc596-40a8-4f7f-9480-a319df9953a8",
+      "57e52382-60bb-4de6-b374-9552283d0c78"
+    ],
+    "today_completed_minutes": 0,
+    "today_remaining_minutes": 30,
+    "sources": []
+  }
+}

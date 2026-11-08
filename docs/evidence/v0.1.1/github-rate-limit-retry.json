@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-11-08T02:20:18.267349+00:00",
+  "status": 403,
+  "headers": {
+    "date": "Sun, 08 Nov 2026 02:20:18 GMT",
+    "x-ratelimit-limit": "60",
+    "x-ratelimit-remaining": "0",
+    "x-ratelimit-reset": "1794106855"
+  }
+}

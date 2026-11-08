@@ -1,3 +1,4 @@
+import re
 from datetime import UTC, datetime
 from uuid import UUID, uuid4
 
@@ -64,10 +65,61 @@ async def create_assessment(
     if turn is None:
         raise Problem(409, "GUIDE_REQUIRED", "请先完成一轮导学再开始短测。")
     page = PageSnapshot.model_validate(session.page)
-    block = next((b for b in page.blocks if b.text.strip()), page.blocks[0])
-    excerpt = block.text.strip()[:600]
     goal = await db.get(LearningGoal, session.goal_id) if session.goal_id else None
     topic = goal.priorities[0] if goal and goal.priorities else goal.title if goal else page.title
+    selected = body.selection
+    reason = "明确指定章节" if body.block_id else "首个非空块（未找到选区或目标匹配，请复查范围）"
+    block_id = body.block_id
+    if selected and block_id and selected.block_id != block_id:
+        raise Problem(422, "QUESTION_SOURCE_INVALID", "选区与指定章节不一致。")
+    if not selected and not block_id:
+        selected = page.selection
+        reason = "会话选区" if selected else reason
+        if not selected:
+            latest = await db.scalar(
+                select(TutorTurn)
+                .where(
+                    TutorTurn.user_id == user_id,
+                    TutorTurn.session_id == session_id,
+                    TutorTurn.guide.is_not(None),
+                    TutorTurn.selection.is_not(None),
+                )
+                .order_by(TutorTurn.turn_no.desc())
+                .limit(1)
+            )
+            if latest and latest.selection:
+                from app.domain.tutoring_types import Selection
+
+                selected = Selection.model_validate(latest.selection)
+                reason = "最近成功导学选区"
+    if selected:
+        block_id = selected.block_id
+        if body.selection:
+            reason = "本次选区"
+    block = next((b for b in page.blocks if b.id == block_id), None)
+    if block_id and (not block or (selected and selected.quote not in block.text)):
+        raise Problem(422, "QUESTION_SOURCE_INVALID", "拟题范围不属于当前材料快照。")
+    if block is None:
+        terms = [
+            t.casefold() for t in re.findall(r"[A-Za-z][A-Za-z-]{2,}|[\u4e00-\u9fff]{2,}", topic)
+        ]
+        scored = [
+            (sum(t in (b.heading + " " + b.text).casefold() for t in terms), b) for b in page.blocks
+        ]
+        score, block = max(scored, key=lambda pair: pair[0])
+        if score:
+            reason = "学习目标关键词匹配（规则候选，请复查）"
+    if body.block_id or selected:
+        # A chapter-specific check must not create evidence for an unrelated first goal priority.
+        choices = goal.priorities if goal and goal.priorities else []
+        matching = [
+            choice
+            for choice in choices
+            if choice.casefold() in (block.heading + " " + block.text).casefold()
+        ]
+        topic = matching[0] if matching else block.heading or page.title
+    source_excerpt = selected.quote if selected else block.text[:1800]
+    excerpt = source_excerpt[:600]
     question = AssessmentQuestion(
         prompt="对照下方原文，哪一项只陈述材料明确支持的内容？",
         excerpt=excerpt,
@@ -87,11 +139,13 @@ async def create_assessment(
             raise Problem(503, "MODEL_UNAVAILABLE", "概念拟题模型未配置；可以选择来源边界题。")
         question = AssessmentQuestion(
             prompt="正在生成原文支持的概念题…",
-            excerpt="",
+            excerpt=source_excerpt[:600],
             block_id=block.id,
             options={},
             rubric=[],
             scope="CONCEPT_CHECK",
+            source_excerpt=source_excerpt,
+            source_reason=reason,
         )
     row = Assessment(
         id=uuid4(),

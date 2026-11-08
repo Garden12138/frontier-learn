@@ -329,6 +329,18 @@
       "AssessmentCreate": {
         "additionalProperties": false,
         "properties": {
+          "block_id": {
+            "anyOf": [
+              {
+                "pattern": "^b\\d{1,2}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Block Id"
+          },
           "cloud_processing_allowed": {
             "default": false,
             "title": "Cloud Processing Allowed",
@@ -342,6 +354,16 @@
             ],
             "title": "Kind",
             "type": "string"
+          },
+          "selection": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Selection"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "session_id": {
             "format": "uuid",
@@ -426,6 +448,11 @@
             "title": "Prompt",
             "type": "string"
           },
+          "quality_notice": {
+            "default": "结构筛查与引文匹配不能证明选项语义正确；请人工复查题目、各选项与原文。",
+            "title": "Quality Notice",
+            "type": "string"
+          },
           "rubric": {
             "items": {
               "type": "string"
@@ -441,6 +468,17 @@
             ],
             "title": "Scope",
             "type": "string"
+          },
+          "source_excerpt": {
+            "default": "",
+            "maxLength": 1800,
+            "title": "Source Excerpt",
+            "type": "string"
+          },
+          "source_reason": {
+            "default": "旧版材料范围",
+            "title": "Source Reason",
+            "type": "string"
           }
         },
         "required": [
@@ -451,6 +489,27 @@
           "rubric"
         ],
         "title": "AssessmentQuestion",
+        "type": "object"
+      },
+      "AssessmentRegenerate": {
+        "additionalProperties": false,
+        "properties": {
+          "cloud_processing_allowed": {
+            "const": true,
+            "title": "Cloud Processing Allowed",
+            "type": "boolean"
+          },
+          "version": {
+            "minimum": 1.0,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "cloud_processing_allowed"
+        ],
+        "title": "AssessmentRegenerate",
         "type": "object"
       },
       "AssessmentResponse": {
@@ -5668,6 +5727,174 @@
           }
         ],
         "summary": "Confirm",
+        "tags": [
+          "Assessments"
+        ]
+      }
+    },
+    "/api/v1/assessments/{assessment_id}/regenerate": {
+      "post": {
+        "operationId": "regenerate_api_v1_assessments__assessment_id__regenerate_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "assessment_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Assessment Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssessmentRegenerate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssessmentResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "408": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request Timeout"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "502": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Gateway"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "summary": "Regenerate",
         "tags": [
           "Assessments"
         ]
