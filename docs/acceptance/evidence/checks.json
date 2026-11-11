@@ -1200,5 +1200,26 @@
     "directory_files": 31,
     "directory_bytes": 420382,
     "scope": "只读元数据；不是应用容器同步成功"
+  },
+  "工程内容提交": "c59d11917d26c2c870ebdd8cdbeffbb652ae9f11",
+  "分支清理": {
+    "本地保留": [
+      "main",
+      "feature/upgrade-chatgpt"
+    ],
+    "远程保留": [
+      "main",
+      "feature/upgrade-chatgpt"
+    ],
+    "本地删除": [
+      "codex/local-trial"
+    ],
+    "远程删除": [
+      "codex/local-trial"
+    ],
+    "旧分支独有提交": 0,
+    "main_sha": "4f7fce219b0284ca596cc5699e7140ee3325c92d",
+    "已有Tag数量": 0,
+    "强制推送": false
   }
 }

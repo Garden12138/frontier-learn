@@ -12,7 +12,8 @@
 已建立分支 `feature/upgrade-chatgpt`，从包含全部现有实现的开发 HEAD 创建，保持正常祖先历史。
 最终完整 SHA 通过 `git rev-parse feature/upgrade-chatgpt` 或本文件提交历史获取；
 本文件随收尾提交版本化，不能把其自身尚未产生的 SHA 伪写进文件。
-整合提交和远程实际结果在操作后补记；最终 SHA 也在交付回复给出。
+完整工程内容检查点已提交并推送：`c59d11917d26c2c870ebdd8cdbeffbb652ae9f11`。
+之后仅提交实际远程清理结果与任务勾选等文档收尾；最终分支完整 SHA 在交付回复给出。
 
 ## 基线、清理与能力
 
@@ -61,13 +62,27 @@ main 17 个文档，开发已提交差异 267 新增/9 修改，实际能力见
 
 开始只有 main 和 codex/local-trial（本地/远程同 SHA），没有其他未知分支或独立历史。
 main 与全部已有 Tag 不重写，已有 Tag 数量为 0。
-按“先验证→普通推送新分支→核对远程包含→删旧分支”的顺序执行，结果在下方补记。
-网络/权限失败时保留旧远程，不会先删再推，不使用 force push、squash、rebase 或 reset。
+已按“先验证→普通推送新分支→核对远程包含→删旧分支”的顺序执行：
+
+- `git push -u origin feature/upgrade-chatgpt` 成功；独立 ls-remote 确认远程 SHA 为 c59d119。
+- `git merge-base --is-ancestor codex/local-trial feature/upgrade-chatgpt` 成功，
+  `git rev-list --count feature/upgrade-chatgpt..codex/local-trial` 为 0，旧分支无独有提交。
+- 远程旧分支仍为原 bdf9a8f，确认无新工作后，`git push origin --delete codex/local-trial` 成功。
+- `git branch -d codex/local-trial` 成功；未使用强制删除。
+- 最终本地/远程仅保留 main、feature/upgrade-chatgpt；无其他未知或独立历史分支。
+- main 仍为原 4f7fce219b0284ca596cc5699e7140ee3325c92d，已有 Tag 为 0 且未创建/删除任何 Tag。
+- 没有 force push、squash、rebase、reset、PR 合并或发布。旧提交保留在新分支祖先和恢复 bundle。
+
+远程清理结果随文档收尾以普通推送同步；本轮新提交远程 CI 不作为本地验收已通过的依据，不预报其结果。
 
 ## 新分支提交前复验
 
 在 feature/upgrade-chatgpt 上实际重跑：核心后端 32 passed（43.27s）、客户端 26 项、
 lint/TS strict/类型漂移、Ruff/format、OpenAPI、Web/MV3 构建和仓库检查均通过。
-32 是全量 217 的子集，不另算独立用例。全部被测源码摘要一致；仅文档/审计结果继续收尾。
+32 是全量 217 的子集，不另算独立用例。全部 208 个被测输入摘要一致；收尾提交仅修改文档/审计结果。
 Git bundle 校验完整历史通过；main 和原始快照 SHA 不变。新建空白部署项目容器/卷已清理，
 专用测试 PG 重建后健康；日常服务与资料卷保留，Web 5176 可打开。
+
+交付文件总计 305，文档本地链接 129、两个原始 blob 与六项忽略规则通过，
+常见密钥模式未命中；暂存差异空白检查通过。收尾提交后要求工作树干净、与 origin 同步，
+完整最终 SHA 由交付回复及分支 HEAD 确认，避免将工程检查点误当文档收尾 SHA。

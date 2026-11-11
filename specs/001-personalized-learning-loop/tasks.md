@@ -1,6 +1,6 @@
 # Tasks: Personalized Learning Loop
 
-**Status**: Phases 1–8 and T063–T069 verified; live credentials, production and human acceptance pending · **Date**: 2026-10-26 · **Spec**: [`spec.md`](spec.md)
+**Status**: MVP 工程回归与本地试用整理完成；真实服务、真人与发布验收待完成 · **Date**: 2026-11-11 · **Spec**: [`spec.md`](spec.md)
 
 ## Execution Policy
 
@@ -213,18 +213,9 @@ T073 的完整 31 文件目标目录、T059/CHK020、真人与真实模型门槛
 `docs/testing/v0.1.1-user-trial.md`。这些勾选表示准备工作完成，不表示真人学习通过。
 
 
-V0.1.1 阶段证据（2026-11-07）：T072 的服务端/API/导出/并发恢复/选材/迁移修复，
-最终隔离 PostgreSQL 全量 213 passed / 0 skipped（113.88s），Ruff/format/mypy/OpenAPI、
-客户端 26 项、lint/strict/type drift/build 通过。T073 中固定公开 SHA 的正文/代码离线两轮
-已通过；真实目录应用同步仍 GITHUB_RATE_LIMIT，不能勾选完整真实试用。T074/T075 收尾结果见
-`docs/evidence/v0.1.1-acceptance.md`。T059/CHK020 不因此通过。
-
-
-11-08 最终交付：T072/T074/T075 完成，后端最终 215 passed / 0 skipped（105.97s）、
-客户端 26、初始化 3、Web 8（30.0s）、MV3 4（18.6s），真实公开网页 11 项通过。
-T073 的固定公开原始快照、可追溯证据与离线 Fake 两轮通过；真实 31 文件目录同步在 11-07
-和 11-08 两次均 FAILED/GITHUB_RATE_LIMIT，所以 T073 保持未完成。T059/CHK020 保持未完成。
-试用命令、失败证据、真人/真实模型边界和下一阶段独立建议已交付，没有启动 V0.6+ 开发。
+历史阶段的逐次数量与失败/修复保留在 `docs/evidence/v0.1.1-acceptance.md` 及其结构化 JSON；
+这里不重复抄录中间的 213/215 计数。最新工程验收见 `docs/acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md`，
+固定快照/Fake 不替代真实 31 文件目录同步、真人或真实模型验证，T073/T059/CHK020 继续待办。
 
 ### 本地试用工程整理（2026-11-11；不扩展产品范围）
 
@@ -232,6 +223,6 @@ T073 的固定公开原始快照、可追溯证据与离线 Fake 两轮通过；
 - [x] T081 核实 main/所有分支、Tag/Release 与真实代码，记录 `docs/review/VERSION_DIFF_AND_FEATURES.md`。
 - [x] T082 隔离 PostgreSQL/Fake/真实 Chromium/MV3 自动验收，保留失败及最小修复回归，记录 `docs/acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md`。
 - [x] T083 完成 Mac 部署、产品使用、首次试用手册和 README，检查命令/文档引用。
-- [ ] T084 四阶段报告完成后建立 feature/upgrade-chatgpt，最终回归、提交、验证包含关系后安全清理旧分支，记录交付总结。
+- [x] T084 四阶段报告完成后建立 feature/upgrade-chatgpt，最终回归、提交、验证包含关系后安全清理旧分支，记录交付总结。
 
 以上整理勾选不改变 T073、T059 / CHK020 的真实服务、真人与正式发布门槛。

@@ -36,7 +36,11 @@
 
 以下“已实现且自动化验证”表示隔离环境的工程路径；最新执行数量见
 [本轮验收报告](../acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md)。所有功能在 main 都只有规格或规划，
-没有业务代码，故不重复把同一基线写在每行。路径相对于仓库根目录。
+没有业务代码，故不重复把同一基线写在每行。
+表中后端 api/domain/ai/connectors/ingestion 路径相对于 `services/api/app/`；
+未展开目录的领域 Python 文件在其 domain 下，测试在 `services/api/tests/`；
+页面 TSX 在 `apps/web/src/pages/`，AccountForm/GuideSession/AssessmentPanel 在
+`packages/shared/src/ui/`，extension 指 `apps/extension/` 内相应源码。
 
 | 功能 | 当前状态 | 实际实现位置 | 使用入口与自动化依据 | 当前限制 |
 |---|---|---|---|---|

@@ -42,7 +42,7 @@
 
 开发进度从逐次执行日志改为提交检查点和验收入口；local-trial 和旧 testing 文档保留兼容入口。
 V0.1.1 验收保留故障根因、复现/修复矩阵和原始证据链接，去除重复暂存/CI 轮询叙述。
-README 改为项目总入口。`scripts/check-repository.mjs` 校验 129 个本地文档链接/锚点、
+README 改为项目总入口；Tasks 的重复历史验收段落合并为证据索引，任务完成标记不篡改。`scripts/check-repository.mjs` 校验 129 个本地文档链接/锚点、
 常见私钥/token 模式、2 份固定原始 blob 与 6 项忽略规则，均通过。新增 review、acceptance、manuals 满足本轮工程交付。
 
 必须保留 `real-notes/self-attention.txt`、`chapter03_attention.txt`、`provenance.json`，
@@ -57,8 +57,11 @@ OpenAPI JSON/YAML、生成 TS 类型虽能再生，但用于契约审查和漂�
 
 本轮不改变产品范围、数据库结构或安全默认值；依赖安装目录与本地环境配置不删除。
 相关静态检查、完整后端/浏览器回归、构建、文档链接、敏感模式、快照完整性及最终文件统计
-见 [自动化验收](../acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md)。无效旧引用会在交付前修正。
+见 [自动化验收](../acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md)。文档链接检查已通过，无失效本地引用。
 
 最终源码/Fixtures 均未因清理丢失，完整后端 217、客户端 26、setup 3、Web 8、MV3 4、
 公开网页 11 项通过；各项静态/契约/构建通过，git diff --check 无空白错误。
 生成测试/构建缓存按需重新产生且全部忽略；保留安装依赖与 18000 插件以便本地试用。
+
+交付后跟踪文件共 305 个（开始跟踪 284 + 原有新文件 11 + 本轮新增 12 − 删除 2）。
+新增文件用于明确要求的报告、手册、结构化验收、检查脚本和恢复集成回归；不以减少总数掩盖缺失。

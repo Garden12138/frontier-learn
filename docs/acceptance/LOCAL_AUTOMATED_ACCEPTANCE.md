@@ -58,7 +58,8 @@ fixture 拒绝已有业务表/非测试库，结束时回滚自身表。真实�
 | 交付 Web | FRONTIER_API_PROXY=http://127.0.0.1:18000 pnpm --filter @frontier/web dev --host 127.0.0.1 --port 5176 | 启动，Web 代理 /api/v1/health 200；日常 health/ready 均 200 |
 | 仓库检查 | node scripts/check-repository.mjs；git diff --check | 通过：305 文件、129 本地链接、2 原文 blob、6 忽略规则；未命中常见密钥模式 |
 
-整合分支另执行核心认证/学习/PR/数据与恢复回归，数量见交付总结，不与上述全量重复计数。
+工程内容提交 `c59d11917d26c2c870ebdd8cdbeffbb652ae9f11` 已推送；原始 bdf9a8f + 被测摘要
+与该提交的源码一致，后续仅收尾文档。整合分支另执行核心认证/学习/PR/数据与恢复 32 项通过，不与上述全量重复计数。
 新部署停止保留卷后重启成功（23.67s），空白验收容器/卷已清理，日常服务继续运行。
 
 完整测试 URL：`postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test`。
