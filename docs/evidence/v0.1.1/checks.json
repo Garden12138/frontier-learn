@@ -207,5 +207,83 @@
       "global_whitespace_disabled": false,
       "no_verify_used": false
     }
+  },
+  "remote_delivery": {
+    "repository": "Garden12138/frontier-learn",
+    "branch": "codex/local-trial",
+    "commit": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+    "remote_before": "ce64ece908d0a950b85a07065db6be8244fc473c",
+    "push": "ordinary non-force fast-forward; exact reviewed commit",
+    "remote_commit_verified": true,
+    "observed_at": "2026-11-08T06:59:04Z",
+    "git_proxy": "unreachable 127.0.0.1:6738 overridden per command with http.proxy=; persistent configuration unchanged",
+    "ci": {
+      "run_id": 42456640706,
+      "url": "https://github.com/Garden12138/frontier-learn/actions/runs/42456640706",
+      "event": "push",
+      "head_sha": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "status": "in_progress",
+      "conclusion": null,
+      "jobs": [
+        {
+          "id": 128656970557,
+          "name": "api",
+          "status": "in_progress",
+          "conclusion": null,
+          "active_steps": [
+            {
+              "name": "Run uv run pytest -q",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 10
+            }
+          ],
+          "failed_steps": [],
+          "test_steps": [
+            {
+              "name": "Run uv run pytest -q",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 10
+            },
+            {
+              "name": "Run pnpm test:sources",
+              "status": "pending",
+              "conclusion": null,
+              "number": 15
+            },
+            {
+              "name": "Run pnpm test:extension",
+              "status": "pending",
+              "conclusion": null,
+              "number": 16
+            }
+          ]
+        },
+        {
+          "id": 128656970656,
+          "name": "clients",
+          "status": "completed",
+          "conclusion": "success",
+          "active_steps": [],
+          "failed_steps": [],
+          "test_steps": [
+            {
+              "name": "Run pnpm test:setup",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 14
+            }
+          ]
+        }
+      ],
+      "failure_logs": "No failed job or failed step observed as of 2026-11-08T06:59:04Z; api remains in progress"
+    },
+    "local_record_changes": "not committed or pushed; reviewed remote commit stays unchanged",
+    "remaining_acceptance": {
+      "real_notes_sync": "GITHUB_RATE_LIMIT",
+      "real_model": "NOT_AUTHORIZED_NOT_RUN",
+      "human_learning": "NOT_RUN_ZERO_PARTICIPANTS"
+    }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "observed_at": "2026-11-11T02:11:01.474000+00:00",
+  "result": "PASSED",
+  "schema_head": "0010_concept_check",
+  "restored_tables": 27,
+  "dump_bytes": 84835,
+  "dump_sha256": "c7a5dcd5b27618738ee59d3981dd45c0e30436c62ab7e855f37df25325896f75",
+  "export_bytes_compared": 23386,
+  "dump_restore_verify_seconds": 0.746,
+  "learning_export_equal": true,
+  "original_password_login": true,
+  "encrypted_connection_recovered_with_original_key": true,
+  "cloud_requests": 0,
+  "external_writes": 0,
+  "scope": "SYNTHETIC_LOCAL_NEW_DATABASES_ONLY_NOT_PRODUCTION_DRILL"
+}

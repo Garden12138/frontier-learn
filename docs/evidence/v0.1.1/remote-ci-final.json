@@ -1,0 +1,54 @@
+{
+  "observed_at": "2026-11-10T22:05:37Z",
+  "source": "https://api.github.com/repos/Garden12138/frontier-learn/actions/runs/42456640706",
+  "html_url": "https://github.com/Garden12138/frontier-learn/actions/runs/42456640706",
+  "run_id": 42456640706,
+  "head_branch": "codex/local-trial",
+  "head_sha": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "run_started_at": "2026-11-08T06:54:47Z",
+  "updated_at": "2026-11-08T07:01:04Z",
+  "jobs": [
+    {
+      "id": 128656970557,
+      "name": "api",
+      "status": "completed",
+      "conclusion": "success",
+      "verified_steps": [
+        "ruff check",
+        "ruff format --check",
+        "mypy",
+        "OpenAPI check",
+        "pytest",
+        "pnpm test:sources",
+        "pnpm test:extension"
+      ]
+    },
+    {
+      "id": 128656970656,
+      "name": "clients",
+      "status": "completed",
+      "conclusion": "success",
+      "verified_steps": [
+        "pnpm lint",
+        "pnpm typecheck",
+        "pnpm types:check",
+        "pnpm test",
+        "pnpm build",
+        "pnpm test:setup"
+      ]
+    }
+  ],
+  "scope": "Only the pushed bdf9a8f commit; excludes current uncommitted authentication fix and later local preparation.",
+  "boundaries": {
+    "read_only": true,
+    "workflow_restarted": false,
+    "remote_changes": false,
+    "human_acceptance": false,
+    "paid_model_quality_verified": false,
+    "live_repository_writeback_verified": false
+  }
+}

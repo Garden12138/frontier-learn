@@ -198,6 +198,20 @@ OpenAPI/TS 契约漂移与 Web/MV3 构建通过，详见 `docs/development-progr
 - [x] T074 补齐真实 Chromium/MV3 概念题端到端，执行完整工程回归与 0009→0010 回滚。
 - [x] T075 交付 V0.1.1 试用步骤、证据矩阵、阻塞与后续独立建议；不替代真人/真实付费模型验收。
 
+### V0.1.1 本地真实试用准备（2026-11-08）
+
+- [x] T076 核对环境与端口，启动日常 DB/API/Worker/Web，验证 0010 与独立密码账号，构建 API 18000 的日常 MV3；不重置数据。
+- [x] T077 诊断已有授权只读连接、宿主机小目录与容器 DNS；记录 HTTP 状态、白名单 RateLimit 头、实际请求数和 App 人工配置阻塞。
+- [x] T078 使用隔离合成账号检查当前日常 Web/MV3/真实 GQA 网页/实际 Worker/短测/草稿；先复现并修复跨端注销 Cookie 缺陷，完成回归及账号清理。
+- [x] T079 交付两轮真人操作单、手工降级路径、人工判断点、运行状态与执行证据，停止自动准备等待反馈。
+
+本阶段验收：后端最终 216 passed、客户端 26、Web 8、MV3 4、真实公开页 11；当前日常
+服务单独的自动检查 11 项通过。真实小目录 2 文件同步/复同步共 8 次 GET 均 200。
+Docker Worker DNS 在 HTTP 前因非公网 IPv6 触发 UNSAFE_URL；App 配置组/密钥缺失。
+T073 的完整 31 文件目标目录、T059/CHK020、真人与真实模型门槛仍未通过。
+证据见 `docs/evidence/v0.1.1/preparation-checks.json`；用户步骤见
+`docs/testing/v0.1.1-user-trial.md`。这些勾选表示准备工作完成，不表示真人学习通过。
+
 
 V0.1.1 阶段证据（2026-11-07）：T072 的服务端/API/导出/并发恢复/选材/迁移修复，
 最终隔离 PostgreSQL 全量 213 passed / 0 skipped（113.88s），Ruff/format/mypy/OpenAPI、
@@ -211,3 +225,13 @@ V0.1.1 阶段证据（2026-11-07）：T072 的服务端/API/导出/并发恢复/
 T073 的固定公开原始快照、可追溯证据与离线 Fake 两轮通过；真实 31 文件目录同步在 11-07
 和 11-08 两次均 FAILED/GITHUB_RATE_LIMIT，所以 T073 保持未完成。T059/CHK020 保持未完成。
 试用命令、失败证据、真人/真实模型边界和下一阶段独立建议已交付，没有启动 V0.6+ 开发。
+
+### 本地试用工程整理（2026-11-11；不扩展产品范围）
+
+- [x] T080 全量扫描含忽略/隐藏文件，备份既有工作，清理再生产物和重复过程文档；记录 `docs/review/REPOSITORY_CLEANUP.md`。
+- [x] T081 核实 main/所有分支、Tag/Release 与真实代码，记录 `docs/review/VERSION_DIFF_AND_FEATURES.md`。
+- [x] T082 隔离 PostgreSQL/Fake/真实 Chromium/MV3 自动验收，保留失败及最小修复回归，记录 `docs/acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md`。
+- [x] T083 完成 Mac 部署、产品使用、首次试用手册和 README，检查命令/文档引用。
+- [ ] T084 四阶段报告完成后建立 feature/upgrade-chatgpt，最终回归、提交、验证包含关系后安全清理旧分支，记录交付总结。
+
+以上整理勾选不改变 T073、T059 / CHK020 的真实服务、真人与正式发布门槛。

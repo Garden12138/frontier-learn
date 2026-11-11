@@ -1,0 +1,258 @@
+{
+  "observed_at": "2026-11-08T09:34:43.189598+00:00",
+  "head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+  "branch": "codex/local-trial",
+  "initial_dirty_files": [
+    "docs/development-progress.md",
+    "docs/evidence/v0.1.1-acceptance.md",
+    "docs/evidence/v0.1.1/checks.json"
+  ],
+  "initial_dirty_changes_preserved": true,
+  "services": {
+    "web": {
+      "url": "http://127.0.0.1:5176",
+      "running": true,
+      "process": "Vite on host; terminal session retained"
+    },
+    "api": {
+      "url": "http://127.0.0.1:18000/api/v1",
+      "running": true,
+      "health": "ok",
+      "readiness": "ready",
+      "updated_logout_fix": true
+    },
+    "worker": {
+      "running": true,
+      "real_guide_job_completed": true,
+      "github_network_blocker": "UNSAFE_URL before HTTP",
+      "image_updated_to_current_local_source": true
+    },
+    "postgres": {
+      "host": "127.0.0.1",
+      "port": 55433,
+      "migration": "0010_concept_check",
+      "named_volume": "frontier-learn_frontier_pg",
+      "new_empty_volume_at_start": true,
+      "users_after_synthetic_cleanup": 0,
+      "goals_after_synthetic_cleanup": 0,
+      "sources_after_synthetic_cleanup": 0
+    },
+    "test_postgres": {
+      "port": 55432,
+      "database": "frontier_test",
+      "isolated": true,
+      "business_tables_cleared_by_fixture": true
+    },
+    "extension": {
+      "built": true,
+      "api_origin": "http://127.0.0.1:18000",
+      "path": "apps/extension/.output/chrome-mv3",
+      "installed_in_personal_chrome": false,
+      "installation": "User must load/reload unpacked extension; automated temporary profile verified"
+    }
+  },
+  "environment": {
+    "node": "22.23.2",
+    "pnpm": "10.28.2",
+    "docker": "29.8.2",
+    "compose": "5.5.0",
+    "uv": "0.6.10",
+    "host_python": "3.12.11",
+    "docker_python": "3.12.16"
+  },
+  "runtime_safety": {
+    "llm_provider": "local_rules",
+    "mock_auth": false,
+    "writeback_enabled": false,
+    "github_app_configured": false,
+    "encryption_key_configured": false
+  },
+  "executed_checks": [
+    {
+      "command": "pnpm lint / typecheck / types:check / test",
+      "result": "PASS",
+      "client_unit_tests": 26
+    },
+    {
+      "command": "pnpm build (extension origin 18000)",
+      "result": "PASS"
+    },
+    {
+      "command": "ruff check / ruff format --check / mypy / python -m app.export_openapi --check",
+      "result": "PASS",
+      "mypy_files": 119
+    },
+    {
+      "command": "pytest attention_trial + concept_check + test_migrations",
+      "result": "PASS",
+      "passed": 14,
+      "seconds": 18.11
+    },
+    {
+      "command": "pytest password_auth + authorization after logout fix",
+      "result": "PASS",
+      "passed": 9,
+      "seconds": 12.04
+    },
+    {
+      "command": "pytest -q final full offline backend",
+      "result": "PASS",
+      "passed": 216,
+      "skipped": 0,
+      "seconds": 105.93
+    },
+    {
+      "command": "pnpm test:sources",
+      "result": "PASS",
+      "passed": 8,
+      "seconds": 29.5,
+      "boundary": "Fake external protocols; ran before minimal logout fix"
+    },
+    {
+      "command": "pnpm test:extension",
+      "result": "PASS",
+      "passed": 4,
+      "seconds": 18.1,
+      "boundary": "Real MV3, Fake protocols; ran before minimal logout fix"
+    },
+    {
+      "command": "FRONTIER_LIVE_PAGE_CHECKS=true pnpm test:live-pages",
+      "result": "PASS",
+      "passed": 11,
+      "seconds": 13.9,
+      "boundary": "Read-only public pages; no human review"
+    },
+    {
+      "command": "pytest tests/acceptance/v011_connections.py (explicit opt-in)",
+      "result": "OBSERVER_PASS_AND_SMALL_SYNC_PASS",
+      "passed": 1,
+      "seconds": 4.69,
+      "requests": 8,
+      "document_count": 2
+    },
+    {
+      "command": "Actual daily runtime one-off Playwright smoke",
+      "result": "PASS_AFTER_LOGOUT_FIX",
+      "checks": 11,
+      "synthetic_account_removed": true,
+      "evidence": "preparation-runtime.json"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    },
+    {
+      "command": "Final git diff --check and Web /api/v1/ready after documentation/worker update",
+      "result": "PASS"
+    }
+  ],
+  "recorded_failures": [
+    {
+      "operation": "initial selected backend command",
+      "result": "collection error, nonexistent tests/integration/test_migrations.py; zero tests executed",
+      "resolution": "Corrected to tests/test_migrations.py; 14 tests then passed"
+    },
+    {
+      "operation": "initial new observer lint",
+      "result": "E501 long line",
+      "resolution": "Formatter applied; all Ruff/mypy checks passed"
+    },
+    {
+      "operation": "actual-runtime initial extension logout",
+      "result": "Web cookie cleared; next GET /auth/me returned 401",
+      "evidence": "preparation-runtime-red.json",
+      "resolution": "Conditional Set-Cookie fix, regression initially 1 failed then passed; actual runtime rerun passed"
+    },
+    {
+      "operation": "Docker PinnedHTTPReader GitHub probe",
+      "result": "UNSAFE_URL",
+      "http_requests": 0,
+      "resolution": "Unresolved local DNS issue; no security bypass or repeated HTTP request"
+    }
+  ],
+  "github": {
+    "historical_failures": {
+      "http_status": 403,
+      "limit": 60,
+      "remaining": 0,
+      "evidence": "github-rate-limit-retry.json"
+    },
+    "authorized_plugin": {
+      "login": "Garden12138",
+      "read_calls": 4,
+      "identity_calls": 1,
+      "upstream_http_count_and_headers": "Not exposed by connector; never inferred",
+      "small_directory_files": 2,
+      "blob_read_succeeded": true,
+      "local_app_authorization": false
+    },
+    "host_public_sync": {
+      "passed": true,
+      "documents": 2,
+      "http_requests": 8,
+      "statuses": [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "remaining_last": 5,
+      "reset_utc": "2026-11-08T10:05:17+00:00",
+      "automatic_retries": 0,
+      "full_target_directory_attempted": false,
+      "evidence": "preparation-github.json"
+    },
+    "dns": {
+      "host": [
+        {
+          "address": "28.0.0.18",
+          "is_global": true
+        }
+      ],
+      "docker": [
+        {
+          "address": "2001:2::9",
+          "is_global": false
+        },
+        {
+          "address": "28.0.0.18",
+          "is_global": true
+        }
+      ],
+      "docker_result": "UNSAFE_URL",
+      "docker_http_requests": 0,
+      "global_dns_or_proxy_changed": false,
+      "interpretation": "Host resolution passes current public-IP validation; Docker includes a non-global IPv6 and is rejected. Underlying DNS/proxy cause not established."
+    },
+    "local_app": {
+      "available": false,
+      "connected": false,
+      "blocker": "Complete App configuration and credential encryption key absent"
+    },
+    "full_31_file_directory": "NOT_RUN_THIS_PREPARATION; previous two GITHUB_RATE_LIMIT failures retained"
+  },
+  "boundaries": {
+    "human_samples": 0,
+    "paid_model_calls": 0,
+    "real_github_writes": 0,
+    "push": false,
+    "remote_deploy": false,
+    "v02_started": false,
+    "database_reset": false,
+    "personal_chrome_modified": false
+  },
+  "input_sha256": {
+    "services/api/app/api/auth.py": "8a07a801ea4fe8fe6f2e2bec3bcd5dac5c3a3c3f576b9cd2da863dba84994d89",
+    "services/api/tests/security/test_password_auth.py": "f426afd4d20ffb020f9246130169d9246643161af7beaf781d6597dca1df840d",
+    "services/api/tests/acceptance/v011_connections.py": "e5ba1ae105b2d8e1f0b61712e1f28f9aca972544300aac30aaf600d797f8b9f2",
+    "specs/001-personalized-learning-loop/contracts/openapi.runtime.json": "1d2532c68642298242ed9c57ae73bc8da57794d49f431536cfec79e47ccdface",
+    "packages/shared/src/api/schema.d.ts": "b5bf090166a966ac2acfe50834a3ab0dea685614f72f3b9257b146a3ec13cf70",
+    "apps/extension/.output/chrome-mv3/manifest.json": "ba1cbab5e5fcd00c3ae4d7e7658b6e35b926c0581d2209e6e1248637fc408515"
+  },
+  "next_action": "User loads/reloads personal Chrome extension, registers their own account and follows v0.1.1-user-trial.md; auto work stops awaiting feedback.",
+  "final_readiness_check_at": "2026-11-08T09:39:24.883227+00:00"
+}

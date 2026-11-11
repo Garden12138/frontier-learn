@@ -1,0 +1,112 @@
+{
+  "observed_at": "2026-11-08T09:26:42.359Z",
+  "mode": "ACTUAL_LOCAL_RUNTIME_PASSWORD_ACCOUNT_AUTOMATED_NOT_HUMAN",
+  "checks": {
+    "registration_and_recovery_download": true,
+    "no_cloud_model_or_mock": true,
+    "goal_and_plan": true,
+    "web_extension_same_password_account": true,
+    "gqa_real_html_selection_and_location": true,
+    "real_docker_worker_completed_guide": true,
+    "source_boundary_assessment_and_confirm": true,
+    "draft_download_and_low_strength_evidence": true,
+    "web_reads_extension_session_and_draft": true
+  },
+  "requests": [
+    {
+      "route": "/auth/me",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/auth/options",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/github/status",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/settings",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/knowledge",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/goals",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "route": "/plans:generate",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "route": "/sessions",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/sessions/add659d8-2df2-4644-964b-72a9a62e6313",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/artifacts",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/knowledge",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/plans/2b8c120c-486d-4e0a-88cc-618650b4016b",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "route": "/auth/me",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "route": "/auth/me",
+      "method": "GET",
+      "status": 401
+    }
+  ],
+  "human_samples": 0,
+  "paid_model_calls": 0,
+  "remote_writes": 0,
+  "github_status": {
+    "available": false,
+    "connected": false,
+    "login": null,
+    "install_url": null
+  },
+  "gqa_source": {
+    "url": "https://arxiv.org/html/2305.13245v3",
+    "section": "S2.SS2",
+    "characters": 579
+  },
+  "plan_revision": {
+    "before": 1,
+    "after": 2
+  },
+  "passed": false,
+  "failure": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 200\nReceived: 401",
+  "synthetic_account_removed": false,
+  "subsequent_cleanup": {
+    "completed": true,
+    "method": "Exact plan ID -> synthetic prep account assertion -> application delete_internal_data; no other account touched"
+  }
+}

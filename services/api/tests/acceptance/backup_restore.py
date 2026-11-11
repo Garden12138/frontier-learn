@@ -20,6 +20,8 @@ from pathlib import Path
 from typing import cast
 from uuid import UUID, uuid4
 
+from alembic.config import Config
+from alembic.script import ScriptDirectory
 from cryptography.fernet import Fernet
 from httpx import ASGITransport, AsyncClient
 from pydantic import SecretStr
@@ -38,6 +40,7 @@ from tests.planning_fixture import generate, make_goal
 
 ROOT = API_ROOT.parents[1]
 COMPOSE = ["docker", "compose", "-f", str(ROOT / "infra/compose.test.yml")]
+SCHEMA_HEAD = ScriptDirectory.from_config(Config(str(API_ROOT / "alembic.ini"))).get_current_head()
 
 
 def command(args: list[str], *, content: bytes | None = None) -> bytes:
@@ -161,8 +164,9 @@ async def verify(
             goals = await client.get("/api/v1/goals", headers=authenticated)
             assert goals.status_code == 200 and goals.json()[0]["id"] == goal_id
             async with app.state.sessions() as db:
-                assert await db.scalar(text("SELECT version_num FROM alembic_version")) == (
-                    "0009_real_connections"
+                assert SCHEMA_HEAD is not None
+                assert (
+                    await db.scalar(text("SELECT version_num FROM alembic_version")) == SCHEMA_HEAD
                 )
                 connection = await db.scalar(select(GitHubConnection))
                 assert connection and connection.encrypted_token
@@ -234,7 +238,7 @@ async def run() -> dict[str, object]:
         return {
             "observed_at": datetime.now(UTC).isoformat(),
             "result": "PASSED",
-            "schema_head": "0009_real_connections",
+            "schema_head": SCHEMA_HEAD,
             "restored_tables": tables,
             "dump_bytes": len(data),
             "dump_sha256": hashlib.sha256(data).hexdigest(),

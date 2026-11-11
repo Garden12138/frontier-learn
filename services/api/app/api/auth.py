@@ -121,6 +121,7 @@ async def me(user: CurrentUser) -> UserResponse:
 
 @router.post("/logout", status_code=204)
 async def logout(user: CurrentUser, db: Db, request: Request) -> Response:
+    """Revoke the current session. Only cookie-authenticated logout clears the Web cookie."""
     await db.execute(
         update(AuthSession)
         .where(
@@ -140,7 +141,10 @@ async def logout(user: CurrentUser, db: Db, request: Request) -> Response:
     )
     await db.commit()
     response = Response(status_code=204)
-    response.delete_cookie("frontier_session", path="/api/v1", httponly=True, samesite="strict")
+    # Bearer clients have a separate session. Their response must not clear a Web
+    # cookie for the same host (cookies are shared across local API/Web ports).
+    if request.headers.get("authorization") is None:
+        response.delete_cookie("frontier_session", path="/api/v1", httponly=True, samesite="strict")
     return response
 
 

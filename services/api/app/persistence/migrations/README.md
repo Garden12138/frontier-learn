@@ -64,7 +64,7 @@ UTC 每日模型预算/调用记录和逐轮云处理授权。已有会话方法
 这些测试只使用可丢弃库；部署数据库仍需另做备份恢复演练。
 
 实际备份恢复工具：`FRONTIER_TEST_DATABASE_URL=... uv run python -m tests.acceptance.backup_restore`。
-仅允许根 README 所列本机 Compose 测试连接，创建两个新库执行 pg_dump/pg_restore，验证
+仅允许 `docs/manuals/LOCAL_DEPLOYMENT.md` 所列本机 Compose 测试连接，创建两个新库执行 pg_dump/pg_restore，验证
 学习导出/原密码/加密凭据后清理新库；不覆盖现有库。它不作为生产恢复命令。
 实测证据与正式恢复边界见 `docs/evidence/release-verification/README.md`。
 
@@ -76,3 +76,17 @@ V0.1.1 沿用该 schema，仅扩充 question JSON；无新增列。回退至 000
 必须先备份并停止 API/Worker、切换匹配应用版本；再次升级不能恢复被删数据。不可对真实库
 运行本验收的降级命令。`test_populated_0010_rollback_preserves_0009_boundary_question` 在隔离库
 实际验证带数据回退、0009 有边界题时再升 0010、metadata check 和当前 API 读取。
+
+## V0.1.1 本地准备补充（2026-11-08）
+
+本次跨端注销修复只改变 HTTP Cookie 响应，不增加迁移、数据库列或 DTO 字段。
+日常库保持 `0010_concept_check`；回退该修复只需部署匹配的旧 API 代码/镜像，
+不要为此降级或重置数据库。新的本机数据卷与可丢弃测试库分开，未回滚已有个人数据库。
+
+
+## 本地工程整理（2026-11-11）
+
+恢复演练工具现读取 Alembic 实际 head，避免将 0010 备份误判为旧 0009。
+`tests/integration/test_backup_verification.py` 覆盖当前 schema/密码/密钥/导出一致性及
+篡改导出的拒绝；真实 pg_dump/pg_restore 在两个新建临时库复验，未修改日常资料库。
+本轮无新增迁移或产品 DTO 变更；结果见 `docs/acceptance/LOCAL_AUTOMATED_ACCEPTANCE.md`。

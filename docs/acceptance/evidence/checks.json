@@ -1,0 +1,1204 @@
+{
+  "说明": "本轮真实执行；历史结果不累计；完整日志和JUnit保留在临时目录。",
+  "开始提交": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+  "被测最终文件sha256": {
+    "infra/local-trial.env.example": "a9588d4122f1db6758a9137eb3fb1c2e6b4a33466702ba2d9ba1eeffb52ba145",
+    "scripts/check-repository.mjs": "a291345b640b6a5aa0364ac8a5697b4215957401a2b786e6d129d1f3b76b3081",
+    "services/api/tests/acceptance/v011_connections.py": "e5ba1ae105b2d8e1f0b61712e1f28f9aca972544300aac30aaf600d797f8b9f2",
+    "services/api/tests/integration/test_backup_verification.py": "f06d8f8fe83f442db2e82b4f093112e3d2183e22e29848735d395ab6b7421902",
+    ".gitattributes": "ce638836083de66298b678e79142017e6bb22ea509627f088a03a25605b124e7",
+    ".gitignore": "89eeceae3e779252bada10f84f52df6ad03d034498b5c511544e2978a1f96bd4",
+    "apps/extension/entrypoints/background.ts": "94b0a69df08a8841166ad3c2341c20ff98ba8da25f6f50c22602625594b68cd6",
+    "apps/extension/entrypoints/content/extract.ts": "abc79f3a2618dd2e9e99713a4bd86097ef4be95b44d943ff701974a7c4dc2851",
+    "apps/extension/entrypoints/sidepanel/index.html": "5668e05f1233c26f5ebf49b26e2e13776115676fe8d565303a63cb7be6563391",
+    "apps/extension/entrypoints/sidepanel/main.tsx": "e9289efcc51eba350c3964b643817cb3d62bedaac31ddf009daf26591a20f776",
+    "apps/extension/package.json": "4cab7ff0a5a0a091782cf880c301115fc8e1db1c6bd1f1ba18b91f22a96202b7",
+    "apps/extension/src/adapters/arxiv.ts": "f9ab94cf874841fa8897986af6858f62379fa4e3d8fbc1bbaa379a6c16fe1a90",
+    "apps/extension/src/adapters/huggingface.ts": "f4625c30c5da4623bc2623420e37e37dbd850b2da54ae0a84778b9ffa50e8c79",
+    "apps/extension/src/adapters/index.ts": "59a648428a46b67efaadb87db99654344517afce19e96c5ab5e3ee032076df09",
+    "apps/extension/src/adapters/types.ts": "413290eed2c6da910577312717ee61a4d7f6bb2cc7e9c21513ac2a998e7b8fdb",
+    "apps/extension/src/features/guide/ConnectedGuide.tsx": "c17dead0fc1929620df25272f0e61b54093c71d2f30b181acd904ea0632d497c",
+    "apps/extension/src/features/guide/PagePreview.tsx": "480ecb271086edc6d59526716e0ac86273e85587713b62089c6caef2ca84e8ea",
+    "apps/extension/src/features/guide/SessionHistory.tsx": "a70a9526a86c7403d9b3637fd687bd45a21a3540e0f8449ea55b7995d772c25c",
+    "apps/extension/src/features/guide/current-page.ts": "8a048503a9518af8e21fd31475ed0019c3bbde80af47eda08acfbf033b34121d",
+    "apps/extension/tests/adapters.test.ts": "e56ec1be13b5660e58ef351cff71e0ce0ee52d4dd655f1eac53ab8350f1a83e8",
+    "apps/extension/tests/e2e/concept-check.spec.ts": "e0593624e854255146e6c96360dc87fbc53ca9f3670ba89398e0dc55006b1f2a",
+    "apps/extension/tests/e2e/current-page.spec.ts": "2f048b9b060f4d282564530013d3932a354e342eb5f4edd1690074de5261d4c9",
+    "apps/extension/tests/fixtures/pages.json": "6890286c03f4f5763fe401e8c5c9d99a60981e4329147988a98c428d2984b806",
+    "apps/extension/tests/live/mv3-real.spec.ts": "663420653b8a0f08671486f6a9682f6acb2cdd69acb5e63ed1d49acf8565dcad",
+    "apps/extension/tests/live/page-compat.spec.ts": "e10a2cf2c5e3e78c9ab766d5f83968ae89f73f5ae49bc73dad74ca5f9bcbc26b",
+    "apps/extension/tests/locator.test.ts": "53a673c88223a33397d140162b6751ae1b211732182cdb050dfc52242a873aa8",
+    "apps/extension/tests/manifest.test.ts": "45c35e41bd4df9872da4773961fdb3f5814bc13a70c823046191419385b521e2",
+    "apps/extension/tsconfig.json": "5174673fade17b7b86cba06c643b5723abe4e63b722ce9bb55c30b7dc7f515a9",
+    "apps/extension/vitest.config.ts": "2c8c7edc88606b92688de92185d8d25302701ecf2394d104ce9847927caa7d79",
+    "apps/extension/wxt.config.ts": "28ba53e9acccda66a88dbf5a654151de112bf26b75d82eab3cffb05e06b95117",
+    "apps/web/index.html": "9b95eed5cf0cccc7bb104bc9c8fb3951d00c75331367b9234eca2e3733da6cf0",
+    "apps/web/package.json": "6a64c6f8849187cb23d7c45b31f82bc74e9893430d9294f434b5cc2ff531cfb2",
+    "apps/web/src/App.tsx": "f31dbab255ed009c6e622c958f72f9bea2b285336f48cc85b4f345138616a591",
+    "apps/web/src/main.tsx": "b6951100f3d1d9e8ad5803fda1a9e985bf4b0d061d58f1830a8f1f46715dc9ee",
+    "apps/web/src/pages/ArtifactReview.tsx": "9d6abae5bc55c7fe0e9d9d63c3ec833addba9001a6481aaf1a278b2e6a3ce387",
+    "apps/web/src/pages/Assessment.tsx": "3f406bd2515a60b81a7fb997fb32171d8a699d4995249a930a9685d66af6d505",
+    "apps/web/src/pages/GitHubConnect.tsx": "9e18239e582b899d6f3d2821d80798e69e1b724eaaa2b7790b2ef5ecfac778f4",
+    "apps/web/src/pages/Goals.tsx": "9d9e07216907b1320cafe9f3a33cfb064c8d9f3dfe088f404c07307999862be7",
+    "apps/web/src/pages/ImportConversation.tsx": "ac9373bdc428216e6b16712cafb5f958a61b34de5876cfbf58a168ba16a96174",
+    "apps/web/src/pages/KnowledgeProfile.tsx": "83dd3c59b51eea2d55d56b82d6bb1b26f88d907923f32ee74814bb282a4b676d",
+    "apps/web/src/pages/KnowledgeSources.tsx": "141eff5016a64ff84f16a9a2b553819d1053a3c14c180febb32be5e858fe672a",
+    "apps/web/src/pages/Sessions.tsx": "23b6b7923ad99483e3da1e08480a9dff5c505df0dd65f0497d867efa3e652d2a",
+    "apps/web/src/pages/Settings.tsx": "eb25d8febad1764a04d2496014ff58a138f531b626b7ad906fb2e406f3d06c9e",
+    "apps/web/src/pages/Today.tsx": "96347a8ddafd09528b463b561b04322c565dd37c85f574df333970a8d56a77fc",
+    "apps/web/src/styles.css": "8281950632e5ff22b2fd5919844142d6898f905079874f87aac876bf5d97511d",
+    "apps/web/tests/App.test.tsx": "fdab649bc6d012711652840621176b2a7c2e32ad96280edb4baac8606039b6fe",
+    "apps/web/tests/e2e/conversation.spec.ts": "cabcd4dc8645e7a017224901773eb0bf8f01b8bd6f522e9017dbfe90e88aad85",
+    "apps/web/tests/e2e/learning-loop.spec.ts": "2fc8595367cc523db1f92659e8cccfb6165cab8efe4f200becb885c528b4ccba",
+    "apps/web/tests/e2e/planning.spec.ts": "d70d7335c186695dce3c1e2cfcbd13808bf5b57b227cd85f26aa53a8d648c904",
+    "apps/web/tests/e2e/real-connections.spec.ts": "05bfc6c1115aa7059029f47d27c438205687ec564315049cb0c569bf06a46e6d",
+    "apps/web/tests/e2e/sources.spec.ts": "e27f40da6f39dadcc2cfce7c7de071056017d17eb78fa1c087eeae1858faa024",
+    "apps/web/tsconfig.json": "e6a54191d23834eb115ec5a6f5266374a1c918571a795957d9bfa82180135af5",
+    "apps/web/vite.config.ts": "b266095696e99b470937fb71323e1027844ef99f890d0568397524010310393b",
+    "infra/compose.test.yml": "5d5a5963492d2918696877af18959f09cb2797e91cfb978e72df8e838c1fab88",
+    "infra/docker-compose.yml": "5fe10bfe50bda38cc9f43f7ecbcffb6e12c149b29f35f00addbe3e588c513668",
+    "package.json": "9f192b16f11c5fb3b6141b5b010d27565b563b24f8ddf04bd171ded165f2a375",
+    "packages/shared/package.json": "2f851cbc425163fc4dddf6e49daed10fc080dee5782cb8aa6f201c15f7377ed8",
+    "packages/shared/src/api/client.ts": "fcb617326f6fe852767d66eba4ccf35acc076c61a94094928e257aabca9b09fa",
+    "packages/shared/src/api/errors.ts": "a5f076f26cddd1366aa350cddc9cf52ddccb397c5acd3a48504f0a518e48d268",
+    "packages/shared/src/api/schema.d.ts": "b5bf090166a966ac2acfe50834a3ab0dea685614f72f3b9257b146a3ec13cf70",
+    "packages/shared/src/index.ts": "65d2e732c71c21abb147983fb11c9c040a872a92663765e44e2dd6810dccd06a",
+    "packages/shared/src/styles.css": "0564fd27745a47f860f5900f4545eb102293fe59d921e56a09c4f5189cafd589",
+    "packages/shared/src/ui/AccountForm.tsx": "1b211bf1fd0305bf1a6b13fcb2d49bfdc16c528faaeecbe1826ba53b08303e9f",
+    "packages/shared/src/ui/AssessmentPanel.tsx": "e6a5d65072351b318cd1413b5456fed764b448595884f0689cba1cc9cfa92c27",
+    "packages/shared/src/ui/ErrorNotice.tsx": "d80f7e532f2acbc87b44506f16f7d579efa912d2b59dedb68f195160f9383e27",
+    "packages/shared/src/ui/GuideSession.tsx": "5ec5c05a591d63e6fdcb6fc6700c7a7e5fa8329a32368362fa8d4e1288b9411f",
+    "packages/shared/tests/api-client.test.ts": "095943878fcc2a69074f91bd5622ef0cca929412621f2b662c5f5017a57bd754",
+    "packages/shared/tests/health.test.ts": "c0dbcace1566a6e89892f5855562a2876356ccfd49808fa158e43cd5d79e5826",
+    "packages/shared/tsconfig.json": "d95933b4f2fb1912a251ee9901c7f0ad2e448bb08c2f2508fb1eea554ddbcf66",
+    "playwright.extension.config.ts": "f5f9710cfc4d82184c9083e65ff3362d10468f28d29b98c42133f0e4ec577588",
+    "playwright.live.config.ts": "e757cf08702c260c3cc42f0f65527281be6107dd2437e8e12aeefcae49a5980f",
+    "playwright.performance.config.ts": "ed8e338bf5f38190905e285592e690be285c104e4e31633530837788c117e942",
+    "playwright.setup.config.ts": "e37d5eafc76b457348829da7b1a6cdb194c22f91f068ccb97bfa6da6b1ac2a97",
+    "playwright.sources.config.ts": "cc494e89588450a420608d7c8e71c976fed18452118b205bcb27e5fddd650fcb",
+    "pnpm-lock.yaml": "b97440026ae4e135c5bc8946977fab44431ac9b25a2cc3b605783cf3f467aaad",
+    "services/api/.dockerignore": "093c912b356d6bfba649b5fb7335547fa9b6e5aa03af357483d17eea74c20a73",
+    "services/api/Dockerfile": "11d2003b391f6e6f3f6e1423fb1b1c559bcd362180c765f46fe58b29e0f8ce75",
+    "services/api/alembic.ini": "e1bc2f553fd3cd65250dc1c5df0479f2777667dee151d91ce38471adbb63b660",
+    "services/api/app/__init__.py": "da78b7a8edbdde49177fb9a70e4c45a7891ef4ae299d7963a88fcc5fa595ba55",
+    "services/api/app/ai/__init__.py": "6204366eb9302e0d645b0f50ffc1b7ca992232ea8a3958108f65f1d6fadb6b7a",
+    "services/api/app/ai/budget.py": "e40c1777757e45a8ac6af865a888571843528bd0a608cefead828cbfa6ab686f",
+    "services/api/app/ai/fake_provider.py": "2e8e430bb8a2dfa4d7c5d1df802aa7ac27503c7efc75d264c87e12a5a77a2b28",
+    "services/api/app/ai/openai_provider.py": "a49d87c66f777bb43be7139106c2411329ddb7cd6425cafe8e2d1d27c067a967",
+    "services/api/app/ai/provider.py": "b26c03ebc399f109929751eb8437a000d08594d0e0c0ea296f347a95d3be61d9",
+    "services/api/app/api/__init__.py": "5531f87e1471b3b2ecb0253181035ead682638dcf8de71a5a6c041dd0e0bbbcb",
+    "services/api/app/api/artifacts.py": "4b6db8f030aaa35f0e4dd38b2981bd6f78e14e607b9f9121b2391cb41a166df4",
+    "services/api/app/api/assessments.py": "e3e26cf3e0cfaf34cd2a00613dd5891f0a54ec80448637aad08fb27047a278de",
+    "services/api/app/api/auth.py": "8a07a801ea4fe8fe6f2e2bec3bcd5dac5c3a3c3f576b9cd2da863dba84994d89",
+    "services/api/app/api/conversations.py": "6e900567bb0ed1059da1748803c0ccb8a945d0b48fbef4f2ea54e5fefdda29d9",
+    "services/api/app/api/github_app.py": "e723f852caac4d168d11c15cbfbd2f4b04aff203007385aa6cd72ff3c1879a7c",
+    "services/api/app/api/goals.py": "b7ec0ee2b280fb12af4051839c66be31ddf409391548b6715a9450d3986b84ec",
+    "services/api/app/api/health.py": "de09d728ede5f4a08c004fa3f72117c073c90aed23a7464cc6035d228256a415",
+    "services/api/app/api/jobs.py": "96e5d044abd945893841b61c9dfb05b671a7504f91cb1048069fa36e8114d6ad",
+    "services/api/app/api/knowledge.py": "e49f0e970f18ccb709d194183893c24c3f727f80e391a814023df18436e80037",
+    "services/api/app/api/pages.py": "667c0a79ee2fedc50fd7cc6701f2d5c7090dbf91a6848bd8374701d66117aabb",
+    "services/api/app/api/plans.py": "b9a410f06c764ad3d88d5859375cf4cc682d0191cddb949ff55225cf335cad93",
+    "services/api/app/api/sessions.py": "0d253854fa3ec0623f9197a5b945c5f984f53fcfd9c4aa83ab97ca77d23715e6",
+    "services/api/app/api/settings.py": "ae2228e11d9758500c203988dc3cc4fb4cea0a70646327f5d0c756d1e2ce688e",
+    "services/api/app/api/sources.py": "162c21dbecf6a0c14662f487305291c27faf5da98ef177d672744d85e7319118",
+    "services/api/app/auth/__init__.py": "feb3ad2263a2ebc07668aca8610c3eeca3af3f6b269e1b6d2961ddc27465d75c",
+    "services/api/app/auth/dependencies.py": "dd4c74f7a220d103c82975b8102ed0660f4f96d2a28aa26d816f8e32efd60771",
+    "services/api/app/auth/passwords.py": "f04a0d189f4b95169c12d55861893ceab28b4bdf93b58b32b0d256652e06bef6",
+    "services/api/app/connectors/__init__.py": "d3323a2e86a6907a86d53bf33a78017971c113332437c4286a52adac84f8b6b0",
+    "services/api/app/connectors/base.py": "6ae6a90a4fd5a8382dd7437d0341a4af389ded67a05c38d5a178007f9897ce70",
+    "services/api/app/connectors/chatgpt_share.py": "3ea89772de66fe4007be22d94c2580788c33dc2d22d7864bb0fe0b324d2d7cdf",
+    "services/api/app/connectors/github.py": "25d5760011ace6cce147232f199a85af8bc8f608ba2d8e5681625b6510b50ae6",
+    "services/api/app/connectors/github_app.py": "695c1c38c7409497c4fcbd04806c6ad5dd9218c631bcc03af5ca28aa28496ce1",
+    "services/api/app/connectors/github_writeback.py": "49f8f9862b39b00a6671449d2c63e341e287945436c6d987c116a3f7a5f347ef",
+    "services/api/app/core/__init__.py": "8c1787e82ff142036ecbd78ab52815350a7b52b42cbbb00fd76e3276be68e096",
+    "services/api/app/core/config.py": "a51610f6177baf138014ed5475a52636708988a1e40f12736e82b1d256bc0842",
+    "services/api/app/core/errors.py": "0735f5552207709f7b46ca8c36f6c9cef013f8e3bec9c6ec2b39692152023bf5",
+    "services/api/app/core/logging.py": "7de636720c5aa2863732279fc7e83a2d1ee6f7c587d2508e89d188c27021b3b0",
+    "services/api/app/core/request_limits.py": "3a001c19cd1148dc51dc45451ab7fd8c50692f181342b43d27fbacc1d439cd15",
+    "services/api/app/core/security.py": "7031f5a3f3da3367ff164d8f85bd5d86d5d2be3ab25d81acd5c1b9e44489fc8f",
+    "services/api/app/domain/__init__.py": "dcd41cf91a857140626b7909d2db8c54f54fc79b15c88c1249a512abf35e6a11",
+    "services/api/app/domain/artifact_types.py": "d6b4fa7cd93f6dbf1444f0f1a0b0200a19218df544e56e01fb66865100feccae",
+    "services/api/app/domain/artifacts.py": "a2459779f091260b74551c9146b4e99ec8d740a45146b8828aa01f9b6238969f",
+    "services/api/app/domain/assessment.py": "a235be577318636211739eaf955014f87243289d8b6355459a37a3723fbc6c69",
+    "services/api/app/domain/assessment_types.py": "806dedcc5c609065e7546742cd76cfae7d96f28436544fbbe6c8c14b602db1c4",
+    "services/api/app/domain/concept_assessment.py": "277ed94be77e80220c710770fc19c889e1a88607d0d1399324ed9874ee619ba4",
+    "services/api/app/domain/conversation_learning.py": "f402009ac95bf656f8b2fca0d27874e91c15a64b8243d010ce1bd06674da1dac",
+    "services/api/app/domain/conversation_types.py": "e5320be73c37cc55d76d21ac0f65e9cf5e222cc4f7264badcb423f0dfc12a8dc",
+    "services/api/app/domain/data_portability.py": "328bbdabf9229fc1d1a38a5a33f6c830d58264b07fd4d5e7893965b27bf8180f",
+    "services/api/app/domain/goals.py": "5e48362d54c17ba1511408c12296f5c2818f943506b7ba07eb55b1ddd1e1920f",
+    "services/api/app/domain/knowledge_policy.py": "402d0d02469239a614990f20c15be3be998d54741fb2fd8544b50dc7d930ca81",
+    "services/api/app/domain/knowledge_sync.py": "45fffbd7aa5daf09560f5f269fce431adb9c8e6af18972e4ff5275281a82824e",
+    "services/api/app/domain/planner.py": "7bfb3df11d69c6f879146f855ce6ad978e76b2b3d4ee505be84bf5ded58ea108",
+    "services/api/app/domain/planning_types.py": "0b1abd416720fd05dc95ad854f6d0d3b50d685dac87163f057a08f36c721e6ed",
+    "services/api/app/domain/plans.py": "769b6a03dacc447cdcc4924c47455c0b478c8d9e34e1572f8888ad91120ae281",
+    "services/api/app/domain/replanning.py": "c35d40c59f1d548be6a7b92413dd184ec8ba650e18cc5f59c8d55756bb477ce9",
+    "services/api/app/domain/tutor.py": "7217b02adb53871454dc6d520f6aa52e916f5c8c3ed7e2b9468280292a6ac1f5",
+    "services/api/app/domain/tutoring_types.py": "8e11bbf4f29d0ff167363ca3dd1125d01b35b8363166b874cd19a4044c39edc5",
+    "services/api/app/domain/writeback.py": "d23b68925b17591ca6243445be4d66f8fc7ac8bfbb2fbc0a809929e97d664736",
+    "services/api/app/export_openapi.py": "42c56f0e11cccf8f2b16c1034bf375688783958462ce1c6570d4cc77fe2f1fd8",
+    "services/api/app/ingestion/__init__.py": "ad8cb189c96571aaf90d0618d3f79e947892f041718127d82eaa67460ec0b344",
+    "services/api/app/ingestion/evidence.py": "1f6ddaa2812ecafb32757fdf2aeca2362b18e660cfb6fe0c2d2c019c9b433eb3",
+    "services/api/app/ingestion/http_reader.py": "05ea967b8034f43b3768eb55e3e1e1f13a29218dbf8d21610e525aafd0712e92",
+    "services/api/app/ingestion/markdown.py": "e59ee34a39aed51fb753996d72205c0381a6773212db90c96206da74708b5964",
+    "services/api/app/ingestion/safe_fetch.py": "1eb5bb8928e07942c85e4de0162d1c0c5c05b2a65951b75fe9d0a5229a6e8d7f",
+    "services/api/app/jobs/__init__.py": "abfc5c41f60d39279ac9b44facaae81a625cdd610054781701247a25266f8180",
+    "services/api/app/jobs/service.py": "31bda9663b4a709870bac0139590d1d20019a7ce073e8fcd845ab9e20b58e5ca",
+    "services/api/app/jobs/worker.py": "22ece1ebaa87da1c494065aae62a636d4e00a27f6459416dbb046219894502a8",
+    "services/api/app/main.py": "517fb6d117bf09f875afd26e24a03ac0098465ae8026087d4e2b3828f81ef7fc",
+    "services/api/app/persistence/__init__.py": "7b1a818e6f4cd6c7db1f3cce3120cf7d279ffe10dd5fba3124b247f4d8ce99b9",
+    "services/api/app/persistence/database.py": "79be1b65c8e9ae15c74139594b871e7ca228d40759a84a9960b6093bed7975b6",
+    "services/api/app/persistence/migrations/env.py": "214b2e36835089a87d6791c3022a931385b12602420cc7de1646d8da2d4961ac",
+    "services/api/app/persistence/migrations/script.py.mako": "34d6b7b9f64100da1c2854833cdb20f53cf0ea6c7500f0953ad3cf02b5857976",
+    "services/api/app/persistence/migrations/versions/0001_users.py": "9286a46439b6741b4313ceec5f8691f2c797706c3d3a8e04aac7014a0caed774",
+    "services/api/app/persistence/migrations/versions/0002_foundation_foundation.py": "5538264e6b4c096fc18d5507347df27c6d1bb82e259f739adee093e6e9170ffe",
+    "services/api/app/persistence/migrations/versions/0003_knowledge_knowledge.py": "655ddd8e77d60b4e6ad0fe182fe5c4e967abb44972e87f57b63e63ca1fc41d03",
+    "services/api/app/persistence/migrations/versions/0004_planning_planning.py": "c3d0802c5946fb07052c770ddeea6f5c1ad431944dddb070d0b537a8722eac30",
+    "services/api/app/persistence/migrations/versions/0005_tutoring.py": "fd284bf559de49324f9d9f820def01e8ea6ffc8f0f5f8942cee3c86d8e5808ba",
+    "services/api/app/persistence/migrations/versions/0006_conversation.py": "51351a79baa1c84928ee964775ef20b146275b1b3f4f9ce2a5d2d08b205dae1b",
+    "services/api/app/persistence/migrations/versions/0007_assessment_artifacts.py": "5db18c52a0ee7e0928a7439172cac88f1bc9bc7d37e1ea7f2102004b495afdbb",
+    "services/api/app/persistence/migrations/versions/0008_ownership.py": "62adb9b849193070e5446748857d23602cb029ac67caf83d0169ccb79749bd55",
+    "services/api/app/persistence/migrations/versions/0009_real_connections.py": "ec872e88f12bb4c7cba1b3f8d73d72e316194b021b6c633da7a277bc73d58550",
+    "services/api/app/persistence/migrations/versions/0010_concept_check.py": "b49144cc5a39b70d54e689efb188f8dabc9bee8cfece8b5e103ec1f51f66249a",
+    "services/api/app/persistence/models.py": "d4c92e10a494787046101ed14e94e3171988d2e0d4739c098cb0c9fdb425f9b3",
+    "services/api/pyproject.toml": "ef7692981d216ee9c2dbbff7645ea505d06801ab4d2953125c0236b3503b13f5",
+    "services/api/tests/__init__.py": "1cf883c47152a779ad77f9196910b9f669d671a0ce4d555c9180747e286b054b",
+    "services/api/tests/acceptance/__init__.py": "8f27f9df0cd34d6b5cc132728794ff72d82112815e0b53a8c18ce796afa6c55a",
+    "services/api/tests/acceptance/backup_restore.py": "beacde8c4a08590095fa5b654321a49138675b9e37ca11104270de9d429b3949",
+    "services/api/tests/acceptance/v011_live.py": "deb1091367ec840bc88adfa7e7b8731389b63293c5d1f1bdee3ee317eafa71f9",
+    "services/api/tests/browser_server.py": "3a68ea5356a2b9b7acd30b360ec3de57d486717e9b5fc6ac6be456e51c380b89",
+    "services/api/tests/concept_fixture.py": "cf83da6d6cee38941375532cd8460e40dbdf8b5161c025eb487779cf72e833d8",
+    "services/api/tests/conftest.py": "93570bf67a2cc3cf2b9aa27ab7546dbbc4f0d363b6fab0cee4f82beb22668754",
+    "services/api/tests/conversation_fixture.py": "60c5a87c4a3f22ba2177f9c76cdf68403e5cf5534693642bcf5bd4bfa177088f",
+    "services/api/tests/fixtures/real-notes/chapter03_attention.txt": "90b0fdfe41e1b644adc13b96a2821204a354c626ac23ef8e4b98ed319f0ca648",
+    "services/api/tests/fixtures/real-notes/provenance.json": "20b815ce5bef428ea9587dae2747b0f02478c08310dbb401581962adc85c1b4b",
+    "services/api/tests/fixtures/real-notes/self-attention.txt": "6dad523580b27ee37b026a7cf04c298ed245c6a90d6ee9d76d5f1d75c9b413d5",
+    "services/api/tests/github_app_fixture.py": "431f57beb8ce1127a0f36269dd247d63e129e0951d156137e3249e2af1ec9436",
+    "services/api/tests/github_fixture.py": "4443f8d3411c147ef8ab3a6420f97f0123bdf41d4d76933cb564516bad87c089",
+    "services/api/tests/integration/__init__.py": "f9af0795351e5c09abeab2e020914a7178b9a78b0e8fb6f7725332ca4eb41e7f",
+    "services/api/tests/integration/test_attention_trial.py": "2fecc8aa52c012e6180e794d028f2ea66f8fe4312d7d67107b9380ef0f3949c2",
+    "services/api/tests/integration/test_concept_check.py": "36ba19cb220dc7a0431ce85691f5e2c9f40b99815fd55cf74abf1b80dab26d6c",
+    "services/api/tests/integration/test_github_app.py": "cbb4a156f6df92f20440876d6075d91c1bee4fb83ee513d84195225a8fb72c5b",
+    "services/api/tests/integration/test_github_ingest.py": "49976c8e430e9736526dd7464f92ccfaf00c9df6f427008fd00b517ea30d43ec",
+    "services/api/tests/integration/test_ingest_boundaries.py": "38e94f8392de17bdb037999708bbe5bd88523a3558d4f9b0dbb72f80a1b54726",
+    "services/api/tests/integration/test_learning_loop.py": "ffe1ea4caed533a229b239740a9c8c6a17ecfa60eb005a7c94afda1393d29bc3",
+    "services/api/tests/integration/test_model_budget.py": "28f3a0d2a92bd45a34ecaebd581987d87e73267c40ee9fbc466c9406ff389978",
+    "services/api/tests/integration/test_portability.py": "dce69097828cc630f91408462f09194b570fc1f3568e9fc47626e39542acc890",
+    "services/api/tests/integration/test_writeback_safety.py": "b9d9c7278d34f2b520b13bea232fbf82ba105c3b392e285f4d89407570956291",
+    "services/api/tests/planning_fixture.py": "f42d00e63c72b9e5adcb63d0c51986dae35faf8b91a53d716342f00906b0a3a2",
+    "services/api/tests/security/test_authorization.py": "783868c0e3780890b999c59cb2bf7400269d5f4ea10d9b07168eca639da43f7e",
+    "services/api/tests/security/test_cookie_sessions.py": "4c8c61fb28a661915b0293caf34fd6e0019560ae3f14d46863a1023610a07e82",
+    "services/api/tests/security/test_password_auth.py": "f426afd4d20ffb020f9246130169d9246643161af7beaf781d6597dca1df840d",
+    "services/api/tests/security/test_pinned_http.py": "3833280166278dcdbb4bef118088d6a5cb69848e168ddae325850afe8d04180b",
+    "services/api/tests/security/test_prompt_injection.py": "c101beaa438bbbc301162d0a1017bb4da0dfbe1f66eeb6483ad8d58150e9bba4",
+    "services/api/tests/security/test_request_limits.py": "5be64bd9fd6ce6e85011b0ad8acb88ba833c2051016a8a2e6e8379334138331e",
+    "services/api/tests/security/test_security.py": "e994cc07d9f1cdcb4547418dcba3db1eb5494299cc8605d4a63778ea07778130",
+    "services/api/tests/test_citations.py": "4459ebfde688f7e83b1c9ba5f19d31c033eb90971ad946708c6da1ccbc8ef8a7",
+    "services/api/tests/test_concept_quality.py": "b20599943ceebd1bf4143dab61b6ab04927df3b2a1fd3a39b6d53bb7a4bf9c7f",
+    "services/api/tests/test_github_connector.py": "823130b32a24e1206166feb0ba3494b1120994e98f7a1d9ffacdc2991dd18c36",
+    "services/api/tests/test_health.py": "2ecfb6bd3bc5ec835369344737833baf49f495e76d5ef5541dd549061b4a3395",
+    "services/api/tests/test_jobs.py": "8c2ae7cc8a9dfb9e0b06878740395d509549dcc460e35ab4565929dd1ebf46bd",
+    "services/api/tests/test_migrations.py": "c205fbd295458120ecad54b5a7b44c7d3042b34632690cab4bc828574b95bf4c",
+    "services/api/tests/test_openai_provider.py": "30fb4f08045634206c16d648646446d3e1e017e5ea9036fb2703a93801a14e0c",
+    "services/api/tests/test_planner.py": "622bc39cff32388605b04406e136ce64801dab569c2868cdafb6bbc688e17814",
+    "services/api/tests/test_provider.py": "a5731cbb572dd64c34e58de5d4615c84bc665479d7eda88dde3e1851eda187ee",
+    "services/api/tests/test_share_import.py": "179d290838e7f1bbe9c894d53c37060bc37245f3bc9084e96a052c71ab385fe4",
+    "services/api/tests/writeback_fixture.py": "d860dda79b16bb800ad7199579d274f636a78eaa2ad7db848cc8baf98e7f3288",
+    "services/api/uv.lock": "46da379efe224da637b70f2e11cb1166d3ee5925a997ad160e7a962ef923a494",
+    "specs/001-personalized-learning-loop/contracts/openapi.runtime.json": "1d2532c68642298242ed9c57ae73bc8da57794d49f431536cfec79e47ccdface",
+    "specs/001-personalized-learning-loop/contracts/openapi.yaml": "df5436db3d4ebe1f0a8baa31b69229ebc48fbfb2f695a45c6aae6b6136d73196",
+    "tests/performance/cached-workspace.spec.ts": "9dca57cb77e2719d4a7c06040c267cead250760f117ffb7810cfba6aa78726e1",
+    "tests/setup/smoke.spec.ts": "7c8a4dc14e42fad49d9d7f73aaa138c8cbe4c88bda96ce3d3b4c72788ef934fb",
+    "tsconfig.base.json": "3b130ca159e56195682da8d3630cf8b86071f0122c054a09100a8604f39adb7b",
+    "tsconfig.json": "593532149469e48a205e2a3fe6706a09a6d547ab94d9be2e03f4302d85b94592"
+  },
+  "相对初始工作区的受检输入变更": [
+    ".gitignore",
+    "scripts/check-repository.mjs",
+    "services/api/tests/acceptance/backup_restore.py",
+    "services/api/tests/integration/test_backup_verification.py"
+  ],
+  "Playwright": "Version 1.64.1",
+  "Chromium_executable": "/Users/cengjiada/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+  "checks": [
+    {
+      "label": "types",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "types:check"
+      ],
+      "started_at": "2026-11-11T02:05:47.756752+00:00",
+      "seconds": 1.29,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "921f545878140101773df5d11ab86d5f34f1d4f7e3048674c8c77274ed92ba42",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "lint",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "started_at": "2026-11-11T02:05:47.756874+00:00",
+      "seconds": 2.85,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "b9d9d1235cd06598b69cfbb909b84c9a55003f6064321da59818c50bac2cb817",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "ruff",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:05:47.757011+00:00",
+      "seconds": 0.16,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "unit",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "started_at": "2026-11-11T02:05:47.757038+00:00",
+      "seconds": 3.69,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "39f32c608462b973473ea05949895677a16f45baefb678f2deabbcbbbc9d11d4",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      },
+      "tests": {
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "typecheck",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "started_at": "2026-11-11T02:05:47.758809+00:00",
+      "seconds": 5.26,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "37cda34af80e4802a0c7cc89dd9afec693da7499bffd07ef8ed22449c4f5c586",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "format",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:05:47.761450+00:00",
+      "seconds": 0.15,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "0e25936f296d6783c9ed43fd68bade26a8911c0a0482012f92297f6a797443ff",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "openapi",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "app.export_openapi",
+        "--check"
+      ],
+      "started_at": "2026-11-11T02:05:47.763565+00:00",
+      "seconds": 1.47,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "mypy",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/mypy"
+      ],
+      "started_at": "2026-11-11T02:05:47.763943+00:00",
+      "seconds": 6.53,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "d144f4b429956a53bf5c6beb1fc2bbd224cf5a2307ff13c3ca35f06e02685c53",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "pytest",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "--junitxml=/private/tmp/frontier-upgrade-20261111/checks/pytest.xml"
+      ],
+      "started_at": "2026-11-11T02:05:52.668724+00:00",
+      "seconds": 122.28,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "c7d8b8383d6cb11a0bc66cc7ccef0700c8838eae83f4740b3b48b6ff87a341ee",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 216,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "build",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "started_at": "2026-11-11T02:06:00.658493+00:00",
+      "seconds": 3.25,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "72283f4496a03dcee4ce116e6ddfce39ca668d99482a6329ed616064179b7d09",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "setup",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test:setup"
+      ],
+      "started_at": "2026-11-11T02:06:33.767588+00:00",
+      "seconds": 4.64,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "39812c4f8c4b5dbe85fd92459b0024445520f89b52311d2bac48355f9cc68580",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "live-pages",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test:live-pages"
+      ],
+      "started_at": "2026-11-11T02:07:43.754096+00:00",
+      "seconds": 40.73,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "854c87a99a6686697263c84175ca94662a40353f1f29d44af3dee0c9b238b7f0",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_LIVE_PAGE_CHECKS": "true"
+      },
+      "tests": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "backup-red",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "tests.acceptance.backup_restore"
+      ],
+      "started_at": "2026-11-11T02:09:25.455889+00:00",
+      "seconds": 3.0,
+      "exit_code": 1,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "8cba21462738b6eeb5933e74dc3ea155b04be952321e87c8e48bf49e807369b7",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      }
+    },
+    {
+      "label": "backup-regression-red",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/pytest",
+        "tests/integration/test_backup_verification.py",
+        "-q"
+      ],
+      "started_at": "2026-11-11T02:09:43.631354+00:00",
+      "seconds": 2.71,
+      "exit_code": 1,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "d059af5447a0ed6d0049be091dac5d95762ed8c52ab672704520e9f7e6ba57ad",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "pnpm-install",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile",
+        "--offline"
+      ],
+      "started_at": "2026-11-11T02:09:58.105208+00:00",
+      "seconds": 2.04,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "0083bd88acd9cbaa3702d42c401d0d3d62abf8a92a9a5478b52b8149acc159a1",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "uv-sync",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "sync",
+        "--frozen",
+        "--offline",
+        "--project",
+        "services/api"
+      ],
+      "started_at": "2026-11-11T02:10:01.885362+00:00",
+      "seconds": 0.07,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "628945e08277754902648f2e8ffab08fdf1c08da91c3498b5edd3d256045f18e",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "compose-trial",
+      "cwd": ".",
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "frontier-learn-upgrade-check",
+        "--env-file",
+        "infra/local-trial.env.example",
+        "-f",
+        "infra/docker-compose.yml",
+        "up",
+        "-d",
+        "--build",
+        "--wait"
+      ],
+      "started_at": "2026-11-11T02:10:06.119612+00:00",
+      "seconds": 73.35,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "cb76fea52c0e36efaa2e962f7ba238ca45a0173dec890403fbfb2431437061b8",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_DB_PORT": "55434",
+        "FRONTIER_API_PORT": "18003",
+        "FRONTIER_PUBLIC_API_URL": "http://127.0.0.1:18003",
+        "FRONTIER_PUBLIC_WEB_URL": "http://127.0.0.1:5177",
+        "FRONTIER_ALLOWED_ORIGINS": "[\"http://127.0.0.1:5177\"]"
+      }
+    },
+    {
+      "label": "backup-regression",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/pytest",
+        "tests/integration/test_backup_verification.py",
+        "-q"
+      ],
+      "started_at": "2026-11-11T02:10:27.200513+00:00",
+      "seconds": 2.69,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "5e3abe1410e15df540f2b4903e34bd7afe69b059b8897bbbb779f25917dd5472",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "backup-restore",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "tests.acceptance.backup_restore"
+      ],
+      "started_at": "2026-11-11T02:10:58.569009+00:00",
+      "seconds": 3.32,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "27a5270e37ca27e1e75f5ca2421c3852eb86f30731f400e34fea85dbd37d2e0b",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      }
+    },
+    {
+      "label": "pnpm-install-standard",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "started_at": "2026-11-11T02:11:03.032029+00:00",
+      "seconds": 6.84,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "520d6bc36a9ba667554d71febe95913ee5dad45526203d18e652b0809720e166",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "uv-sync-standard",
+      "cwd": ".",
+      "command": [
+        "uv",
+        "sync",
+        "--frozen",
+        "--project",
+        "services/api"
+      ],
+      "started_at": "2026-11-11T02:11:06.839199+00:00",
+      "seconds": 0.07,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "1863d9c9f6fff9378f1e82bc30a03b9c4f339b86cd253ea6dbf5f59a164f7b3a",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "chromium-install",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "exec",
+        "playwright",
+        "install",
+        "chromium"
+      ],
+      "started_at": "2026-11-11T02:11:10.255938+00:00",
+      "seconds": 0.8,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "sources",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test:sources"
+      ],
+      "started_at": "2026-11-11T02:12:44.858354+00:00",
+      "seconds": 31.28,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "311eb430fec727b21c30f6db76fef38c1b8d804e4d50c768f784fc99453f2b88",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "extension",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test:extension"
+      ],
+      "started_at": "2026-11-11T02:16:07.208113+00:00",
+      "seconds": 20.89,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "65d3899591c0c04d79a1d6c8990ce8f109465543cf30652c8746dda9ec791315",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "pytest-final",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/pytest",
+        "-q",
+        "--junitxml=/private/tmp/frontier-upgrade-20261111/checks/pytest-final.xml"
+      ],
+      "started_at": "2026-11-11T02:17:13.204891+00:00",
+      "seconds": 118.85,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "28ceb632b6013bb771b99b16eab12ea16459f204f52aa5809a37b9ebdb26fafc",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 217,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "mypy-final",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/mypy"
+      ],
+      "started_at": "2026-11-11T02:17:14.367151+00:00",
+      "seconds": 0.52,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "a1051ec290fd198fdc01a84ce45195d00fd6617246598e305eb28ab300452773",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "format-final",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:17:14.367254+00:00",
+      "seconds": 0.06,
+      "exit_code": 1,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "94e69e862a99d2347cb064560d8f5e7ed090ae14226b62c657d2fcbd54db7ed3",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "ruff-final",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:17:14.367307+00:00",
+      "seconds": 0.06,
+      "exit_code": 1,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "2a849bc78464f13c6f317b96924e74c8d721a7e1982e45ea01b97306b06a8056",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "ruff-fixed",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:17:23.595425+00:00",
+      "seconds": 0.01,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "format-fixed",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:17:23.695642+00:00",
+      "seconds": 0.01,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "376c98847555bc08e6d0e81fe12f18c2e0f80f00d2279bb463c6b7c5f3d666c1",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "extension-daily",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "--filter",
+        "@frontier/extension",
+        "build"
+      ],
+      "started_at": "2026-11-11T02:17:23.793667+00:00",
+      "seconds": 1.36,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "a38d402f7e74c12b8e02873abf3522d7a6b5ff29b4b886a1690ce7915c69ee70",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_EXTENSION_API_ORIGIN": "http://127.0.0.1:18000"
+      }
+    },
+    {
+      "label": "compose-restart",
+      "cwd": ".",
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "frontier-learn-upgrade-check",
+        "--env-file",
+        "infra/local-trial.env.example",
+        "-f",
+        "infra/docker-compose.yml",
+        "up",
+        "-d",
+        "--build",
+        "--wait"
+      ],
+      "started_at": "2026-11-11T02:21:51.556005+00:00",
+      "seconds": 23.67,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "7920e7e92255caae8de0ed09e00a60258522d2412767527ec78bfea4bfc092c7",
+      "运行分支": "codex/local-trial",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_DB_PORT": "55434",
+        "FRONTIER_API_PORT": "18003",
+        "FRONTIER_PUBLIC_API_URL": "http://127.0.0.1:18003",
+        "FRONTIER_PUBLIC_WEB_URL": "http://127.0.0.1:5177",
+        "FRONTIER_ALLOWED_ORIGINS": "[\"http://127.0.0.1:5177\"]"
+      }
+    },
+    {
+      "label": "branch-core",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/pytest",
+        "tests/security/test_password_auth.py",
+        "tests/integration/test_learning_loop.py",
+        "tests/integration/test_writeback_safety.py",
+        "tests/integration/test_portability.py",
+        "tests/integration/test_backup_verification.py",
+        "-q"
+      ],
+      "started_at": "2026-11-11T02:23:27.144164+00:00",
+      "seconds": 44.21,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "6c3582f762e72bace1d344557614501852065883e178c5015ee4b96f10fc0304",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_TEST_DATABASE_URL": "postgresql+asyncpg://frontier:test_only@127.0.0.1:55432/frontier_test"
+      },
+      "tests": {
+        "passed": 32,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "branch-typecheck",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "started_at": "2026-11-11T02:23:51.832183+00:00",
+      "seconds": 10.7,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "8f4fee4cfe049e54d48351c2a35194952fdd7aaccf9311152c155302889b79e1",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-types",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "types:check"
+      ],
+      "started_at": "2026-11-11T02:23:51.832230+00:00",
+      "seconds": 4.54,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "921f545878140101773df5d11ab86d5f34f1d4f7e3048674c8c77274ed92ba42",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-lint",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "lint"
+      ],
+      "started_at": "2026-11-11T02:23:51.832231+00:00",
+      "seconds": 6.49,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "b9d9d1235cd06598b69cfbb909b84c9a55003f6064321da59818c50bac2cb817",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-unit",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "started_at": "2026-11-11T02:23:51.832562+00:00",
+      "seconds": 7.35,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "1a9f425047aa8e593345e64bc63e1a4975c34840e8bbfe163e0082a36ddd8e32",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      },
+      "tests": {
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "label": "branch-build",
+      "cwd": ".",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "started_at": "2026-11-11T02:23:52.987028+00:00",
+      "seconds": 8.17,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "6b0beccb35bfc34e3482e38d2143a3cb51689b39385c9cc11d3910f0fcdf71ef",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false",
+        "FRONTIER_EXTENSION_API_ORIGIN": "http://127.0.0.1:18000"
+      }
+    },
+    {
+      "label": "branch-ruff",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:24:24.663603+00:00",
+      "seconds": 0.05,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-format",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "started_at": "2026-11-11T02:24:24.802617+00:00",
+      "seconds": 0.01,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "376c98847555bc08e6d0e81fe12f18c2e0f80f00d2279bb463c6b7c5f3d666c1",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-openapi",
+      "cwd": "services/api",
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "app.export_openapi",
+        "--check"
+      ],
+      "started_at": "2026-11-11T02:24:24.899743+00:00",
+      "seconds": 0.7,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-repository",
+      "cwd": ".",
+      "command": [
+        "node",
+        "scripts/check-repository.mjs"
+      ],
+      "started_at": "2026-11-11T02:24:25.663778+00:00",
+      "seconds": 0.13,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "d7e8653a467708fa720eb0f482a97f24d13675bab3b30c68d34d6e0ac419338b",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    },
+    {
+      "label": "branch-whitespace",
+      "cwd": ".",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "started_at": "2026-11-11T02:24:25.856394+00:00",
+      "seconds": 0.02,
+      "exit_code": 0,
+      "git_head": "bdf9a8f9823916365545dc1387e86bbafe36db0c",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "运行分支": "feature/upgrade-chatgpt",
+      "环境覆盖": {
+        "FRONTIER_ENV": "test",
+        "FRONTIER_LLM_PROVIDER": "local_rules",
+        "FRONTIER_WRITEBACK_ENABLED": "false"
+      }
+    }
+  ],
+  "计数边界": "最终后端217；客户端26；setup3；Web8；MV3 4；公开网页11。不累计重跑。",
+  "外部付费调用": 0,
+  "真实笔记写入": 0,
+  "真人样本": 0,
+  "结论": "PARTIAL",
+  "Chromium": "Chrome for Testing 156.0.8078.4",
+  "整合分支": "feature/upgrade-chatgpt",
+  "仓库检查": {
+    "result": "PASS",
+    "files": 305,
+    "markdown_files": 51,
+    "local_links": 129,
+    "fixture_blobs": 2,
+    "ignore_rules": 6,
+    "secret_pattern_matches": 0,
+    "limitation": "静态常见模式检查不等同完整安全审计"
+  },
+  "公开笔记元数据": {
+    "repository": "Garden12138/notes",
+    "commit_sha": "5c7fa8f4153cd27b9aeb62dad10315578558c5da",
+    "tree_sha": "b80ef313bd9faf481080658d0f5901c98d6c320a",
+    "directory_files": 31,
+    "directory_bytes": 420382,
+    "scope": "只读元数据；不是应用容器同步成功"
+  }
+}

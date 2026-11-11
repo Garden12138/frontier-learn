@@ -8,6 +8,33 @@ from tests.conftest import TestDatabase
 PASSWORD = "test-only password with enough entropy"
 
 
+async def test_extension_and_web_logout_keep_other_client_session(client: AsyncClient) -> None:
+    payload = {"identity": "independent-client-logout", "password": PASSWORD}
+    registered = await client.post("/api/v1/auth/register", json={**payload, "client": "web"})
+    assert registered.status_code == 201
+    web_cookie = client.cookies.get("frontier_session")
+    extension = await client.post("/api/v1/auth/login", json={**payload, "client": "extension"})
+    assert extension.status_code == 200
+    headers = {"Authorization": "Bearer " + extension.json()["access_token"]}
+
+    # An extension response can change cookies for the same host, even across ports.
+    logged_out = await client.post("/api/v1/auth/logout", headers=headers)
+    assert logged_out.status_code == 204
+    assert "set-cookie" not in logged_out.headers
+    assert client.cookies.get("frontier_session") == web_cookie
+    assert (await client.get("/api/v1/auth/me")).status_code == 200
+    assert (await client.get("/api/v1/auth/me", headers=headers)).status_code == 401
+
+    replacement = await client.post("/api/v1/auth/login", json={**payload, "client": "extension"})
+    other_headers = {"Authorization": "Bearer " + replacement.json()["access_token"]}
+    web_logout = await client.post(
+        "/api/v1/auth/logout", headers={"Origin": "http://localhost:5173"}
+    )
+    assert web_logout.status_code == 204 and "set-cookie" in web_logout.headers
+    assert (await client.get("/api/v1/auth/me")).status_code == 401
+    assert (await client.get("/api/v1/auth/me", headers=other_headers)).status_code == 200
+
+
 async def test_real_account_cookie_extension_mock_boundary_and_recovery(
     client: AsyncClient, pg: TestDatabase
 ) -> None:

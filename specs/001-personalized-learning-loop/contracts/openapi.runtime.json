@@ -6053,6 +6053,7 @@
     },
     "/api/v1/auth/logout": {
       "post": {
+        "description": "Revoke the current session. Only cookie-authenticated logout clears the Web cookie.",
         "operationId": "logout_api_v1_auth_logout_post",
         "responses": {
           "204": {

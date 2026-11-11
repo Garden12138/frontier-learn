@@ -1,0 +1,147 @@
+{
+  "observed_at": "2026-11-08T09:24:02.566187+00:00",
+  "mode": "REAL_CONNECTOR_AND_JOB_HANDLER_ISOLATED_DATABASE_NO_MODEL",
+  "repository": "Garden12138/notes",
+  "path_prefix": "ai/skills/agent-persona-creator/references/",
+  "job": {
+    "id": "03c9d2af-083e-4c4c-ad70-4f0ab3bf5a90",
+    "status": "SUCCEEDED",
+    "error_code": null,
+    "attempt_count": 1,
+    "max_attempts": 3
+  },
+  "document_count": 2,
+  "live_sync_passed": true,
+  "repeat_sync": {
+    "id": "ddafcf8b-ad32-45ce-bdb1-766076736e5c",
+    "status": "SUCCEEDED",
+    "error_code": null,
+    "attempt_count": 1,
+    "max_attempts": 3
+  },
+  "automatic_retries": 0,
+  "human_learning_samples": 0,
+  "http_request_count": 8,
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:00 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "12",
+        "x-ratelimit-used": "48",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 5035
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/commits/master",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:00 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "11",
+        "x-ratelimit-used": "49",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 51238
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/git/trees/b80ef313bd9faf481080658d0f5901c98d6c320a?recursive=1",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:01 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "10",
+        "x-ratelimit-used": "50",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 558238
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/git/blobs/3732fbfbdd387d52d533f1833c10957a1082e06c",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:01 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "9",
+        "x-ratelimit-used": "51",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 3049
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/git/blobs/530302bd21e143bd68950510cb12eb6cf8a569bb",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:02 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "8",
+        "x-ratelimit-used": "52",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 2285
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:00 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "7",
+        "x-ratelimit-used": "53",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 5035
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/commits/master",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:00 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "6",
+        "x-ratelimit-used": "54",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 51238
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/garden12138/notes/git/trees/b80ef313bd9faf481080658d0f5901c98d6c320a?recursive=1",
+      "authenticated": false,
+      "http_status": 200,
+      "headers": {
+        "date": "Sun, 08 Nov 2026 09:24:01 GMT",
+        "x-ratelimit-limit": "60",
+        "x-ratelimit-remaining": "5",
+        "x-ratelimit-used": "55",
+        "x-ratelimit-resource": "core",
+        "x-ratelimit-reset": "1794132317"
+      },
+      "response_bytes": 558238
+    }
+  ]
+}
